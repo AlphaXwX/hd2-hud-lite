@@ -1,0 +1,18 @@
+# Private external inputs: do not upload original mods/game assets.
+/external/
+/build/
+/dist/
+/reports/
+/local.config.json
+.venv/
+node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.log
+.DS_Store
+Thumbs.db
+
+# Local artwork. Only the icon pack is distributed with the sources.
+/assets/*
+!/assets/icon-pack/

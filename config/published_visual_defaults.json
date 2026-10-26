@@ -1,0 +1,27 @@
+{
+  "design_resolution": [
+    1920,
+    1080
+  ],
+  "source": "Alpha F. Bloodfallen approved 1920x1080 visual preset",
+  "saved_visual_overrides": {
+    "hud.lite.alpha": 45,
+    "hud.lite.ammo_icon_size": 96,
+    "hud.lite.fire_y": -111,
+    "hud.lite.firemode_size": 76,
+    "hud.lite.info_x": -84,
+    "hud.lite.info_y": -95,
+    "hud.lite.inner_radius": 182,
+    "hud.lite.inner_thickness": 3.5,
+    "hud.lite.number_size": 28,
+    "hud.lite.number_x": 199,
+    "hud.lite.radius": 189,
+    "hud.lite.smoothing": 27,
+    "hud.lite.span": 73,
+    "hud.lite.thickness": 6.5,
+    "hud.lite.y": 538,
+    "hud.lite.zeroing_size": 40
+  },
+  "unsaved_values": "retain existing option defaults; no inferred settings",
+  "application": "chef.option spec.default only; existing saved values win"
+}

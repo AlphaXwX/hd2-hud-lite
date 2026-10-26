@@ -1,0 +1,4 @@
+{
+  "current_resource": "mods/alpha_f_bloodfallen/hud_lite",
+  "safety": "Records already present in Chef's state file for this resource stay disabled before every native call. If that file cannot be read, risky batch and animation channels fail closed."
+}

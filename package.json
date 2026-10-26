@@ -1,0 +1,12 @@
+{
+  "name": "hud-lite-build-tools",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Alpha F. Bloodfallen",
+  "description": "Local build tools for HUD Lite",
+  "license": "MIT",
+  "dependencies": {
+    "@resvg/resvg-js": "2.6.2",
+    "luaparse": "0.3.1"
+  }
+}

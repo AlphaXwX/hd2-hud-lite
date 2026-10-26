@@ -1,0 +1,1877 @@
+{
+ "mods/alpha_f_bloodfallen/hud_lite/fragments/frag_backpack": {
+  "authored_base": {
+   "ShieldComponent.capacity": {
+    "0x2cd705d1": 1000,
+    "0x59044eaa": 1000,
+    "0xb0b9f710": 150
+   },
+   "WeaponMagazineComponentData.capacity": {
+    "0x04645757": 50,
+    "0x06887ef8": 32,
+    "0x0df6deff": 100,
+    "0x0fe87029": 50,
+    "0x104184f7": 100,
+    "0x11167bfa": 30,
+    "0x11d8c98b": 30,
+    "0x1220e497": 6,
+    "0x15ae0889": 5,
+    "0x1962a5a9": 30,
+    "0x1d3b01d7": 6,
+    "0x1f3765c1": 45,
+    "0x1fffb81f": 100,
+    "0x2166c7a1": 50,
+    "0x22929ccb": 30,
+    "0x2605e68d": 8,
+    "0x26acc614": 1,
+    "0x2cef5e3b": 56,
+    "0x2ddd091d": 125,
+    "0x2df95dfe": 1,
+    "0x303d2220": 10,
+    "0x30b55bbc": 30,
+    "0x314a1bf5": 3,
+    "0x3244dc49": 40,
+    "0x36fcbd00": 1,
+    "0x3b718900": 20,
+    "0x3bf357e5": 45,
+    "0x3d538455": 4,
+    "0x3e51c09b": 31,
+    "0x4321fb69": 48,
+    "0x4daea8e1": 30,
+    "0x521229d8": 250,
+    "0x530e19df": 80,
+    "0x5590232e": 30,
+    "0x5f3517bf": 35,
+    "0x60cac78a": 45,
+    "0x656d507b": 7,
+    "0x66f5d393": 800,
+    "0x6876b30a": 30,
+    "0x69971ef9": 30,
+    "0x6c26a65d": 15,
+    "0x6cc38f79": 9,
+    "0x6ec2a850": 1,
+    "0x756a4e4d": 1,
+    "0x82a8d3c2": 15,
+    "0x83d1036e": 1,
+    "0x8583e435": 30,
+    "0x86709cb9": 100,
+    "0x8a3c6fee": 1,
+    "0x8c0aee6e": 10,
+    "0x91fafc27": 200,
+    "0x942a0601": 48,
+    "0x967a3fed": 30,
+    "0x96c8cffd": 30,
+    "0x9c2e7f43": 300,
+    "0x9e18f0cf": 100,
+    "0x9f16a5a2": 15,
+    "0xa41ddfcd": 20,
+    "0xa6445802": 12,
+    "0xab38cade": 25,
+    "0xaca39ec2": 30,
+    "0xb2bfd847": 1,
+    "0xb30f446f": 30,
+    "0xb697955d": 7,
+    "0xba161726": 15,
+    "0xbe9b793e": 25,
+    "0xc0e5aa7f": 20,
+    "0xc0ff5282": 1,
+    "0xc7dfd9eb": 10,
+    "0xc920c2d3": 13,
+    "0xcd0e4b4a": 30,
+    "0xcfaa9ddc": 49,
+    "0xd3c9a08c": 50,
+    "0xd724a2f9": 1,
+    "0xdef25ee4": 150,
+    "0xe42d5902": 30,
+    "0xe645b6ee": 175,
+    "0xeb38d34e": 5,
+    "0xefa02c2f": 12,
+    "0xf2c595ea": 3,
+    "0xf3d3ab0e": 2000,
+    "0xfbc7f2e1": 30,
+    "0xfd585726": 1,
+    "0xfe760204": 30
+   }
+  },
+  "authored_delta": {},
+  "foreign_calls": {},
+  "foreign_steady": {},
+  "layout": {
+   "places": {
+    "arc-mirror": {
+     "dx": 0,
+     "dy": 0,
+     "facing": 180,
+     "from_up": "center_y",
+     "from_x": "center_x",
+     "sweep": -63
+    }
+   },
+   "slots": {
+    "left/arc.1": {
+     "group": "pack",
+     "outline": true,
+     "place": "arc-mirror",
+     "radius": 160,
+     "span": 4
+    }
+   }
+  },
+  "network_fields": {
+   "backpack": {
+    "@num": {
+     "1": "0x0d402cf0",
+     "2": "0x1ad6d70f",
+     "3": "0x69889752",
+     "4": "0x6fee6b03"
+    }
+   },
+   "pack-link": {
+    "@num": {
+     "1": "0x1ad6d70f",
+     "2": "0x6fee6b03",
+     "3": "0xd7a5d63e"
+    }
+   }
+  },
+  "relations": {
+   "@num": {
+    "1": "backpack",
+    "2": "pack-link"
+   }
+  },
+  "role_tables": {
+   "backpack-spare": {
+    "broken": "0x6fee6b03",
+    "charge": "0x1ad6d70f",
+    "countdown": "0x0d402cf0",
+    "link_broken": {
+     "field": "0x6fee6b03",
+     "relation": "pack-link"
+    },
+    "link_charge": {
+     "field": "0x1ad6d70f",
+     "relation": "pack-link"
+    },
+    "link_rounds": {
+     "field": "0xd7a5d63e",
+     "relation": "pack-link"
+    },
+    "remaining": "0x69889752"
+   }
+  },
+  "signals": {
+   "pack_arc": {
+    "relation": "backpack",
+    "roles": "backpack-spare",
+    "sources": {
+     "@num": {
+      "1": {
+       "by": {
+        "true": 0
+       },
+       "from": "link_broken",
+       "still": true
+      },
+      "2": {
+       "by": {
+        "true": 0
+       },
+       "from": "broken",
+       "still": true
+      },
+      "3": "link_rounds",
+      "4": "link_charge",
+      "5": "countdown",
+      "6": "charge",
+      "7": "remaining"
+     }
+    }
+   },
+   "pack_arc_max": {
+    "relation": "backpack",
+    "roles": "backpack-spare",
+    "sources": {
+     "@num": {
+      "1": {
+       "absent": "F-THE-CAPACITY-IS-IN-NO-RUNTIME-SURFACE-WE-CAN-READ",
+       "authored": "WeaponMagazineComponentData.capacity",
+       "relation": "pack-link"
+      },
+      "2": {
+       "absent": "F-THE-AUTHORED-SHIELD-CAPACITY-AND-RECHARGE-SECONDS-ARE-EXTRACTABLE",
+       "authored": "ShieldComponent.capacity",
+       "relation": "pack-link"
+      },
+      "3": {
+       "absent": "F-NO-BACKPACK-TYPE-DECLARES-ITS-OWN-CAPACITY",
+       "pack": "arc_max"
+      }
+     }
+    }
+   },
+   "pack_broken": {
+    "relation": "backpack",
+    "roles": "backpack-spare",
+    "sources": {
+     "@num": {
+      "1": "link_broken",
+      "2": "broken"
+     }
+    }
+   }
+  },
+  "slots": {
+   "left": {
+    "@num": {
+     "1": {
+      "display": {
+       "dim_when": "pack_broken",
+       "direction": "drain"
+      },
+      "key": 1,
+      "kind": "arc",
+      "max": "pack_arc_max",
+      "owner": true,
+      "value": "pack_arc"
+     }
+    }
+   },
+   "right": {}
+  },
+  "snapshot": {
+   "pack_arc": {
+    "from": "signal:pack_arc",
+    "relation": "backpack"
+   },
+   "pack_arc_max": {
+    "from": "signal:pack_arc_max",
+    "relation": "backpack"
+   },
+   "pack_broken": {
+    "from": "signal:pack_broken",
+    "relation": "backpack"
+   }
+  }
+ },
+ "mods/alpha_f_bloodfallen/hud_lite/fragments/frag_icon": {
+  "authored_base": {
+   "WeaponDataComponentData.scope_zeroing": {
+    "0xa6445802": 50
+   }
+  },
+  "authored_delta": {
+   "WeaponDataComponentData.scope_zeroing": {
+    "0x19fc5c5b031a4af2": 50,
+    "0x3d18c135000c36dc": 25,
+    "0x3d4d0e14458f4150": 25,
+    "0x7301b3dc5b1bffb8": 50,
+    "0x994b03ed8814716c": 50,
+    "0xa57c791f46554d5f": 50
+   }
+  },
+  "foreign_calls": {},
+  "foreign_steady": {},
+  "layout": {
+   "places": {
+    "option-stack": {
+     "dx": 192,
+     "dy": 0,
+     "from_up": "center_y",
+     "from_x": "center_x",
+     "step": 32
+    }
+   },
+   "slots": {
+    "right/icon.1": {
+     "group": "icons",
+     "place": "option-stack",
+     "size": 64
+    },
+    "right/icon.2": {
+     "group": "icons",
+     "place": "option-stack",
+     "size": 64
+    },
+    "right/icon.3": {
+     "group": "icons",
+     "place": "option-stack",
+     "size": 64
+    }
+   }
+  },
+  "network_fields": {
+   "hand-weapon": {
+    "@num": {
+     "1": "0x31f86165",
+     "2": "0x49c250a6",
+     "3": "0x4cbcc2a2",
+     "4": "0x98b4aaf0",
+     "5": "0xa74ef0d5",
+     "6": "0xf8d23bd2"
+    }
+   }
+  },
+  "relations": {
+   "@num": {
+    "1": "hand-weapon"
+   }
+  },
+  "role_tables": {
+   "hand-weapon-function-icon": {
+    "deltas": "0x98b4aaf0",
+    "raw_guide": "0xf8d23bd2",
+    "raw_mode": "0x49c250a6",
+    "raw_options": "0x31f86165",
+    "raw_rpm": "0x4cbcc2a2",
+    "raw_selected": "0xa74ef0d5"
+   }
+  },
+  "signals": {
+   "function": {
+    "relation": "hand-weapon",
+    "roles": "hand-weapon-function-icon",
+    "sources": {
+     "@num": {
+      "1": {
+       "underbarrel": "icon"
+      },
+      "2": {
+       "equipment": "underbarrel_toggle",
+       "from": "raw_options",
+       "slot": 5
+      },
+      "3": {
+       "equipment": "laser",
+       "from": "raw_guide"
+      },
+      "4": {
+       "equipment": "charge_icon",
+       "from": "raw_options",
+       "slot": 4
+      },
+      "5": {
+       "equipment": "ammo_mode_icon",
+       "from": "raw_options",
+       "slot": 1
+      },
+      "6": {
+       "equipment": "magazine_icon",
+       "from": "raw_selected"
+      },
+      "7": {
+       "by": {
+        "1": "rof_icon"
+       },
+       "from": "raw_mode"
+      }
+     }
+    }
+   },
+   "mode": {
+    "relation": "hand-weapon",
+    "roles": "hand-weapon-function-icon",
+    "sources": {
+     "@num": {
+      "1": {
+       "equipment": "fire_mode",
+       "from": "raw_mode"
+      }
+     }
+    }
+   },
+   "rof_icon": {
+    "relation": "hand-weapon",
+    "roles": "hand-weapon-function-icon",
+    "sources": {
+     "@num": {
+      "1": {
+       "equipment": "rof",
+       "from": "raw_rpm"
+      }
+     }
+    }
+   },
+   "zeroing": {
+    "relation": "hand-weapon",
+    "roles": "hand-weapon-function-icon",
+    "sources": {
+     "@num": {
+      "1": {
+       "delta_from": "deltas",
+       "from": "raw_options",
+       "needs_delta": "WeaponDataComponentData.scope_zeroing",
+       "slot": 2,
+       "table": "zeroing"
+      }
+     }
+    }
+   }
+  },
+  "slots": {
+   "left": {},
+   "right": {
+    "@num": {
+     "1": {
+      "key": 8,
+      "kind": "icon",
+      "owner": true,
+      "value": "mode"
+     },
+     "2": {
+      "key": 9,
+      "kind": "icon",
+      "owner": true,
+      "value": "function"
+     },
+     "3": {
+      "key": 10,
+      "kind": "icon",
+      "owner": true,
+      "value": "zeroing"
+     }
+    }
+   }
+  },
+  "snapshot": {
+   "function": {
+    "from": "signal:function",
+    "relation": "hand-weapon"
+   },
+   "mode": {
+    "from": "signal:mode",
+    "relation": "hand-weapon"
+   },
+   "zeroing": {
+    "from": "signal:zeroing",
+    "relation": "hand-weapon"
+   }
+  }
+ },
+ "mods/alpha_f_bloodfallen/hud_lite/fragments/frag_iconposition": {
+  "authored_base": {},
+  "authored_delta": {},
+  "foreign_calls": {},
+  "foreign_steady": {},
+  "layout": {
+   "places": {},
+   "slots": {}
+  },
+  "network_fields": {},
+  "relations": {},
+  "role_tables": {},
+  "signals": {},
+  "slots": {
+   "left": {},
+   "right": {}
+  },
+  "snapshot": {}
+ },
+ "mods/alpha_f_bloodfallen/hud_lite/fragments/frag_idle": {
+  "authored_base": {},
+  "authored_delta": {},
+  "foreign_calls": {},
+  "foreign_steady": {},
+  "layout": {
+   "places": {},
+   "slots": {},
+   "style": {
+    "idle_ratio": 1
+   }
+  },
+  "network_fields": {},
+  "relations": {},
+  "role_tables": {},
+  "signals": {},
+  "slots": {
+   "left": {},
+   "right": {}
+  },
+  "snapshot": {}
+ },
+ "mods/alpha_f_bloodfallen/hud_lite/fragments/frag_numbers": {
+  "authored_base": {},
+  "authored_delta": {},
+  "foreign_calls": {},
+  "foreign_steady": {},
+  "layout": {
+   "places": {
+    "number-pair": {
+     "dx": 142,
+     "dy": -110,
+     "from_up": "center_y",
+     "from_x": "center_x",
+     "join": "/"
+    }
+   },
+   "slots": {
+    "right/number.1": {
+     "align": "right",
+     "font": 24,
+     "group": "gear",
+     "place": "number-pair",
+     "warns": true
+    },
+    "right/number.2": {
+     "font": 24,
+     "group": "gear",
+     "place": "number-pair"
+    }
+   }
+  },
+  "network_fields": {
+   "backpack": {
+    "@num": {
+     "1": "0x69889752"
+    }
+   },
+   "hand-weapon": {
+    "@num": {
+     "1": "0x04ec5b95",
+     "2": "0x4a893e74",
+     "3": "0x9a34c336",
+     "4": "0xa74ef0d5",
+     "5": "0xd7a5d63e",
+     "6": "0xe525fa9c",
+     "7": "0xec64918b",
+     "8": "0xf6275c53"
+    }
+   }
+  },
+  "relations": {
+   "@num": {
+    "1": "backpack",
+    "2": "hand-weapon"
+   }
+  },
+  "role_tables": {
+   "backpack-spare": {
+    "broken": "0x6fee6b03",
+    "charge": "0x1ad6d70f",
+    "countdown": "0x0d402cf0",
+    "link_broken": {
+     "field": "0x6fee6b03",
+     "relation": "pack-link"
+    },
+    "link_charge": {
+     "field": "0x1ad6d70f",
+     "relation": "pack-link"
+    },
+    "link_rounds": {
+     "field": "0xd7a5d63e",
+     "relation": "pack-link"
+    },
+    "remaining": "0x69889752"
+   },
+   "hand-weapon-ammo": {
+    "chamber": "0x4a893e74",
+    "charging": "0x88b7cf6d",
+    "deltas": "0x98b4aaf0",
+    "heat": "0xa5023836",
+    "heat_trigger_held": "0x3132608f",
+    "magazines": "0xec64918b",
+    "overheated": "0xf6275c53",
+    "reload_stage": "0xcd889dbc",
+    "rounds": "0xd7a5d63e",
+    "selected": "0xa74ef0d5",
+    "slot0": "0x04ec5b95",
+    "slot1": "0xe525fa9c",
+    "spare": "0x9a34c336"
+   }
+  },
+  "signals": {
+   "ammo": {
+    "plus": {
+     "from": "chamber",
+     "when_false": 1
+    },
+    "relation": "hand-weapon",
+    "roles": "hand-weapon-ammo",
+    "sources": {
+     "@num": {
+      "1": {
+       "by": {
+        "@num": {
+         "1": "slot0",
+         "2": "slot1"
+        }
+       },
+       "from": "selected",
+       "group": "rounds_groups"
+      },
+      "2": "rounds",
+      "3": "slot0",
+      "4": "slot1"
+     }
+    }
+   },
+   "pack_ammo": {
+    "relation": "backpack",
+    "roles": "backpack-spare",
+    "sources": {
+     "@num": {
+      "1": {
+       "from": "remaining",
+       "unless_authored": "ammo_pack"
+      }
+     }
+    }
+   },
+   "pack_spare": {
+    "relation": "backpack",
+    "roles": "backpack-spare",
+    "sources": {
+     "@num": {
+      "1": {
+       "from": "remaining",
+       "unless_authored": "spare_pack"
+      }
+     }
+    }
+   },
+   "reserve": {
+    "relation": "hand-weapon",
+    "roles": "hand-weapon-ammo",
+    "sources": {
+     "@num": {
+      "1": {
+       "from": "magazines",
+       "unless_authored": "spare_pack"
+      },
+      "2": {
+       "from": "spare",
+       "unless_authored": "spare_pack"
+      }
+     }
+    }
+   }
+  },
+  "slots": {
+   "left": {},
+   "right": {
+    "@num": {
+     "1": {
+      "key": 11,
+      "kind": "number",
+      "owner": true,
+      "value": "ammo"
+     },
+     "2": {
+      "key": 11,
+      "kind": "number",
+      "value": "pack_ammo"
+     },
+     "3": {
+      "display": {
+       "hide_zero": true
+      },
+      "key": 12,
+      "kind": "number",
+      "value": "pack_spare"
+     },
+     "4": {
+      "display": {
+       "hide_zero": true
+      },
+      "key": 12,
+      "kind": "number",
+      "owner": true,
+      "value": "reserve"
+     }
+    }
+   }
+  },
+  "snapshot": {
+   "ammo": {
+    "from": "signal:ammo",
+    "relation": "hand-weapon"
+   },
+   "pack_ammo": {
+    "from": "signal:pack_ammo",
+    "relation": "backpack"
+   },
+   "pack_spare": {
+    "from": "signal:pack_spare",
+    "relation": "backpack"
+   },
+   "reserve": {
+    "from": "signal:reserve",
+    "relation": "hand-weapon"
+   }
+  }
+ },
+ "mods/alpha_f_bloodfallen/hud_lite/fragments/frag_squad": {
+  "authored_base": {},
+  "authored_delta": {},
+  "foreign_calls": {
+   "squad-1": {
+    "0x3b12bd49": "booster",
+    "0xcd889dbc": "gbgqot6"
+   },
+   "squad-2": {
+    "0x3b12bd49": "booster",
+    "0xcd889dbc": "gbgqot6"
+   },
+   "squad-3": {
+    "0x3b12bd49": "booster",
+    "0xcd889dbc": "gbgqot6"
+   }
+  },
+  "foreign_steady": {
+   "squad-1": {
+    "0x3b12bd49": true
+   },
+   "squad-2": {
+    "0x3b12bd49": true
+   },
+   "squad-3": {
+    "0x3b12bd49": true
+   }
+  },
+  "layout": {
+   "places": {
+    "squad-column": {
+     "along": "y",
+     "alpha": 1,
+     "dx": 42,
+     "dy": 176,
+     "follows_hud_scale": true,
+     "from": "first",
+     "from_up": "bottom",
+     "from_x": "left",
+     "idle_ratio": 1,
+     "step": 68
+    }
+   },
+   "slots": {
+    "left/icon.1": {
+     "place": "squad-column",
+     "size": 64
+    },
+    "left/icon.2": {
+     "place": "squad-column",
+     "size": 64
+    },
+    "left/icon.3": {
+     "place": "squad-column",
+     "size": 64
+    },
+    "left/icon.4": {
+     "place": "squad-column",
+     "size": 64
+    }
+   }
+  },
+  "network_fields": {
+   "player": {
+    "@num": {
+     "1": "0x3b12bd49",
+     "2": "0xcd889dbc"
+    }
+   },
+   "squad-1": {
+    "@num": {
+     "1": "0x3b12bd49",
+     "2": "0xcd889dbc"
+    }
+   },
+   "squad-2": {
+    "@num": {
+     "1": "0x3b12bd49",
+     "2": "0xcd889dbc"
+    }
+   },
+   "squad-3": {
+    "@num": {
+     "1": "0x3b12bd49",
+     "2": "0xcd889dbc"
+    }
+   }
+  },
+  "relations": {
+   "@num": {
+    "1": "player",
+    "2": "squad-1",
+    "3": "squad-2",
+    "4": "squad-3"
+   }
+  },
+  "role_tables": {
+   "self-booster": {
+    "raw_booster": {
+     "field": "0x3b12bd49",
+     "steady": true
+    },
+    "raw_live": "0xcd889dbc"
+   },
+   "squad-booster-1": {
+    "raw_booster_1": {
+     "field": "0x3b12bd49",
+     "steady": true
+    },
+    "raw_live_1": "0xcd889dbc"
+   },
+   "squad-booster-2": {
+    "raw_booster_2": {
+     "field": "0x3b12bd49",
+     "steady": true
+    },
+    "raw_live_2": "0xcd889dbc"
+   },
+   "squad-booster-3": {
+    "raw_booster_3": {
+     "field": "0x3b12bd49",
+     "steady": true
+    },
+    "raw_live_3": "0xcd889dbc"
+   }
+  },
+  "signals": {
+   "icon": {
+    "relation": "player",
+    "roles": "self-booster",
+    "sources": {
+     "@num": {
+      "1": {
+       "bits": {
+        "@num": {
+         "1": 8,
+         "2": 0
+        }
+       },
+       "from": "raw_live",
+       "table": "dead"
+      },
+      "2": {
+       "from": "raw_booster",
+       "table": "booster"
+      }
+     }
+    }
+   },
+   "icon_1": {
+    "relation": "squad-1",
+    "roles": "squad-booster-1",
+    "sources": {
+     "@num": {
+      "1": {
+       "bits": {
+        "@num": {
+         "1": 8,
+         "2": 0
+        }
+       },
+       "from": "raw_live_1",
+       "table": "dead"
+      },
+      "2": {
+       "from": "raw_booster_1",
+       "table": "booster"
+      }
+     }
+    }
+   },
+   "icon_2": {
+    "relation": "squad-2",
+    "roles": "squad-booster-2",
+    "sources": {
+     "@num": {
+      "1": {
+       "bits": {
+        "@num": {
+         "1": 8,
+         "2": 0
+        }
+       },
+       "from": "raw_live_2",
+       "table": "dead"
+      },
+      "2": {
+       "from": "raw_booster_2",
+       "table": "booster"
+      }
+     }
+    }
+   },
+   "icon_3": {
+    "relation": "squad-3",
+    "roles": "squad-booster-3",
+    "sources": {
+     "@num": {
+      "1": {
+       "bits": {
+        "@num": {
+         "1": 8,
+         "2": 0
+        }
+       },
+       "from": "raw_live_3",
+       "table": "dead"
+      },
+      "2": {
+       "from": "raw_booster_3",
+       "table": "booster"
+      }
+     }
+    }
+   }
+  },
+  "slots": {
+   "left": {
+    "@num": {
+     "1": {
+      "key": 2,
+      "kind": "icon",
+      "owner": true,
+      "value": "icon"
+     },
+     "2": {
+      "key": 3,
+      "kind": "icon",
+      "owner": true,
+      "value": "icon_1"
+     },
+     "3": {
+      "key": 4,
+      "kind": "icon",
+      "owner": true,
+      "value": "icon_2"
+     },
+     "4": {
+      "key": 5,
+      "kind": "icon",
+      "owner": true,
+      "value": "icon_3"
+     }
+    }
+   },
+   "right": {}
+  },
+  "snapshot": {
+   "icon": {
+    "from": "signal:icon",
+    "relation": "player"
+   },
+   "icon_1": {
+    "from": "signal:icon_1",
+    "relation": "squad-1"
+   },
+   "icon_2": {
+    "from": "signal:icon_2",
+    "relation": "squad-2"
+   },
+   "icon_3": {
+    "from": "signal:icon_3",
+    "relation": "squad-3"
+   }
+  }
+ },
+ "mods/alpha_f_bloodfallen/hud_lite/fragments/frag_weapon": {
+  "authored_base": {
+   "DepositComponentData.capacity": {
+    "0x066c9036": 5,
+    "0x0ab1da38": 4,
+    "0x139293f3": 120,
+    "0x24bfe86e": 4,
+    "0x32fd58bf": 1000,
+    "0x42eb8b5a": 6,
+    "0x447380d4": 4,
+    "0x61ea0c42": 3,
+    "0x66d03a73": 6,
+    "0x6c17c3b1": 500,
+    "0x764f37a0": 5,
+    "0x816a11e0": 5,
+    "0x94ff3b20": 15,
+    "0x9f9ef431": 5,
+    "0xa42ace6a": 6,
+    "0xb32572a6": 4,
+    "0xb5b092f9": 4,
+    "0xb9ea8c7e": 10,
+    "0xc4bf68fd": 4,
+    "0xe80c471f": 6,
+    "0xe866a492": 1,
+    "0xee341a1b": 8
+   },
+   "WeaponChargeComponentData.charge_full_at": {
+    "0x2605e68d": 0.75,
+    "0x26acc614": 0.5,
+    "0x314a1bf5": 2.5,
+    "0x6cc38f79": 0.5,
+    "0x903649ec": 1.1,
+    "0xba161726": 1,
+    "0xf2c595ea": 0.5
+   },
+   "WeaponChargeComponentData.charge_safe": {
+    "0x26acc614": 0.5
+   },
+   "WeaponChargeComponentData.charge_top": {
+    "0x2605e68d": 0.75,
+    "0x26acc614": 3,
+    "0x314a1bf5": 2.5,
+    "0x6cc38f79": 0.5,
+    "0x903649ec": 1.1,
+    "0xba161726": 1,
+    "0xf2c595ea": 0.5
+   },
+   "WeaponDataComponentData.charge_safe_mode": {
+    "0x26acc614": 5
+   },
+   "WeaponHeatComponentData.charge_gain_per_second": {
+    "0x366d3622": 33
+   },
+   "WeaponHeatComponentData.charge_loss_per_second": {
+    "0x366d3622": 500
+   },
+   "WeaponHeatComponentData.overheat_temperature": {
+    "0x366d3622": 100,
+    "0x42a6b5ba": 100,
+    "0x4e87d68d": 100,
+    "0x5ada6b71": 200,
+    "0x7dce85e3": 100,
+    "0x960653cb": 200,
+    "0x96c78961": 10000,
+    "0xa9e88c96": 100,
+    "0xd100e0c8": 100,
+    "0xd496b132": 100,
+    "0xe3d29b1f": 100,
+    "0xfeae4480": 100
+   },
+   "WeaponHeatComponentData.temp_gain_per_second": {
+    "0x366d3622": 0,
+    "0x42a6b5ba": 12.5,
+    "0x4e87d68d": 0,
+    "0x5ada6b71": 0,
+    "0x7dce85e3": 0,
+    "0x960653cb": 0,
+    "0x96c78961": 0,
+    "0xa9e88c96": 0,
+    "0xd100e0c8": 8,
+    "0xd496b132": 0,
+    "0xe3d29b1f": 30,
+    "0xfeae4480": 15
+   },
+   "WeaponHeatComponentData.temp_gain_per_shot": {
+    "0x960653cb": 13.416666666666664,
+    "0xd496b132": 14.374999999999998
+   },
+   "WeaponHeatComponentData.temp_loss_per_second": {
+    "0x366d3622": 6.66,
+    "0x42a6b5ba": 8.5,
+    "0x4e87d68d": 10,
+    "0x5ada6b71": 50,
+    "0x7dce85e3": 15,
+    "0x960653cb": 8,
+    "0x96c78961": 5000,
+    "0xa9e88c96": 0,
+    "0xd100e0c8": 5,
+    "0xd496b132": 8,
+    "0xe3d29b1f": 15,
+    "0xfeae4480": 10
+   },
+   "WeaponHeatComponentData.warning_temperature": {
+    "0x366d3622": 75,
+    "0x42a6b5ba": 80,
+    "0x4e87d68d": 80,
+    "0x5ada6b71": 150,
+    "0x7dce85e3": 80,
+    "0x960653cb": 80,
+    "0x96c78961": 10000,
+    "0xa9e88c96": 75,
+    "0xd100e0c8": 80,
+    "0xd496b132": 80,
+    "0xe3d29b1f": 80,
+    "0xfeae4480": 70
+   },
+   "WeaponMagazineComponentData.capacity": {
+    "0x04645757": 50,
+    "0x06887ef8": 32,
+    "0x0df6deff": 100,
+    "0x0fe87029": 50,
+    "0x104184f7": 100,
+    "0x11167bfa": 30,
+    "0x11d8c98b": 30,
+    "0x1220e497": 6,
+    "0x15ae0889": 5,
+    "0x1962a5a9": 30,
+    "0x1d3b01d7": 6,
+    "0x1f3765c1": 45,
+    "0x1fffb81f": 100,
+    "0x2166c7a1": 50,
+    "0x22929ccb": 30,
+    "0x2605e68d": 8,
+    "0x26acc614": 1,
+    "0x2cef5e3b": 56,
+    "0x2ddd091d": 125,
+    "0x2df95dfe": 1,
+    "0x303d2220": 10,
+    "0x30b55bbc": 30,
+    "0x314a1bf5": 3,
+    "0x3244dc49": 40,
+    "0x36fcbd00": 1,
+    "0x3b718900": 20,
+    "0x3bf357e5": 45,
+    "0x3d538455": 4,
+    "0x3e51c09b": 31,
+    "0x4321fb69": 48,
+    "0x4daea8e1": 30,
+    "0x521229d8": 250,
+    "0x530e19df": 80,
+    "0x5590232e": 30,
+    "0x5f3517bf": 35,
+    "0x60cac78a": 45,
+    "0x656d507b": 7,
+    "0x66f5d393": 800,
+    "0x6876b30a": 30,
+    "0x69971ef9": 30,
+    "0x6c26a65d": 15,
+    "0x6cc38f79": 9,
+    "0x6ec2a850": 1,
+    "0x756a4e4d": 1,
+    "0x82a8d3c2": 15,
+    "0x83d1036e": 1,
+    "0x8583e435": 30,
+    "0x86709cb9": 100,
+    "0x8a3c6fee": 1,
+    "0x8c0aee6e": 10,
+    "0x91fafc27": 200,
+    "0x942a0601": 48,
+    "0x967a3fed": 30,
+    "0x96c8cffd": 30,
+    "0x9c2e7f43": 300,
+    "0x9e18f0cf": 100,
+    "0x9f16a5a2": 15,
+    "0xa41ddfcd": 20,
+    "0xa6445802": 12,
+    "0xab38cade": 25,
+    "0xaca39ec2": 30,
+    "0xb2bfd847": 1,
+    "0xb30f446f": 30,
+    "0xb697955d": 7,
+    "0xba161726": 15,
+    "0xbe9b793e": 25,
+    "0xc0e5aa7f": 20,
+    "0xc0ff5282": 1,
+    "0xc7dfd9eb": 10,
+    "0xc920c2d3": 13,
+    "0xcd0e4b4a": 30,
+    "0xcfaa9ddc": 49,
+    "0xd3c9a08c": 50,
+    "0xd724a2f9": 1,
+    "0xdef25ee4": 150,
+    "0xe42d5902": 30,
+    "0xe645b6ee": 175,
+    "0xeb38d34e": 5,
+    "0xefa02c2f": 12,
+    "0xf2c595ea": 3,
+    "0xf3d3ab0e": 2000,
+    "0xfbc7f2e1": 30,
+    "0xfd585726": 1,
+    "0xfe760204": 30
+   },
+   "WeaponRoundsComponentData.magazine_capacity": {
+    "0x16425925": {
+     "@num": {
+      "1": 1,
+      "2": 0
+     }
+    },
+    "0x193ffddf": {
+     "@num": {
+      "1": 8,
+      "2": 8
+     }
+    },
+    "0x2ac9b588": {
+     "@num": {
+      "1": 12,
+      "2": 0
+     }
+    },
+    "0x32fba243": {
+     "@num": {
+      "1": 2,
+      "2": 0
+     }
+    },
+    "0x3478da46": {
+     "@num": {
+      "1": 6,
+      "2": 0
+     }
+    },
+    "0x362577f7": {
+     "@num": {
+      "1": 1,
+      "2": 0
+     }
+    },
+    "0x3b60cae4": {
+     "@num": {
+      "1": 6,
+      "2": 0
+     }
+    },
+    "0x3f87a7e8": {
+     "@num": {
+      "1": 2,
+      "2": 0
+     }
+    },
+    "0x437d9eed": {
+     "@num": {
+      "1": 3,
+      "2": 0
+     }
+    },
+    "0x56c0a062": {
+     "@num": {
+      "1": 6,
+      "2": 0
+     }
+    },
+    "0x5e0cd6f6": {
+     "@num": {
+      "1": 7,
+      "2": 0
+     }
+    },
+    "0x6b2c3bed": {
+     "@num": {
+      "1": 1,
+      "2": 0
+     }
+    },
+    "0x7bfb2e06": {
+     "@num": {
+      "1": 10,
+      "2": 0
+     }
+    },
+    "0x9c06f074": {
+     "@num": {
+      "1": 8,
+      "2": 8
+     }
+    },
+    "0xaca565f4": {
+     "@num": {
+      "1": 8,
+      "2": 8
+     }
+    },
+    "0xb4ac0dfa": {
+     "@num": {
+      "1": 6,
+      "2": 0
+     }
+    },
+    "0xbd5f17dd": {
+     "@num": {
+      "1": 8,
+      "2": 8
+     }
+    },
+    "0xd5e0448b": {
+     "@num": {
+      "1": 8,
+      "2": 8
+     }
+    },
+    "0xe1f10066": {
+     "@num": {
+      "1": 6,
+      "2": 0
+     }
+    },
+    "0xf18d75e5": {
+     "@num": {
+      "1": 8,
+      "2": 0
+     }
+    },
+    "0xfc1ece86": {
+     "@num": {
+      "1": 5,
+      "2": 0
+     }
+    }
+   }
+  },
+  "authored_delta": {
+   "WeaponHeatComponentData.overheat_temperature": {
+    "0x21599b06fc65219a": 200,
+    "0x55e9f7bc3bfa32fa": 150,
+    "0x86bccd5b35e0eea5": 60,
+    "0xb61b1340b74aaa5c": 100
+   },
+   "WeaponHeatComponentData.warning_temperature": {
+    "0x21599b06fc65219a": 175,
+    "0x55e9f7bc3bfa32fa": 100,
+    "0x86bccd5b35e0eea5": 40,
+    "0xb61b1340b74aaa5c": 80
+   },
+   "WeaponMagazineComponentData.capacity": {
+    "0x029cfc4c193211c3": 5,
+    "0x040ce909939a3baa": 26,
+    "0x16ab263bc03b4f96": 40,
+    "0x17dcf0fa33f34f78": 17,
+    "0x193becdf64aa66a9": 15,
+    "0x19a58494794fbd84": 23,
+    "0x1b1fcc0e025c1f7d": 45,
+    "0x1ec5f54265a91c83": 20,
+    "0x21f0b1a5e00af770": 70,
+    "0x227da5abff7318b3": 20,
+    "0x2d761a80bcbfe792": 45,
+    "0x2fd25216d6acabee": 75,
+    "0x324cd10a8fc3b7c5": 30,
+    "0x3359229e4e0f766d": 15,
+    "0x344cbd588a1f8058": 30,
+    "0x35615faf7de44eb3": 24,
+    "0x37c2891774b38c87": 30,
+    "0x3a58b9dcb84f665d": 50,
+    "0x3c13706aaebd5f53": 35,
+    "0x3ddb9d36da22555d": 26,
+    "0x41b98e2cfdf4c0c7": 75,
+    "0x462fc89d4903b33d": 20,
+    "0x493b364b37b48ae4": 60,
+    "0x4f839e923046e631": 15,
+    "0x51df2b8840b0dc66": 45,
+    "0x538191ecbd222856": 35,
+    "0x5bda18bf2163a82a": 16,
+    "0x61d9b85315f9b5bb": 10,
+    "0x67534ecdee742b90": 12,
+    "0x676c58913606a8e7": 16,
+    "0x68b8d040421e8a49": 16,
+    "0x6abddd8224a3328f": 70,
+    "0x6c0b6e983bbfc1f1": 125,
+    "0x6ccd3a53f2dca2d8": 15,
+    "0x6e0f7a8af1757f69": 16,
+    "0x6e165f05a49233f6": 8,
+    "0x73a5ecad32ba599b": 150,
+    "0x7706f9ea88a12c33": 75,
+    "0x7be1e04a7738e673": 45,
+    "0x7e3f787b75fa8c62": 60,
+    "0x80f0a339e905d2d3": 20,
+    "0x8f141212b0f6f515": 50,
+    "0x8f4603a2f631fded": 16,
+    "0x9237ccec8fe86d22": 25,
+    "0x963aca558cd906bc": 45,
+    "0x986e6696b34b8902": 16,
+    "0x990b06bf5c26bd01": 13,
+    "0x9992e382b80955cc": 13,
+    "0x99d1e6ee10b72b5f": 45,
+    "0x9b30d4ac39ddff10": 12,
+    "0x9d81323b153dc429": 200,
+    "0xa3af33f240e2f4e9": 13,
+    "0xa4fa3ef43a8cecaf": 30,
+    "0xaca180fc6f846411": 8,
+    "0xaef8da5f145728ae": 20,
+    "0xb0522337be14e574": 45,
+    "0xb3fef7ad6bc385b2": 60,
+    "0xb7cd35e0edc15cd7": 100,
+    "0xbe4590c2f615c441": 65,
+    "0xbf2f862b08e550a2": 5,
+    "0xc138b650d94ad5e3": 25,
+    "0xc245c696e80677ed": 30,
+    "0xc547d45ce996e70a": 28,
+    "0xc891acf9e8dbda97": 31,
+    "0xcc4cd9593abb87be": 50,
+    "0xcc944f51090c682b": 45,
+    "0xd246831efd370fa8": 15,
+    "0xd2f1279013d981c7": 15,
+    "0xdfa1f7de9d4985c3": 15,
+    "0xe336a290c5b7c676": 22,
+    "0xe7cfdac9895d8378": 60,
+    "0xe8de5e95b9635c21": 60,
+    "0xe8e18735416d8a2f": 12,
+    "0xecfd5d93319b71db": 50,
+    "0xee89d98cbe33e976": 85,
+    "0xef49a0e2a68c116a": 20,
+    "0xf045edc1621856aa": 90,
+    "0xf1355ad13d4fdea7": 15,
+    "0xfd5b6104526745d2": 30,
+    "0xfe3fff173f5ac594": 11
+   }
+  },
+  "foreign_calls": {},
+  "foreign_steady": {},
+  "layout": {
+   "places": {
+    "arc-primary": {
+     "dx": 0,
+     "dy": 0,
+     "facing": 0,
+     "from_up": "center_y",
+     "from_x": "center_x",
+     "sweep": 63
+    }
+   },
+   "slots": {
+    "right/arc.1": {
+     "group": "gear",
+     "outline": true,
+     "place": "arc-primary",
+     "radius": 160,
+     "span": 4,
+     "warn_below": 0.25,
+     "warns": true
+    },
+    "right/arc.2": {
+     "alpha": 0.5,
+     "group": "gear",
+     "place": "arc-primary",
+     "radius": 150,
+     "span": 3
+    }
+   }
+  },
+  "network_fields": {
+   "backpack": {
+    "@num": {
+     "1": "0x69889752"
+    }
+   },
+   "hand-weapon": {
+    "@num": {
+     "1": "0x04ec5b95",
+     "10": "0xd7a5d63e",
+     "11": "0xe525fa9c",
+     "12": "0xf6275c53",
+     "2": "0x3132608f",
+     "3": "0x49c250a6",
+     "4": "0x4a893e74",
+     "5": "0x88b7cf6d",
+     "6": "0x98b4aaf0",
+     "7": "0xa5023836",
+     "8": "0xa74ef0d5",
+     "9": "0xcd889dbc"
+    }
+   }
+  },
+  "relations": {
+   "@num": {
+    "1": "backpack",
+    "2": "hand-weapon"
+   }
+  },
+  "role_tables": {
+   "backpack-spare": {
+    "broken": "0x6fee6b03",
+    "charge": "0x1ad6d70f",
+    "countdown": "0x0d402cf0",
+    "link_broken": {
+     "field": "0x6fee6b03",
+     "relation": "pack-link"
+    },
+    "link_charge": {
+     "field": "0x1ad6d70f",
+     "relation": "pack-link"
+    },
+    "link_rounds": {
+     "field": "0xd7a5d63e",
+     "relation": "pack-link"
+    },
+    "remaining": "0x69889752"
+   },
+   "hand-weapon-ammo": {
+    "chamber": "0x4a893e74",
+    "charging": "0x88b7cf6d",
+    "deltas": "0x98b4aaf0",
+    "heat": "0xa5023836",
+    "heat_trigger_held": "0x3132608f",
+    "magazines": "0xec64918b",
+    "overheated": "0xf6275c53",
+    "reload_stage": "0xcd889dbc",
+    "rounds": "0xd7a5d63e",
+    "selected": "0xa74ef0d5",
+    "slot0": "0x04ec5b95",
+    "slot1": "0xe525fa9c",
+    "spare": "0x9a34c336"
+   },
+   "hand-weapon-charge-arc": {
+    "charge_fire_mode": "0x49c250a6",
+    "charge_rounds": "0xd7a5d63e",
+    "trigger_held": "0x3132608f"
+   }
+  },
+  "signals": {
+   "ammo": {
+    "plus": {
+     "from": "chamber",
+     "when_false": 1
+    },
+    "relation": "hand-weapon",
+    "roles": "hand-weapon-ammo",
+    "sources": {
+     "@num": {
+      "1": {
+       "by": {
+        "@num": {
+         "1": "slot0",
+         "2": "slot1"
+        }
+       },
+       "from": "selected",
+       "group": "rounds_groups"
+      },
+      "2": "rounds",
+      "3": "slot0",
+      "4": "slot1"
+     }
+    }
+   },
+   "ammo_max": {
+    "relation": "hand-weapon",
+    "roles": "hand-weapon-ammo",
+    "sources": {
+     "@num": {
+      "1": {
+       "absent": "F-THE-CAPACITY-IS-IN-NO-RUNTIME-SURFACE-WE-CAN-READ",
+       "authored": "WeaponMagazineComponentData.capacity",
+       "delta_from": "deltas"
+      },
+      "2": {
+       "absent": "F-NO-CAPACITY-FIELD",
+       "authored": "WeaponRoundsComponentData.magazine_capacity",
+       "from": "selected",
+       "group": "rounds_groups"
+      }
+     }
+    }
+   },
+   "charge_full_at": {
+    "relation": "hand-weapon",
+    "roles": "hand-weapon-charge-arc",
+    "sources": {
+     "@num": {
+      "1": {
+       "absent": "F-THE-CHARGE-DENOMINATOR-IS-STAGE-TWO-FOR-EVERY-CHARGE-WEAPON",
+       "authored": "WeaponChargeComponentData.charge_full_at"
+      }
+     }
+    }
+   },
+   "charge_safe": {
+    "relation": "hand-weapon",
+    "roles": "hand-weapon-charge-arc",
+    "sources": {
+     "@num": {
+      "1": {
+       "absent": "F-THE-SAFETY-TOGGLE-IS-A-BUTTON-NOT-A-MODE-NAME",
+       "authored": "WeaponChargeComponentData.charge_safe"
+      }
+     }
+    }
+   },
+   "charge_safe_mode": {
+    "relation": "hand-weapon",
+    "roles": "hand-weapon-charge-arc",
+    "sources": {
+     "@num": {
+      "1": {
+       "absent": "F-THE-SAFETY-TOGGLE-IS-A-BUTTON-NOT-A-MODE-NAME",
+       "authored": "WeaponDataComponentData.charge_safe_mode"
+      }
+     }
+    }
+   },
+   "charge_top": {
+    "relation": "hand-weapon",
+    "roles": "hand-weapon-charge-arc",
+    "sources": {
+     "@num": {
+      "1": {
+       "absent": "F-NO-PLANE-CARRIES-A-CHARGE-FRACTION-FOR-ALL-WEAPONS",
+       "authored": "WeaponChargeComponentData.charge_top"
+      }
+     }
+    }
+   },
+   "heat_discharge_rate": {
+    "relation": "hand-weapon",
+    "roles": "hand-weapon-ammo",
+    "sources": {
+     "@num": {
+      "1": {
+       "absent": "F-THE-QUASAR-CHARGE-RELEASE-RATE-IS-AUTHORED",
+       "authored": "WeaponHeatComponentData.charge_loss_per_second"
+      }
+     }
+    }
+   },
+   "heat_fall_rate": {
+    "relation": "hand-weapon",
+    "roles": "hand-weapon-ammo",
+    "sources": {
+     "@num": {
+      "1": {
+       "absent": "F-NO-RUNTIME-COOLING-RATE-ON-THE-WEAPON",
+       "authored": "WeaponHeatComponentData.temp_loss_per_second"
+      }
+     }
+    }
+   },
+   "heat_gain_rate": {
+    "relation": "hand-weapon",
+    "roles": "hand-weapon-ammo",
+    "sources": {
+     "@num": {
+      "1": {
+       "absent": "F-THE-QUASAR-CARRIES-ITS-CHARGE-ON-THE-HEAT-COMPONENT",
+       "authored": "WeaponHeatComponentData.charge_gain_per_second"
+      },
+      "2": {
+       "absent": "F-THE-AUTHORED-SHOT-HEAT-TIMES-THE-FIRE-RATE-IS-THE-RISE-RATE",
+       "authored": "WeaponHeatComponentData.temp_gain_per_shot"
+      },
+      "3": {
+       "absent": "F-NO-RUNTIME-COOLING-RATE-ON-THE-WEAPON",
+       "authored": "WeaponHeatComponentData.temp_gain_per_second"
+      }
+     }
+    }
+   },
+   "heat_max": {
+    "relation": "hand-weapon",
+    "roles": "hand-weapon-ammo",
+    "sources": {
+     "@num": {
+      "1": {
+       "absent": "F-THE-OVERHEAT-THRESHOLD-IS-AUTHORED-AND-THE-DELTA-OVERRIDES-IT",
+       "authored": "WeaponHeatComponentData.overheat_temperature",
+       "delta_from": "deltas"
+      }
+     }
+    }
+   },
+   "heat_rise_held": {
+    "relation": "hand-weapon",
+    "roles": "hand-weapon-ammo",
+    "sources": {
+     "@num": {
+      "1": {
+       "from": "charging",
+       "needs": "charges_on_heat"
+      },
+      "2": "heat_trigger_held"
+     }
+    }
+   },
+   "heat_shown": {
+    "relation": "hand-weapon",
+    "roles": "hand-weapon-ammo",
+    "sources": {
+     "@num": {
+      "1": {
+       "by_any": "heat_max",
+       "from": "reload_stage",
+       "still": true,
+       "unless_value": 0
+      },
+      "2": {
+       "by": {
+        "true": "heat_max"
+       },
+       "from": "overheated",
+       "still": true,
+       "unless_authored": "cools_while_overheated"
+      },
+      "3": "heat"
+     }
+    }
+   },
+   "heat_warn": {
+    "relation": "hand-weapon",
+    "roles": "hand-weapon-ammo",
+    "sources": {
+     "@num": {
+      "1": {
+       "absent": "F-THE-WARNING-TEMPERATURE-IS-AUTHORED-AND-THE-DELTA-OVERRIDES-IT",
+       "authored": "WeaponHeatComponentData.warning_temperature",
+       "delta_from": "deltas"
+      }
+     }
+    }
+   },
+   "pack_ammo": {
+    "relation": "backpack",
+    "roles": "backpack-spare",
+    "sources": {
+     "@num": {
+      "1": {
+       "from": "remaining",
+       "unless_authored": "ammo_pack"
+      }
+     }
+    }
+   },
+   "pack_ammo_max": {
+    "relation": "backpack",
+    "roles": "backpack-spare",
+    "sources": {
+     "@num": {
+      "1": {
+       "absent": "F-NO-BACKPACK-TYPE-DECLARES-ITS-OWN-CAPACITY",
+       "authored": "DepositComponentData.capacity"
+      }
+     }
+    }
+   }
+  },
+  "slots": {
+   "left": {},
+   "right": {
+    "@num": {
+     "1": {
+      "display": {
+       "direction": "drain"
+      },
+      "key": 6,
+      "kind": "arc",
+      "max": "ammo_max",
+      "owner": true,
+      "value": "ammo"
+     },
+     "2": {
+      "discharge_rate": "heat_discharge_rate",
+      "display": {
+       "dim_when": "overheated",
+       "direction": "fill",
+       "rise_when": "heat_rise_held"
+      },
+      "fall_rate": "heat_fall_rate",
+      "key": 6,
+      "kind": "arc",
+      "max": "heat_max",
+      "rise_rate": "heat_gain_rate",
+      "value": "heat_shown",
+      "warn_above": "heat_warn"
+     },
+     "3": {
+      "display": {
+       "direction": "drain"
+      },
+      "key": 6,
+      "kind": "arc",
+      "max": "pack_ammo_max",
+      "value": "pack_ammo"
+     },
+     "4": {
+      "display": {
+       "direction": "drain",
+       "keeps_awake": true
+      },
+      "key": 7,
+      "kind": "arc",
+      "max": "action_length",
+      "owner": true,
+      "value": "action_elapsed"
+     },
+     "5": {
+      "charge": {
+       "ammo": "charge_rounds",
+       "full": "charge_full_at",
+       "mode": "charge_fire_mode",
+       "safe": "charge_safe",
+       "safe_mode": "charge_safe_mode"
+      },
+      "display": {
+       "direction": "drain",
+       "keeps_awake": true
+      },
+      "key": 7,
+      "kind": "arc",
+      "max": "charge_top",
+      "value": "trigger_held"
+     }
+    }
+   }
+  },
+  "snapshot": {
+   "action_elapsed": {
+    "from": "action:elapsed",
+    "relation": "hand-weapon"
+   },
+   "action_length": {
+    "from": "action:length",
+    "relation": "hand-weapon"
+   },
+   "ammo": {
+    "from": "signal:ammo",
+    "relation": "hand-weapon"
+   },
+   "ammo_max": {
+    "from": "signal:ammo_max",
+    "relation": "hand-weapon"
+   },
+   "charge_fire_mode": {
+    "from": "0x49c250a6",
+    "relation": "hand-weapon"
+   },
+   "charge_full_at": {
+    "from": "signal:charge_full_at",
+    "relation": "hand-weapon"
+   },
+   "charge_rounds": {
+    "from": "0xd7a5d63e",
+    "relation": "hand-weapon"
+   },
+   "charge_safe": {
+    "from": "signal:charge_safe",
+    "relation": "hand-weapon"
+   },
+   "charge_safe_mode": {
+    "from": "signal:charge_safe_mode",
+    "relation": "hand-weapon"
+   },
+   "charge_top": {
+    "from": "signal:charge_top",
+    "relation": "hand-weapon"
+   },
+   "heat_discharge_rate": {
+    "from": "signal:heat_discharge_rate",
+    "relation": "hand-weapon"
+   },
+   "heat_fall_rate": {
+    "from": "signal:heat_fall_rate",
+    "relation": "hand-weapon"
+   },
+   "heat_gain_rate": {
+    "from": "signal:heat_gain_rate",
+    "relation": "hand-weapon"
+   },
+   "heat_max": {
+    "from": "signal:heat_max",
+    "relation": "hand-weapon"
+   },
+   "heat_rise_held": {
+    "from": "signal:heat_rise_held",
+    "relation": "hand-weapon"
+   },
+   "heat_shown": {
+    "from": "signal:heat_shown",
+    "relation": "hand-weapon"
+   },
+   "heat_warn": {
+    "from": "signal:heat_warn",
+    "relation": "hand-weapon"
+   },
+   "overheated": {
+    "from": "0xf6275c53",
+    "relation": "hand-weapon"
+   },
+   "pack_ammo": {
+    "from": "signal:pack_ammo",
+    "relation": "backpack"
+   },
+   "pack_ammo_max": {
+    "from": "signal:pack_ammo_max",
+    "relation": "backpack"
+   },
+   "trigger_held": {
+    "from": "0x3132608f",
+    "relation": "hand-weapon"
+   }
+  }
+ }
+}

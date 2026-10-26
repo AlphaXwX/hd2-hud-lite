@@ -1,0 +1,13 @@
+* text=auto
+*.lua text eol=lf
+*.py text eol=lf
+*.cjs text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.png binary
+*.zip binary
+*.patch_* binary
+*.dds binary
+*.gpu binary
+*.data binary
+*.bin binary

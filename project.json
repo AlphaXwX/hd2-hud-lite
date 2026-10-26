@@ -1,0 +1,13 @@
+{
+  "name": "HUD Lite",
+  "version": "1.0.0",
+  "author": "Alpha F. Bloodfallen",
+  "resource": "mods/alpha_f_bloodfallen/hud_lite",
+  "resource_note": "Active loading and monitor identifier.",
+  "magazine_resource": "mods/alpha_f_bloodfallen/hud_lite/magazine_icon",
+  "guid": "3f6b9d2c-7a41-4c58-9e10-58c7a2f4d0b6",
+  "minimum_loader_version": "1.2.3",
+  "description_zh": "适用于《绝地潜兵2》的可配置游戏内 HUD 模组，需要 chef loader 1.2.3+",
+  "description_en": "A configurable in-game HUD mod for Helldivers 2. Requires Chef Loader 1.2.3+.",
+  "icon": "assets/preview.png"
+}

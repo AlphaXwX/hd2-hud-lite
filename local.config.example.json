@@ -1,0 +1,6 @@
+{
+  "runtime_package": "inputs/runtime.zip",
+  "icon_package": "inputs/icons.zip",
+  "quantity_icon_svg": "inputs/quantity-symbol.svg",
+  "preview_image": "inputs/preview.png"
+}
