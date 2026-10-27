@@ -5,6 +5,7 @@ local function poll(now)
   if identity.avatar_state==2 then return end
   sample_health()
   sample_stamina()
+  sample_consumables()
 end
 local function update(dt)
   if S.stopped then return end
@@ -57,5 +58,5 @@ local function shutdown()
   Model.reset();Native.reset()
 end
 logf("HUD Lite "..VERSION.." by Alpha F. Bloodfallen; bounded 20Hz discovery")
-logf("reload: animation action; weapon rig gates BODY animation layer 11; full state returns; Chef skips retained")
+logf("reload: weapon rig or declared stage gates BODY animation layer 11; full state returns; Chef skips retained")
 return {version=VERSION,installed=true,update=update,render=render,shutdown=shutdown}

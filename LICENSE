@@ -20,6 +20,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-Scope: this license covers the original HUD Lite adaptation/build code only.
-Imported upstream code, SVG artwork and game assets retain their own terms.
+Scope: this license covers HUD Lite's own implementation and build code only.
+The compatibility catalog, SVG artwork and game assets
+retain their own terms. The catalog is subject to the no-selling, credit and
+license-retention conditions in THIRD_PARTY_NOTICES.md. The MIT
+permission above does not override those conditions for a combined distribution.
 See THIRD_PARTY_NOTICES.md.

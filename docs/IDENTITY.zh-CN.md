@@ -4,7 +4,7 @@
 
 ## 当前标识
 
-- 产品及 F9 菜单：**HUD Lite 1.0.0**。
+- 产品及 F9 菜单：**HUD Lite 1.0.1**。
 - 作者：**Alpha F. Bloodfallen**。
 - 加载资源：`mods/alpha_f_bloodfallen/hud_lite`。
 - Chef 性能页条目：**hud_lite**。
@@ -18,8 +18,8 @@ Chef 根据资源路径最后一段生成性能页名称，而不是使用 F9 �
 
 1. 安装 Chef Shared Loader 1.2.3 或更新版本。
 2. 停用会绘制相同元素的其他 HUD 模组。
-3. 导入并部署 `HUD-Lite-1.0.0-Chef.zip`。
-4. 打开 F9 菜单，选择 **HUD Lite 1.0.0**。
+3. 导入并部署 `HUD-Lite-1.0.1-Chef.zip`。
+4. 打开 F9 菜单，选择 **HUD Lite 1.0.1**。
 
 这是本模组的首个公开版本，不存在需要转换的旧安装。
 部署前请移除其他 HUD 模组；更换安装包后需要重启游戏。

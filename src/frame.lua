@@ -11,7 +11,7 @@ local function render()
   end
 
   -- Flat cluster: two nested arcs on the left (health outside, stamina
-  -- inside), one arc on the right for the magazine, the count in the middle.
+  -- inside); right rings are ammo/cooling, reload/charge and backpack supply.
   local scale = math.min(w / 1920, h / 1080) * num("hud.lite.scale", 1)
   local radius = num("hud.lite.radius", 78) * scale
   local inner = math.min(radius - 2, num("hud.lite.inner_radius", 60) * scale)
@@ -74,6 +74,7 @@ local function render()
   end
 
   local has_number = Model.draw(cx,cy,scale,radius,inner,thick,inner_thick,span)
+  Model.draw_consumables(cx,cy,scale)
 
   if on("hud.lite.vitals_text") then
     local text = describe_info()

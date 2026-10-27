@@ -1,6 +1,6 @@
 # HUD Lite
 
-**1.0.0 · Alpha F. Bloodfallen**
+**1.0.1 · Alpha F. Bloodfallen**
 
 [简体中文](README.zh-CN.md) · [Documentation index](docs/INDEX.md)
 
@@ -9,11 +9,22 @@ A configurable in-game HUD mod for Helldivers 2. Requires **Chef Shared Loader
 
 ## Features
 
+This build includes verified backpack-supply relationships, additional known-pose
+weapon types and declared field-name compatibility. Unknown poses remain unresolved.
+
 - HP and stamina remain visible with or without a held weapon.
 - Ammo, magazine capacity, reserve ammunition and supported backpack gauges.
 - Energy charge on the right inner arc and cooling readiness on the outer arc.
 - A smooth white reload arc driven by sampled animation progress.
+- New verified-pose weapons without reload rigs can use declared stages and real body animation.
+- Stim and grenade quantities use the supplied distinct icons, including while unarmed.
+- Backpack resources use the separate third right-hand ring.
+- Cooldown-only and nonreloadable weapons hide spare magazines while keeping loaded ammo.
+- Multiplayer hand validation tolerates unrelated object churn; host-owned local equipment requires matching owner proof.
 - Independent fire mode, ammunition setting, zeroing and rate-of-fire icons.
+- Locked row order: stims, grenades, supported zeroing, ammo type, RPM, magazines and fire mode; missing items compact forward.
+- Unlock the information row for stable individual positions without automatic compaction.
+- Backpack geometry uses the same Ring layout controls; eleven searchable settings categories.
 - Booster and death icons for the local player and up to three teammates.
 - A magazine symbol beside the reserve count, with independent size and spacing.
 - Author-tuned 1080p defaults, resolution scaling and editable F9 options.
@@ -23,8 +34,8 @@ A configurable in-game HUD mod for Helldivers 2. Requires **Chef Shared Loader
 
 1. Install **Chef Shared Loader 1.2.3+**.
 2. Disable other installations of this mod and conflicting HUD mods.
-3. Import and deploy `HUD-Lite-1.0.0-Chef.zip` with your mod manager.
-4. Open Chef's **F9** menu and select **HUD Lite 1.0.0**.
+3. Import and deploy `HUD-Lite-1.0.1-Chef.zip` with your mod manager.
+4. Open Chef's **F9** menu and select **HUD Lite 1.0.1**.
 
 The active loader identifier, performance-monitor name and native-call
 protection are described in the [identity notes](docs/IDENTITY.md).
@@ -59,8 +70,8 @@ npm ci
 .venv\Scripts\python tests/verify_release.py
 .venv\Scripts\python tests/verify_docs.py
 .venv\Scripts\python tools/build.py
-.venv\Scripts\python tests/verify.py dist/HUD-Lite-1.0.0-Chef.zip
-.venv\Scripts\python tests/verify_release.py dist/HUD-Lite-1.0.0-Chef.zip
+.venv\Scripts\python tests/verify.py dist/HUD-Lite-1.0.1-Chef.zip
+.venv\Scripts\python tests/verify_release.py dist/HUD-Lite-1.0.1-Chef.zip
 ```
 
 On Linux or macOS use `.venv/bin/python`. Do not commit `local.config.json`.

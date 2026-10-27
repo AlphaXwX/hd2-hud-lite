@@ -1,0 +1,6377 @@
+{
+  "avatar": {
+    "grenades": "du7kbt",
+    "id": "5d9752f9",
+    "name": "vvhx8ga",
+    "refs": "27c07e3e:u_tuw4a 913af9a2:awh5q9 0c09236b:caj8s4a eef04e89:rvanyac cf55c86e:xllcyj 20efbed4:pgqdzdb",
+    "stims": "ei6_t2"
+  },
+  "backpacks": {
+    "0x066c9036": {
+      "call": "gyo1rh",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "pos": true,
+        "remaining": true
+      }
+    },
+    "0x07170cd0": {
+      "call": "m4hit2",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "pos": true,
+        "remaining": true
+      },
+      "observed_capacity": 4
+    },
+    "0x0ab1da38": {
+      "call": "yehsgn",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "pos": true,
+        "remaining": true
+      }
+    },
+    "0x0dff968f": {
+      "call": "ped7xtd",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "remaining": true
+      }
+    },
+    "0x139293f3": {
+      "call": "wsf9spc",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "pos": true,
+        "remaining": true
+      },
+      "observed_capacity": 120
+    },
+    "0x219da219": {
+      "call": "pgooz8",
+      "fed": false,
+      "fields": {
+        "owner": true,
+        "remaining": true
+      }
+    },
+    "0x24bfe86e": {
+      "call": "aovmr4d",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "pos": true,
+        "remaining": true
+      }
+    },
+    "0x32fd58bf": {
+      "call": "raqnyi",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "pos": true,
+        "remaining": true
+      },
+      "observed_capacity": 1000
+    },
+    "0x42eb8b5a": {
+      "call": "i739ida",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "pos": true,
+        "remaining": true
+      },
+      "observed_capacity": 6
+    },
+    "0x447380d4": {
+      "call": "mbe7zzc",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "pos": true,
+        "remaining": true
+      },
+      "observed_capacity": 4
+    },
+    "0x61ea0c42": {
+      "call": "hfgntfa",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "pos": true,
+        "remaining": true
+      }
+    },
+    "0x66d03a73": {
+      "call": "g5hky2c",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "pos": true,
+        "remaining": true
+      },
+      "observed_capacity": 6
+    },
+    "0x6c17c3b1": {
+      "call": "gm_1w9",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "pos": true,
+        "remaining": true
+      },
+      "observed_capacity": 500
+    },
+    "0x764f37a0": {
+      "call": "zd15_ke",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "pos": true,
+        "remaining": true
+      },
+      "observed_capacity": 5
+    },
+    "0x816a11e0": {
+      "call": "oxgf3v",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "pos": true,
+        "remaining": true
+      },
+      "observed_capacity": 5
+    },
+    "0x8b40a204": {
+      "call": "gy7kqp",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "remaining": true
+      }
+    },
+    "0x94ff3b20": {
+      "call": "po3v8ob",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "pos": true,
+        "remaining": true
+      }
+    },
+    "0x96cb35d7": {
+      "call": "qp_xmbb",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "remaining": true
+      }
+    },
+    "0x9f9ef431": {
+      "call": "kfc4b8",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "pos": true,
+        "remaining": true
+      },
+      "observed_capacity": 5
+    },
+    "0xa42ace6a": {
+      "call": "lnlden",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "pos": true,
+        "remaining": true
+      },
+      "observed_capacity": 6
+    },
+    "0xb32572a6": {
+      "call": "uubzxyb",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "pos": true,
+        "remaining": true
+      },
+      "observed_capacity": 4
+    },
+    "0xb5b092f9": {
+      "call": "fblrz4",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "pos": true,
+        "remaining": true
+      },
+      "observed_capacity": 4
+    },
+    "0xb9ea8c7e": {
+      "call": "xan7ggd",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "pos": true,
+        "remaining": true
+      },
+      "observed_capacity": 10
+    },
+    "0xbb2729e9": {
+      "call": "seqbw5e",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "remaining": true
+      }
+    },
+    "0xc4bf68fd": {
+      "call": "b7h2qjd",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "pos": true,
+        "remaining": true
+      }
+    },
+    "0xe80c471f": {
+      "call": "d7139m",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "pos": true,
+        "remaining": true
+      }
+    },
+    "0xe866a492": {
+      "call": "ku9copa",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "pos": true,
+        "remaining": true
+      }
+    },
+    "0xec1b10be": {
+      "call": "fsdmxxb",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "pos": true,
+        "remaining": true
+      }
+    },
+    "0xee341a1b": {
+      "call": "ywbkord",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "pos": true,
+        "remaining": true
+      },
+      "observed_capacity": 8
+    },
+    "0xf439bdce": {
+      "call": "uo1re8c",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "owner": true,
+        "remaining": true
+      }
+    }
+  },
+  "game_build": "26088801",
+  "notes": [
+    "Observed capacities are starting lower bounds, not guaranteed attachment-specific maxima.",
+    "Only owner-declaring types with a verified pose may enter immediate hand identification.",
+    "Unknown poses remain unresolved rather than guessing a carried weapon."
+  ],
+  "notice": "THIRD_PARTY_NOTICES.md",
+  "player": {
+    "avatar": "u4d1h9a",
+    "id": "803159b3",
+    "name": "un6y1d"
+  },
+  "roles": {
+    "carry": {
+      "id": "788b9753",
+      "letter": "k",
+      "name": "n5jmvf"
+    },
+    "chamber": {
+      "id": "4a893e74",
+      "letter": "c",
+      "name": "q6nx6da"
+    },
+    "charging": {
+      "id": "88b7cf6d",
+      "letter": "g",
+      "name": "sadziaa"
+    },
+    "fire_mode": {
+      "id": "49c250a6",
+      "letter": "f",
+      "name": "if5_pz"
+    },
+    "guide": {
+      "id": "f8d23bd2",
+      "letter": "v",
+      "name": "vnbwh6a"
+    },
+    "heat": {
+      "id": "a5023836",
+      "letter": "h",
+      "name": "v0zaf3"
+    },
+    "held": {
+      "id": "3132608f",
+      "letter": "y",
+      "name": "jkcsuw"
+    },
+    "lock": {
+      "id": "9b738dca",
+      "letter": "z",
+      "name": "ih9ii3"
+    },
+    "locked": {
+      "id": "1ddc206a",
+      "letter": "w",
+      "name": "tl1o1s"
+    },
+    "magazines": {
+      "id": "ec64918b",
+      "letter": "m",
+      "name": "w5kykv"
+    },
+    "options": {
+      "id": "31f86165",
+      "letter": "x",
+      "name": "ozvglfc"
+    },
+    "overheated": {
+      "id": "f6275c53",
+      "letter": "o",
+      "name": "bybgjfa"
+    },
+    "owner": {
+      "id": "3ccffa7f",
+      "letter": "n",
+      "name": "g5g7b9d"
+    },
+    "pos": {
+      "id": "8bbeb160",
+      "letter": "t",
+      "name": "yapgpda"
+    },
+    "reload_stage": {
+      "id": "cd889dbc",
+      "letter": "l",
+      "name": "r290mha"
+    },
+    "remaining": {
+      "id": "69889752",
+      "letter": "e",
+      "name": "c60sehb"
+    },
+    "rounds": {
+      "id": "d7a5d63e",
+      "letter": "r",
+      "name": "hhrfiqc"
+    },
+    "rpm": {
+      "id": "4cbcc2a2",
+      "letter": "q",
+      "name": "v7xdy8"
+    },
+    "selected": {
+      "id": "a74ef0d5",
+      "letter": "s",
+      "name": "x97c5fa"
+    },
+    "slot0": {
+      "id": "04ec5b95",
+      "letter": "a",
+      "name": "ip47m3"
+    },
+    "slot1": {
+      "id": "e525fa9c",
+      "letter": "b",
+      "name": "agg1dab"
+    },
+    "spare": {
+      "id": "9a34c336",
+      "letter": "p",
+      "name": "mra3dwb"
+    },
+    "underbarrel": {
+      "id": "67526982",
+      "letter": "u",
+      "name": "te9ea3"
+    }
+  },
+  "schema": 1,
+  "weapons": {
+    "0x0162dd9e": {
+      "call": "cb5i1m",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x01dcb81f": {
+      "call": "rt6fam",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x04645757": {
+      "call": "r8qx1x",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x06887ef8": {
+      "call": "ayy2lmj",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x06b58c5d": {
+      "call": "tspk_2d",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x0b9762b2": {
+      "call": "nor4hjc",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "underbarrel": true
+      }
+    },
+    "0x0df6deff": {
+      "call": "g_b_smc",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x0fab788f": {
+      "call": "u2rur0f",
+      "fed": false,
+      "fields": {
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "reload_stage": true
+      }
+    },
+    "0x0fe87029": {
+      "call": "baj_bt",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "underbarrel": true
+      },
+      "grips": [
+        5,
+        30,
+        36
+      ],
+      "observed_capacity": 50
+    },
+    "0x104184f7": {
+      "call": "xtkwjc",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 100
+    },
+    "0x108163bf": {
+      "call": "p4p3w1g",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x11167bfa": {
+      "call": "q_ds4ja",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x11b34d0d": {
+      "call": "hhgr6ab",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x11d8c98b": {
+      "call": "d3kc2ja",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        30,
+        36,
+        70
+      ],
+      "observed_capacity": 43
+    },
+    "0x1220e497": {
+      "call": "fy1w9ra",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        1,
+        30,
+        36
+      ],
+      "observed_capacity": 5
+    },
+    "0x12962fc2": {
+      "call": "vb9v6c",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x1387c1da": {
+      "call": "o11x9tk",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x13a71430": {
+      "call": "zn0uqwd",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x14c9c273": {
+      "call": "ooyfyk",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "underbarrel": true
+      }
+    },
+    "0x15ae0889": {
+      "call": "zoaemkb",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 5
+    },
+    "0x15f1a9f0": {
+      "call": "hsiotza",
+      "fed": true,
+      "fields": {
+        "carry": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "underbarrel": true
+      },
+      "observed_capacity": 500
+    },
+    "0x16425925": {
+      "call": "asugoqa",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      },
+      "observed_capacity": 1
+    },
+    "0x17783758": {
+      "call": "h9cayib",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "owner": true,
+        "pos": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        52
+      ],
+      "observed_charge_seconds": 1.6,
+      "observed_cooling_rate": 31.2,
+      "observed_heat_max": 100,
+      "observed_heat_rest": 4.7
+    },
+    "0x17b02218": {
+      "call": "pyo51wa",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      },
+      "grips": [
+        80
+      ],
+      "observed_capacity": 4
+    },
+    "0x17db8107": {
+      "call": "eqxvds",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x193ffddf": {
+      "call": "fhqmg0a",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      },
+      "grips": [
+        80
+      ],
+      "observed_capacity": 8
+    },
+    "0x1962a5a9": {
+      "call": "b8ayvi",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 24
+    },
+    "0x1cb22371": {
+      "call": "r0sk8kb",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x1cf134a2": {
+      "call": "ve_wqb",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x1d3b01d7": {
+      "call": "vygkbwa",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        30,
+        36,
+        70
+      ],
+      "observed_capacity": 6
+    },
+    "0x1d568224": {
+      "call": "dwe3sjg",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "rounds": true,
+        "underbarrel": true
+      }
+    },
+    "0x1eabc11a": {
+      "call": "huvwede",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x1f3765c1": {
+      "call": "mbrrnm",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x1fffb81f": {
+      "call": "c459gjb",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x2166c7a1": {
+      "call": "yqgkp5b",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "underbarrel": true
+      },
+      "grips": [
+        70
+      ],
+      "observed_capacity": 50
+    },
+    "0x21ce6db8": {
+      "call": "i73blf",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x21ef3f7d": {
+      "call": "h_rsvaa",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x228e0659": {
+      "call": "onx7x2f",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x22929ccb": {
+      "call": "m8qm65",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x2345fac7": {
+      "call": "rlnkruf",
+      "fed": false,
+      "fields": {
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "reload_stage": true
+      }
+    },
+    "0x2363e364": {
+      "call": "vchepva",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x240cc071": {
+      "call": "lw_nv2e",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "rounds": true,
+        "underbarrel": true
+      }
+    },
+    "0x2596fa0a": {
+      "call": "u5iqbia",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "underbarrel": true
+      }
+    },
+    "0x2605e68d": {
+      "call": "lzrzpaa",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x26acc614": {
+      "call": "bhy750",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        61
+      ],
+      "observed_capacity": 1
+    },
+    "0x2ac9b588": {
+      "call": "zjqdu0",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      },
+      "grips": [
+        1,
+        30,
+        36
+      ],
+      "observed_capacity": 12
+    },
+    "0x2b651283": {
+      "call": "l4iswcb",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "fire_mode": true,
+        "options": true,
+        "owner": true,
+        "pos": true
+      }
+    },
+    "0x2cc09a42": {
+      "call": "e5r2_cb",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x2ce3f1c2": {
+      "call": "i6w8guf",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x2cef5e3b": {
+      "call": "pko9xwb",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x2d552a28": {
+      "call": "fs2owp",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x2d6a81f7": {
+      "call": "p56r7gc",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true
+      }
+    },
+    "0x2ddd091d": {
+      "call": "tnc2nwa",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "underbarrel": true
+      },
+      "grips": [
+        60
+      ],
+      "observed_capacity": 125
+    },
+    "0x2df95dfe": {
+      "call": "jq39fx",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        15
+      ],
+      "observed_capacity": 1
+    },
+    "0x2f027b59": {
+      "call": "hxz583a",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "underbarrel": true
+      }
+    },
+    "0x2fad831f": {
+      "call": "ouwua6a",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x30294946": {
+      "call": "h2zhqia",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 10
+    },
+    "0x303d2220": {
+      "call": "cltj79b",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        80
+      ],
+      "observed_capacity": 9
+    },
+    "0x30b55bbc": {
+      "call": "yvdekca",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 45
+    },
+    "0x311cd513": {
+      "call": "zsrkd9a",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x314a1bf5": {
+      "call": "hg8xdoa",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        20
+      ],
+      "observed_capacity": 3
+    },
+    "0x3219a457": {
+      "call": "x33zuna",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x3244dc49": {
+      "call": "na3ik9",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 40
+    },
+    "0x32fba243": {
+      "call": "t3doqng",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      }
+    },
+    "0x33a9a66c": {
+      "call": "sdsikk",
+      "fed": true,
+      "fields": {
+        "carry": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "underbarrel": true
+      }
+    },
+    "0x3416fff4": {
+      "call": "lczg51c",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x3478da46": {
+      "call": "y1uve6",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      }
+    },
+    "0x35fba577": {
+      "call": "be5nqzc",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x3622f8dc": {
+      "call": "khs7fa",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        30,
+        36,
+        70
+      ],
+      "observed_cooling_rate": 6.4,
+      "observed_heat_rest": 0.2
+    },
+    "0x362577f7": {
+      "call": "vqjgpra",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      },
+      "grips": [
+        1,
+        30,
+        36
+      ],
+      "observed_capacity": 1
+    },
+    "0x366d3622": {
+      "call": "q3otzqb",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "owner": true,
+        "pos": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        20
+      ],
+      "observed_charge_seconds": 3,
+      "observed_cooling_rate": 6.8,
+      "observed_heat_max": 100,
+      "observed_heat_rest": 5.8
+    },
+    "0x36d20472": {
+      "call": "lcf66l",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x36fcbd00": {
+      "call": "rl1ken",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        30,
+        36,
+        70
+      ]
+    },
+    "0x380e3e45": {
+      "call": "ycfwzkh",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x384511d9": {
+      "call": "n_vdsea",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true
+      }
+    },
+    "0x396381a9": {
+      "call": "pjwb87a",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x3ae02f80": {
+      "call": "phx4lmc",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "underbarrel": true
+      }
+    },
+    "0x3b60cae4": {
+      "call": "o_fyw1b",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      },
+      "grips": [
+        9,
+        30,
+        36
+      ],
+      "observed_capacity": 6
+    },
+    "0x3b718900": {
+      "call": "gy43ise",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 18
+    },
+    "0x3bd04c18": {
+      "call": "bf0m9l",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x3bf357e5": {
+      "call": "w0cy0qd",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 45
+    },
+    "0x3c3cec57": {
+      "call": "o8n_doa",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "rounds": true
+      }
+    },
+    "0x3c709c50": {
+      "call": "zy_r2w",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x3cb2f6ef": {
+      "call": "j1fsq0b",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x3d538455": {
+      "call": "nu2o21a",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "guide": true,
+        "held": true,
+        "lock": true,
+        "locked": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        20
+      ],
+      "observed_capacity": 4
+    },
+    "0x3d7ed060": {
+      "call": "s4ngu2a",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x3e51c09b": {
+      "call": "j8kw9_",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        1,
+        30,
+        36
+      ],
+      "observed_capacity": 30
+    },
+    "0x3f87a7e8": {
+      "call": "jpekgac",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 1
+    },
+    "0x3fa67f3a": {
+      "call": "z1wgo4c",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x3fcc00c4": {
+      "call": "mghew3a",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x4091a284": {
+      "call": "xiet4d",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x41de83ec": {
+      "call": "z0s4rn",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x428b28d4": {
+      "call": "jywz6vc",
+      "fed": false,
+      "fields": {
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "reload_stage": true
+      }
+    },
+    "0x42a6b5ba": {
+      "call": "t24vbr",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_cooling_rate": 8.4,
+      "observed_heat_max": 100
+    },
+    "0x4321fb69": {
+      "call": "v36fp0",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x437d9eed": {
+      "call": "cf635_f",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      },
+      "grips": [
+        5,
+        30,
+        36
+      ],
+      "observed_capacity": 3
+    },
+    "0x43f3fd0a": {
+      "call": "m8kmwum",
+      "fed": false,
+      "fields": {
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "reload_stage": true
+      }
+    },
+    "0x43f7d548": {
+      "call": "wua58n",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x447bac84": {
+      "call": "xv7yjjb",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x46b64e6c": {
+      "call": "c9wx3qd",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x479c3dc3": {
+      "call": "hk9wsza",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x47caeb33": {
+      "call": "d8ba58b",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true
+      }
+    },
+    "0x48643cfd": {
+      "call": "anefmq",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "underbarrel": true
+      }
+    },
+    "0x4953af80": {
+      "call": "aebzqla",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x4a6da2f4": {
+      "call": "tkbd10d",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x4bef0443": {
+      "call": "vi9u5xb",
+      "fed": false,
+      "fields": {
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "reload_stage": true
+      }
+    },
+    "0x4c0b5b68": {
+      "call": "y5c92z",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x4c9d9517": {
+      "call": "g_e9cq",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x4daea8e1": {
+      "call": "vueow2b",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        1,
+        30,
+        36
+      ],
+      "observed_capacity": 15
+    },
+    "0x4e64c4dc": {
+      "call": "cioda4",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x4e87d68d": {
+      "call": "dtkk1fb",
+      "fed": false,
+      "fields": {
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        9,
+        30,
+        36
+      ],
+      "observed_cooling_rate": 9.7,
+      "observed_heat_max": 100,
+      "observed_heat_rest": 0.4
+    },
+    "0x4ee55ac0": {
+      "call": "x0ngm5g",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x4f57a016": {
+      "call": "zvx33h",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x5198e974": {
+      "call": "s3fcuma",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x521229d8": {
+      "call": "o6pa72",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 249
+    },
+    "0x530e19df": {
+      "call": "e11ivoc",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "underbarrel": true
+      }
+    },
+    "0x532cf6bd": {
+      "call": "v5bkaja",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "rounds": true
+      }
+    },
+    "0x5590232e": {
+      "call": "a1nulw",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        30,
+        36,
+        70
+      ],
+      "observed_capacity": 44
+    },
+    "0x55b5b982": {
+      "call": "foz1o0",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x5652ed49": {
+      "call": "rrugh0c",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x56c0a062": {
+      "call": "x9xf7ge",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      }
+    },
+    "0x56c65009": {
+      "call": "zb9a7rb",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x56e55184": {
+      "call": "l6t3hub",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        30,
+        36,
+        70
+      ],
+      "observed_capacity": 25
+    },
+    "0x57079738": {
+      "call": "cz7jsqa",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "underbarrel": true
+      }
+    },
+    "0x576582ee": {
+      "call": "tlqj89",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x589b3518": {
+      "call": "zxpwm7a",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x58cd3b3d": {
+      "call": "kmmxe7b",
+      "fed": false,
+      "fields": {
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "reload_stage": true
+      }
+    },
+    "0x5ada6b71": {
+      "call": "oafcf7",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "underbarrel": true
+      }
+    },
+    "0x5b4312d0": {
+      "call": "qzc20g",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x5c813e43": {
+      "call": "ho_zkj",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "underbarrel": true
+      }
+    },
+    "0x5e0cd6f6": {
+      "call": "j_9h5e",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      },
+      "grips": [
+        15
+      ],
+      "observed_capacity": 7
+    },
+    "0x5f3517bf": {
+      "call": "fsxuztb",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        90
+      ],
+      "observed_capacity": 35
+    },
+    "0x5f498a97": {
+      "call": "ghf0k8",
+      "fed": false,
+      "fields": {
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "reload_stage": true
+      }
+    },
+    "0x603f3825": {
+      "call": "xwyv6va",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x60cac78a": {
+      "call": "h2u8a4d",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x60f45420": {
+      "call": "b7fc4yb",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x61e573c5": {
+      "call": "xq431j",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x656d507b": {
+      "call": "v_6isba",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "lock": true,
+        "locked": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        51
+      ],
+      "observed_capacity": 7,
+      "pack_reserve": true
+    },
+    "0x66247907": {
+      "call": "pnfembd",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x66d1da14": {
+      "call": "blsxt_f",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x66f5d393": {
+      "call": "p5xmp1e",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "reload_stage": true,
+        "rounds": true,
+        "underbarrel": true
+      }
+    },
+    "0x671c9d10": {
+      "call": "q_u2bmc",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x674b88a9": {
+      "call": "o97598",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x6876b30a": {
+      "call": "ug33y9f",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 11
+    },
+    "0x69971ef9": {
+      "call": "g7cylgd",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        30,
+        36,
+        70
+      ],
+      "observed_capacity": 50
+    },
+    "0x6b2c3bed": {
+      "call": "kbv6zx",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      },
+      "grips": [
+        42
+      ],
+      "observed_capacity": 1,
+      "pack_reserve": true
+    },
+    "0x6b47e064": {
+      "call": "yl2gysa",
+      "fed": true,
+      "fields": {
+        "carry": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        50
+      ],
+      "observed_capacity": 119
+    },
+    "0x6ba62b83": {
+      "call": "fkgswoa",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x6c26a65d": {
+      "call": "bk_010a",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 15
+    },
+    "0x6c558aa5": {
+      "call": "r1mvgg",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      }
+    },
+    "0x6cc38f79": {
+      "call": "kur75r",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 9
+    },
+    "0x6d3f8345": {
+      "call": "uc27r8",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x6d745627": {
+      "call": "oxnktga",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x6ec2a850": {
+      "call": "lh9psp",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        21
+      ],
+      "observed_capacity": 1
+    },
+    "0x6ee7730f": {
+      "call": "vrkgtza",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x6f536276": {
+      "call": "xucjhyb",
+      "fed": true,
+      "fields": {
+        "carry": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "underbarrel": true
+      }
+    },
+    "0x7405f976": {
+      "call": "t2d8jce",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x74a83b1a": {
+      "call": "vkviu1b",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x7559f271": {
+      "call": "wz3jut",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x756a4e4d": {
+      "call": "hbae32",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "underbarrel": true
+      },
+      "grips": [
+        50
+      ],
+      "observed_capacity": 1
+    },
+    "0x76120872": {
+      "call": "n03j_i",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "underbarrel": true
+      }
+    },
+    "0x76b81cf6": {
+      "call": "v6a39yb",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x792fcf7d": {
+      "call": "v7ah_nc",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x7b32b291": {
+      "call": "ugrii2",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true
+      }
+    },
+    "0x7ba2fa73": {
+      "call": "lean2wa",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x7bfb2e06": {
+      "call": "wg3mv1a",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      },
+      "grips": [
+        22
+      ],
+      "observed_capacity": 10,
+      "pack_reserve": true
+    },
+    "0x7dce85e3": {
+      "call": "mfjhk7",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "underbarrel": true
+      },
+      "grips": [
+        15
+      ],
+      "observed_cooling_rate": 24.7
+    },
+    "0x7ea9ed9a": {
+      "call": "xm04dy",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x82a8d3c2": {
+      "call": "en4ydjb",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 15
+    },
+    "0x83d1036e": {
+      "call": "t2a5_nb",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "lock": true,
+        "locked": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        20
+      ],
+      "pack_reserve": true
+    },
+    "0x8583e435": {
+      "call": "xjcgsqe",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        90
+      ],
+      "observed_capacity": 45
+    },
+    "0x8653fcbb": {
+      "call": "we86rxe",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x866289c6": {
+      "call": "vk5r_v",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x86709cb9": {
+      "call": "y1lf8zc",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "underbarrel": true
+      }
+    },
+    "0x8696c4f0": {
+      "call": "tnfqska",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "underbarrel": true
+      }
+    },
+    "0x8a3c6fee": {
+      "call": "atz1va",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        20
+      ],
+      "pack_reserve": true
+    },
+    "0x8af9104d": {
+      "call": "mo9cpba",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x8b35c29b": {
+      "call": "jynqi_",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x8c0aee6e": {
+      "call": "pcdv3w",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        51
+      ],
+      "observed_capacity": 10
+    },
+    "0x8c9c57bd": {
+      "call": "d7w57eb",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x8e49803f": {
+      "call": "tml8eha",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x8ed281fe": {
+      "call": "gmfgr9",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x8f7838eb": {
+      "call": "fnodub",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x8fcdd35c": {
+      "call": "vqgjhhc",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 45
+    },
+    "0x903649ec": {
+      "call": "rq31jta",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "underbarrel": true
+      }
+    },
+    "0x90e6bc26": {
+      "call": "d882sag",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x910092f7": {
+      "call": "wlqsjcf",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x913cc553": {
+      "call": "bsb6dbb",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "fire_mode": true,
+        "guide": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "underbarrel": true
+      }
+    },
+    "0x91fafc27": {
+      "call": "x_j7xb",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "underbarrel": true
+      }
+    },
+    "0x93e5c833": {
+      "call": "nl8xrab",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x942a0601": {
+      "call": "pglrgxa",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        30,
+        36,
+        70
+      ],
+      "observed_capacity": 45
+    },
+    "0x947ed108": {
+      "call": "wgx6kjb",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true
+      }
+    },
+    "0x95c5dc52": {
+      "call": "g_lw6nb",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x960653cb": {
+      "call": "kzxaipa",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        15
+      ],
+      "observed_cooling_rate": 7.2,
+      "observed_heat_rest": 6.6
+    },
+    "0x967a3fed": {
+      "call": "ia4hs6c",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 30
+    },
+    "0x96c78961": {
+      "call": "xtco_xp",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "owner": true,
+        "pos": true,
+        "underbarrel": true
+      }
+    },
+    "0x96c8cffd": {
+      "call": "lp1so",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        90
+      ],
+      "observed_capacity": 43
+    },
+    "0x985c00c1": {
+      "call": "j8b25ha",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x986600d1": {
+      "call": "kxp2yo",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x992ff297": {
+      "call": "yfh87yd",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x9a109898": {
+      "call": "k3a8cca",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x9a57488b": {
+      "call": "ulzw2bd",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x9b692603": {
+      "call": "agsgufb",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x9c06f074": {
+      "call": "ub3mcka",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      }
+    },
+    "0x9c2493bb": {
+      "call": "qgnxc5",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x9c2e7f43": {
+      "call": "sjviib",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 299
+    },
+    "0x9c6e0012": {
+      "call": "p7z6_af",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x9ca7fac8": {
+      "call": "jc8o2bb",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x9ce82ac5": {
+      "call": "lhxfy_",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0x9d474323": {
+      "call": "f3wys2",
+      "fed": false,
+      "fields": {
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "owner": true,
+        "underbarrel": true
+      }
+    },
+    "0x9df87863": {
+      "call": "sabad8c",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "lock": true,
+        "locked": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x9e18f0cf": {
+      "call": "znvy6p",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        51
+      ],
+      "observed_capacity": 99
+    },
+    "0x9f16a5a2": {
+      "call": "ia44ole",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 14
+    },
+    "0x9f489d46": {
+      "call": "glqzce",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0x9f76be2f": {
+      "call": "n_tj4p",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "rounds": true
+      }
+    },
+    "0x9fdd94c0": {
+      "call": "atms0y",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0xa0c664de": {
+      "call": "i8z202",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xa1b9967a": {
+      "call": "etbwa4a",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xa2154c5f": {
+      "call": "n9ixixc",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xa261d7f0": {
+      "call": "g8oq5jb",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xa37f0894": {
+      "call": "kih3u3b",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0xa3d75b9c": {
+      "call": "n6p87sc",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xa41ddfcd": {
+      "call": "c8bzfgk",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        14
+      ],
+      "observed_capacity": 19
+    },
+    "0xa4eff4fa": {
+      "call": "gqvwvd",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        52
+      ],
+      "observed_capacity": 5,
+      "pack_reserve": true
+    },
+    "0xa5f78db3": {
+      "call": "zqjzayb",
+      "fed": false,
+      "fields": {
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "reload_stage": true
+      }
+    },
+    "0xa5fa507c": {
+      "call": "tupyfub",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xa6445802": {
+      "call": "p640rzc",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 12
+    },
+    "0xa6e06a41": {
+      "call": "cufoss",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "underbarrel": true
+      }
+    },
+    "0xa7bf4a1a": {
+      "call": "ydgjp6c",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xa85c14c9": {
+      "call": "hn1gt4",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true
+      }
+    },
+    "0xa8a3d145": {
+      "call": "vjxp4bg",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xa9e88c96": {
+      "call": "unppkbd",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "owner": true,
+        "pos": true,
+        "underbarrel": true
+      }
+    },
+    "0xab38cade": {
+      "call": "bhd28qa",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0xac1eb0d8": {
+      "call": "au8yh_b",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xac5e38f5": {
+      "call": "q9lm7k",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xaca39ec2": {
+      "call": "fbak2wd",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0xaca565f4": {
+      "call": "n4vziwa",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      },
+      "grips": [
+        80
+      ],
+      "observed_capacity": 8
+    },
+    "0xb00e2017": {
+      "call": "w5vz9i",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xb2bfd847": {
+      "call": "mxfr0g",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        20
+      ],
+      "pack_reserve": true
+    },
+    "0xb30f446f": {
+      "call": "v6jii8j",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 24
+    },
+    "0xb3246bb7": {
+      "call": "sv_6kpa",
+      "fed": true,
+      "fields": {
+        "carry": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        50
+      ],
+      "observed_capacity": 1000
+    },
+    "0xb4a17af7": {
+      "call": "f00yfpg",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "underbarrel": true
+      }
+    },
+    "0xb4ac0dfa": {
+      "call": "lrynvoa",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      }
+    },
+    "0xb551b138": {
+      "call": "ygo7dx",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0xb5de6995": {
+      "call": "i7owagc",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xb697955d": {
+      "call": "omhdnm",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        52
+      ],
+      "observed_capacity": 7
+    },
+    "0xb72b1558": {
+      "call": "qpa42ja",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xb747653b": {
+      "call": "gj5ez3a",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xb770b0ae": {
+      "call": "ls2py8b",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xb7e3b4ba": {
+      "call": "qp93ob",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xba161726": {
+      "call": "w6vav9",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        14
+      ],
+      "observed_capacity": 15
+    },
+    "0xbaaf62c6": {
+      "call": "q4v17ae",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xbb06e598": {
+      "call": "t1deyec",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xbbdb37fc": {
+      "call": "yc1hc2b",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xbd5f17dd": {
+      "call": "k04_p7e",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      },
+      "grips": [
+        80
+      ],
+      "observed_capacity": 8
+    },
+    "0xbe95e875": {
+      "call": "bua_pld",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0xbe9b793e": {
+      "call": "njgfbx",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 25
+    },
+    "0xbf35608c": {
+      "call": "z2j6__c",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0xc0e5aa7f": {
+      "call": "nphgvya",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0xc0ff5282": {
+      "call": "xbn9pc",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        20
+      ],
+      "observed_capacity": 1
+    },
+    "0xc12ff9b6": {
+      "call": "zdwebbb",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xc198eb1f": {
+      "call": "dd131qd",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xc1a7efde": {
+      "call": "y9j07z",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xc3457794": {
+      "call": "uknvqtc",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0xc4235b66": {
+      "call": "nqeyoda",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0xc59a82aa": {
+      "call": "l26sw3b",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xc7448f32": {
+      "call": "thqhyt",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "underbarrel": true
+      }
+    },
+    "0xc7dfd9eb": {
+      "call": "vdvv_d",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        1,
+        30,
+        36
+      ],
+      "observed_capacity": 10
+    },
+    "0xc920c2d3": {
+      "call": "v7fgk0b",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "lock": true,
+        "locked": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        1,
+        30,
+        36
+      ],
+      "observed_capacity": 13
+    },
+    "0xcb5e2fe5": {
+      "call": "k_l4zkc",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xcbb08197": {
+      "call": "l_k4hn",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      }
+    },
+    "0xcbb5137e": {
+      "call": "ndgokac",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "underbarrel": true
+      }
+    },
+    "0xcbbe1757": {
+      "call": "m_t_gk",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xcd0e4b4a": {
+      "call": "ptqxg5",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        30,
+        36,
+        70
+      ],
+      "observed_capacity": 45
+    },
+    "0xce49e408": {
+      "call": "arusi5d",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xcf8a216f": {
+      "call": "o2oevj",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xcfaa9ddc": {
+      "call": "mbahpjb",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 49
+    },
+    "0xcffb9569": {
+      "call": "h1of7_",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xd100e0c8": {
+      "call": "rdl422a",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "underbarrel": true
+      },
+      "grips": [
+        20
+      ],
+      "observed_heat_max": 100,
+      "observed_heat_rest": 0
+    },
+    "0xd17fa690": {
+      "call": "je8jvj",
+      "fed": false,
+      "fields": {
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "reload_stage": true
+      }
+    },
+    "0xd372022f": {
+      "call": "e8y8yka",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xd37ac78d": {
+      "call": "j7qe90",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true
+      }
+    },
+    "0xd3c9a08c": {
+      "call": "bukir_",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0xd496b132": {
+      "call": "tt8fmz",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        15
+      ],
+      "observed_cooling_rate": 11.4,
+      "observed_heat_rest": 3.9
+    },
+    "0xd5e0448b": {
+      "call": "hbtp4i",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      }
+    },
+    "0xd724a2f9": {
+      "call": "v9tes",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        20
+      ],
+      "observed_capacity": 1
+    },
+    "0xd7b78574": {
+      "call": "rc01gvc",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xd96a6ff6": {
+      "call": "n5x07wa",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xda0f356e": {
+      "call": "y1pjqca",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      },
+      "observed_capacity": 4
+    },
+    "0xdab37dc8": {
+      "call": "v5aq5zb",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xdb3250ac": {
+      "call": "w1ev9w",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xdc85eae0": {
+      "call": "cdusa7b",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true
+      }
+    },
+    "0xdd0943b3": {
+      "call": "se9a21",
+      "fed": false,
+      "fields": {
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "reload_stage": true
+      }
+    },
+    "0xdd7fc64f": {
+      "call": "t31kcoh",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "underbarrel": true
+      }
+    },
+    "0xdd9f1091": {
+      "call": "x3_zfz",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xde4a23b1": {
+      "call": "wh0u6q",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xdef25ee4": {
+      "call": "fg4kmyl",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "underbarrel": true
+      },
+      "grips": [
+        60
+      ],
+      "observed_capacity": 150
+    },
+    "0xe1f10066": {
+      "call": "x4eez5",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      },
+      "grips": [
+        51
+      ],
+      "observed_capacity": 6
+    },
+    "0xe2ab08d5": {
+      "call": "d929yh",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xe3d29b1f": {
+      "call": "flwjtq",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "underbarrel": true
+      }
+    },
+    "0xe4016fc8": {
+      "call": "lixbksg",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xe42d5902": {
+      "call": "kup_rdc",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        90
+      ],
+      "observed_capacity": 45
+    },
+    "0xe44d791e": {
+      "call": "t9094pc",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0xe45066e4": {
+      "call": "fpkhqaa",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true
+      }
+    },
+    "0xe645b6ee": {
+      "call": "htx7gy",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 174
+    },
+    "0xe6adb635": {
+      "call": "r243ek",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true
+      }
+    },
+    "0xe867d2a4": {
+      "call": "ro5zvpb",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xe8e363c2": {
+      "call": "ijid6",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xe8fbaa5a": {
+      "call": "n5m8vcd",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0xe92f56ed": {
+      "call": "prs40ha",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "lock": true,
+        "locked": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xea366586": {
+      "call": "lrvzitd",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xeb38d34e": {
+      "call": "zshdarb",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        30,
+        36,
+        70
+      ],
+      "observed_capacity": 5
+    },
+    "0xeb621141": {
+      "call": "g4enegg",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xec516bbd": {
+      "call": "jwajvc",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0xee956607": {
+      "call": "emqrkfc",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xeed3b279": {
+      "call": "y18wpo",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0xef108792": {
+      "call": "gtikxeb",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0xef423da7": {
+      "call": "r21mled",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xefa02c2f": {
+      "call": "tdrcwja",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0xf0aa3287": {
+      "call": "vhiibka",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xf18d75e5": {
+      "call": "utnls5a",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      },
+      "grips": [
+        15
+      ],
+      "observed_capacity": 8
+    },
+    "0xf1dbc135": {
+      "call": "lp5jqga",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0xf2c595ea": {
+      "call": "so5lnk",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "underbarrel": true
+      },
+      "grips": [
+        51
+      ],
+      "observed_capacity": 3
+    },
+    "0xf3108c72": {
+      "call": "bzglyn",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xf3d3ab0e": {
+      "call": "b_rwkhi",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true
+      }
+    },
+    "0xf47c41c8": {
+      "call": "c4ja4qf",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xf53d4725": {
+      "call": "a97mzja",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0xf5ff8d80": {
+      "call": "vxyfjb",
+      "fed": false,
+      "fields": {
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "reload_stage": true
+      }
+    },
+    "0xf697c0ce": {
+      "call": "qldj_r",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xf6e0573f": {
+      "call": "w4ku6pb",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xf7335279": {
+      "call": "qt9arse",
+      "fed": false,
+      "fields": {
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "reload_stage": true
+      }
+    },
+    "0xf84e3448": {
+      "call": "bet0nca",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xf8508b98": {
+      "call": "sb9b5ib",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "rounds": true
+      }
+    },
+    "0xf867203c": {
+      "call": "tzvkvjb",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "reload_stage": true,
+        "rounds": true
+      }
+    },
+    "0xf86855c2": {
+      "call": "ln3c6m",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xf8b4b238": {
+      "call": "t1dv17a",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xf94a73b3": {
+      "call": "iw3a4hj",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        1,
+        30,
+        36
+      ],
+      "observed_capacity": 1
+    },
+    "0xfa6ddf17": {
+      "call": "ngjbpfg",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xfb8c4465": {
+      "call": "gp65z6c",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "owner": true
+      }
+    },
+    "0xfbc7f2e1": {
+      "call": "so8utv",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        10
+      ],
+      "observed_capacity": 38
+    },
+    "0xfbd58864": {
+      "call": "ekpktpa",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xfc1ece86": {
+      "call": "tpge9n",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "selected": true,
+        "slot0": true,
+        "slot1": true,
+        "spare": true,
+        "underbarrel": true
+      },
+      "grips": [
+        15
+      ],
+      "observed_capacity": 5
+    },
+    "0xfd115815": {
+      "call": "a0v0u7b",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xfd585726": {
+      "call": "e5j54r",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "lock": true,
+        "locked": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        1,
+        30,
+        36
+      ]
+    },
+    "0xfde8ab3d": {
+      "call": "tc9txxa",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "pos": true,
+        "reload_stage": true,
+        "rpm": true,
+        "underbarrel": true
+      }
+    },
+    "0xfe07a595": {
+      "call": "fzzqcab",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xfe3cf398": {
+      "call": "xle70k",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true
+      }
+    },
+    "0xfe760204": {
+      "call": "ny71w4j",
+      "fed": false,
+      "fields": {
+        "carry": true,
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true,
+        "rpm": true,
+        "underbarrel": true
+      },
+      "grips": [
+        90
+      ],
+      "observed_capacity": 58
+    },
+    "0xfeae4480": {
+      "call": "jnqcrdc",
+      "fed": false,
+      "fields": {
+        "charging": true,
+        "fire_mode": true,
+        "heat": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "overheated": true,
+        "owner": true,
+        "pos": true,
+        "reload_stage": true,
+        "underbarrel": true
+      },
+      "grips": [
+        1,
+        30,
+        36
+      ],
+      "observed_cooling_rate": 10,
+      "observed_heat_rest": 0
+    },
+    "0xff1a600e": {
+      "call": "ne17gi",
+      "fed": false,
+      "fields": {
+        "chamber": true,
+        "fire_mode": true,
+        "held": true,
+        "magazines": true,
+        "options": true,
+        "pos": true,
+        "reload_stage": true,
+        "rounds": true
+      }
+    }
+  }
+}

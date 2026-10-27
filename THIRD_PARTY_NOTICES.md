@@ -2,26 +2,42 @@
 
 [简体中文](THIRD_PARTY_NOTICES.zh-CN.md) · [Documentation index](docs/INDEX.md)
 
-**HUD Lite 1.0.0** is maintained by **Alpha F. Bloodfallen**.
+**HUD Lite 1.0.1** is maintained by **Alpha F. Bloodfallen**.
 That credit covers HUD Lite's own work, not third-party contributions.
 
-## Independence
+## NarrowHUD compatibility catalog
 
-HUD Lite's implementation, drawing code and build tools were written
-independently for this release. Other HUD mods for the same game informed the
-feature set and the interface conventions only; they are not part of this
-codebase and no attribution for their implementation is claimed or required.
-Shared, game-derived data (object hashes, field names and icon indices) is
-recorded in `config/` and remains game content under the terms below.
+**Based on NarrowHUD by luka189.** Reviewed release:
+https://github.com/luka189/NarrowHUD/releases/tag/v1.0.6
+
+The compatibility catalog in `config/weapon_catalog.json` is adapted from that
+project's network-type/field data and shipped observations. HUD Lite keeps its
+own rendering and implements the integration in `src/compatibility.lua` and
+`src/runtime.lua`. Its runtime modules, editor and artwork are not transplanted.
+
+The complete applicable license is retained in
+[third_party/COMPATIBILITY-LICENSE.txt](third_party/COMPATIBILITY-LICENSE.txt).
+It permits free reuse and adaptation, requires credit and license retention,
+and prohibits selling or paywalling the work or derivatives. Donations and
+mod-site reward programs are allowed by that notice. These conditions apply
+to a distribution containing this catalog; HUD Lite's MIT license does not
+remove them. Do not describe the catalog as exclusively original code/data.
+
+Other shared game-derived data remains subject to the game-content terms below.
 
 ## Artwork credit
 
-The quantity symbol and the icon/texture pack used by local builds come from the
-community Helldivers 2 wiki and are credited **Dogo314**. Preserve that credit
-and confirm appropriate redistribution permission. The extracted pack lives in
-`assets/icon-pack/`, is a local build input, and is excluded from the public
-source export. User-supplied images and other artwork remain subject to their
-respective rights holders' terms.
+The user-supplied `cura.svg` stim symbol and `Grenade_Currency_Icon.svg` grenade
+symbol carry the credit **Traced by Dogo314**. Paths/viewBoxes are unchanged;
+description metadata is centralized here. Attachment and asset hashes are in
+`third_party/CONSUMABLE-ICONS-SOURCE.json`. These local inputs do not establish
+additional redistribution rights beyond applicable artwork/game-content terms.
+
+The quantity symbol and the icon/texture pack come from the community Helldivers 2
+wiki and are credited **Dogo314**. Preserve that credit and confirm appropriate
+redistribution permission. The pack lives in `assets/icon-pack/`, ships with the
+repository, and stays out of the source export. User-supplied images and other
+artwork remain subject to their respective rights holders' terms.
 
 ## Game content
 

@@ -17,11 +17,11 @@ def verify(package=None):
     text=source.decode('utf-8')
     manifest=json.loads((BUILD/'manifest.json').read_text(encoding='utf-8'))
     assert manifest['Version']==1
-    assert manifest['Name']=='HUD Lite 1.0.0'
+    assert manifest['Name']=='HUD Lite 1.0.1'
     assert manifest['Author']=='Alpha F. Bloodfallen'
     assert manifest['Description']==META['description_zh']+'\n'+META['description_en']
-    assert 'local VERSION = "1.0.0"' in text
-    assert '-- HUD Lite 1.0.0 by Alpha F. Bloodfallen' in text
+    assert 'local VERSION = "1.0.1"' in text
+    assert '-- HUD Lite 1.0.1 by Alpha F. Bloodfallen' in text
     assert not re.search(r'\b(?:0\.1\.[0-9]+|1\.10\.[0-9]+|1\.12\.[0-9]+)\b',text)
     for folder in ['src','tools','tests','build']:
         for file in (ROOT/folder).glob('*'):
@@ -38,6 +38,16 @@ def verify(package=None):
     assert META['resource']=='mods/alpha_f_bloodfallen/hud_lite'
     assert META['resource'].rsplit('/',1)[-1]=='hud_lite'
     assert text.splitlines()[0]=='-- HD2-Addon: '+META['resource']
+    attribution=json.loads((ROOT/'third_party/COMPATIBILITY-SOURCE.json').read_text(encoding='utf-8'))
+    license_path=ROOT/attribution['license']
+    assert license_path.is_file(),'Required standalone compatibility license missing'
+    assert hashlib.sha256((ROOT/'config/weapon_catalog.json').read_bytes()).hexdigest()==attribution['catalog_sha256']
+    for label in [attribution['project'],attribution['author']]:
+        assert label.lower() not in text.lower(),'Third-party identity leaked into executable payload'
+        for folder in ['src','tools','tests','config']:
+            for file in (ROOT/folder).rglob('*'):
+                if file.suffix not in ['.lua','.py','.json','.cjs'] or '__pycache__' in file.parts:continue
+                assert label.lower() not in file.read_text(encoding='utf-8').lower(),file
     if package:
         with zipfile.ZipFile(package) as z:
             assert z.testzip() is None
@@ -47,6 +57,9 @@ def verify(package=None):
             assert 'THIRD_PARTY_NOTICES.md' in z.namelist()
             assert json.loads(z.read('project.json'))['resource']==META['resource']
             assert json.loads(z.read('config/identity.json'))['current_resource']==META['resource']
+            assert z.read(attribution['license'])==license_path.read_bytes()
+            assert z.read('third_party/COMPATIBILITY-SOURCE.json')==(ROOT/'third_party/COMPATIBILITY-SOURCE.json').read_bytes()
+            assert z.read('config/weapon_catalog.json')==(ROOT/'config/weapon_catalog.json').read_bytes()
     report={'passed':True,'name':META['name'],'version':META['version'],'author':META['author'],
        'description_exact':True,'preview_pixel_identical':True,'preview_size':a.size,
        'code_labels_clean':True,'archive_resources':len(rows),

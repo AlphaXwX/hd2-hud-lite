@@ -1,6 +1,6 @@
 # HUD Lite
 
-**1.0.0 · Alpha F. Bloodfallen**
+**1.0.1 · Alpha F. Bloodfallen**
 
 [English](README.md) · [中文文档索引](docs/INDEX.zh-CN.md)
 
@@ -9,11 +9,23 @@
 
 ## 功能
 
+- 针剂和手雷使用提供的独立图标显示数量，空手时同样可见。
+- 背包资源显示在右侧第三环，不占用左侧生命／耐力环。
+- 新武器缺少换弹映射时，通过已声明的换弹阶段读取真实角色动画；不使用固定计时。
+- 纯冷却及不可换弹武器隐藏备用弹匣，保留实际已装填弹药；可换弹武器仍显示真实零备弹。
+- 多人识别不受无关对象增减干扰；主机持有的本地装备必须具备 owner 匹配依据。
+
+本次构建补充了已验证的背包供弹关系、其他已知握持姿态武器类型及字段调用名兼容。
+没有姿态依据的武器仍保持未识别状态，不猜测当前手持对象。
+
 - 持枪与空手时均显示 HP 和耐力。
 - 显示弹药、弹匣容量、备用弹药及受支持的背包计量。
 - 右内环显示能量充能，右外环显示冷却就绪度。
 - 由动画采样驱动的平滑白色换弹环。
 - 独立显示射击模式、弹种设置、归零和射速图标。
+- 默认按针剂、手雷、归零、弹种、射速、弹匣数量、射击模式固定顺序补位；仅确认支持时显示归零。
+- 开启信息行解锁后，各项独立定位，不再动态补位。
+- 背包环使用相同的 Ring layout 控件，设置按十一个可搜索分类连续排列。
 - 显示本人及最多三名队友的增益和死亡图标。
 - 备用弹药数量旁显示弹匣符号，可单独调整尺寸和间距。
 - 使用作者调校的 1080p 默认布局，支持分辨率缩放和 F9 调节。
@@ -23,8 +35,8 @@
 
 1. 安装 **Chef Shared Loader 1.2.3+**。
 2. 停用本模组的重复安装，以及存在冲突的其他 HUD 模组。
-3. 在模组管理器导入并部署 `HUD-Lite-1.0.0-Chef.zip`。
-4. 按 **F9** 打开 Chef 菜单，进入 **HUD Lite 1.0.0**。
+3. 在模组管理器导入并部署 `HUD-Lite-1.0.1-Chef.zip`。
+4. 按 **F9** 打开 Chef 菜单，进入 **HUD Lite 1.0.1**。
 
 加载标识、性能页名称和原生调用保护见[加载标识说明](docs/IDENTITY.zh-CN.md)。
 需要重新部署并重启游戏；游戏中已经加载的模组不能原地更改性能页 ID。
@@ -58,8 +70,8 @@ npm ci
 .venv\Scripts\python tests/verify_release.py
 .venv\Scripts\python tests/verify_docs.py
 .venv\Scripts\python tools/build.py
-.venv\Scripts\python tests/verify.py dist/HUD-Lite-1.0.0-Chef.zip
-.venv\Scripts\python tests/verify_release.py dist/HUD-Lite-1.0.0-Chef.zip
+.venv\Scripts\python tests/verify.py dist/HUD-Lite-1.0.1-Chef.zip
+.venv\Scripts\python tests/verify_release.py dist/HUD-Lite-1.0.1-Chef.zip
 ```
 
 Linux、macOS 请将解释器路径替换为 `.venv/bin/python`。

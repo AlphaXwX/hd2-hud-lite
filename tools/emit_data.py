@@ -19,6 +19,7 @@ from project import BUILD, CONFIG
 DATASETS = [
     ('generated_common.json', 'generated_common.lua', 'local GeneratedCommon = '),
     ('fragments.json', 'fragments.lua', 'local fragment_data = '),
+    ('weapon_catalog.json', 'weapon_catalog.lua', 'local WeaponCatalog = '),
 ]
 
 
@@ -30,6 +31,8 @@ def to_lua(value, indent=0):
         return repr(value)
     if isinstance(value, str):
         return json.dumps(value, ensure_ascii=False)
+    if isinstance(value,list):
+        return '{'+','.join(to_lua(item,indent+1)for item in value)+'}'
     if '@num' in value:
         rows = sorted(value['@num'].items(), key=lambda kv: int(kv[0]))
         if not rows:

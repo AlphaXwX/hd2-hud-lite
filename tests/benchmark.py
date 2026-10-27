@@ -24,6 +24,10 @@ def measure(extra):
       local samples={}
       local before=T.Native.stats.scans
       local native=T.Native.stats.calls
+      local builds=T.Model.builds or 0
+      local rows=T.Model.row_builds or 0
+      local widths=F.counts.text_width or 0
+      local graph=T.Model.model.counters.windows
       for i=1,1200 do
         local start=perf_clock()
         M.update(1/120)
@@ -31,13 +35,16 @@ def measure(extra):
         samples[i]=(perf_clock()-start)*1000
         F.draws={}
       end
-      return samples,T.Native.stats.scans-before,T.Native.stats.calls-native
+      return samples,T.Native.stats.scans-before,T.Native.stats.calls-native,
+        (T.Model.builds or 0)-builds,(T.Model.row_builds or 0)-rows,(F.counts.text_width or 0)-widths,
+        T.Model.model.counters.windows-graph
     ''')
-    samples,scans,native=value
+    samples,scans,native,builds,rows,widths,graph=value
     data=sorted(samples.values())
     return {'frames':len(data),'mock_fps':120,'mean_ms':round(statistics.mean(data),5),
             'p95_ms':round(data[int(len(data)*0.95)],5),'max_ms':round(max(data),5),
-            'new_type_checks':scans,'guarded_native_mock_calls':native}
+            'new_type_checks':scans,'guarded_native_mock_calls':native,
+            'model_builds':builds,'row_layout_builds':rows,'text_width_calls':widths,'graph_evaluations':graph}
 
 report={'kind':'mock Lua-only benchmark (NOT gameplay FPS)',
  'source_sha256':hashlib.sha256(SOURCE.encode('utf-8')).hexdigest(),
@@ -51,12 +58,27 @@ report={'kind':'mock Lua-only benchmark (NOT gameplay FPS)',
  F.batch_skip=true;F.weapon.named.temperature=40;F.weapon.named.is_charging=true
  F.weapon.named.is_overheated=false;F.weapon.named.gbgqot6=0;ticks(0.5)
  '''),
- '150_unknown_objects':measure('''
+  '150_unknown_objects':measure('''
  for i=1000,1149 do F.objects[i]={call='unknown',named={},values={}};F.owned['local'][#F.owned['local']+1]=i end
- '''),
+  '''),
+  'consumables_compact_row':measure('''
+  F.declarations.gl7xl2w.fields[#F.declarations.gl7xl2w.fields+1]={id='0x5f8eb478'}
+  F.declarations.gl7xl2w.fields[#F.declarations.gl7xl2w.fields+1]={id='0xd92082f9'}
+  T.Model.identity.type_fields[T.Model.identity.avatar.type]=nil
+  F.objects[77].named.ei6_t2=3;F.objects[77].named.du7kbt=4
+  F.weapon.values['0x31f86165']=16;ticks(0.3)
+  '''),
+  'multiplayer_host_equipment':measure('''
+  F.host='host';F.peers={'local','host'};F.owned['local']={0};F.owned.host={314}
+  F.declarations[F.weapon.call].fields[#F.declarations[F.weapon.call].fields+1]={id='0x3ccffa7f'}
+  T.Model.identity.type_fields[F.weapon.hash]=nil
+  F.weapon.named.g5g7b9d='local';ticks(0.5)
+  '''),
  'notes':['Uses a real Lua 5.1 interpreter and mocked engine/drawing calls.',
           'Includes update and render; no real GPU or native engine cost.',
           'New type discovery has a count cap and an additional 1.5ms soft time cap per poll.',
-          'Check Chef performance monitor in game for authoritative timings.']}
+           'Static models rebuild on native samples; heat and charge interpolation remain per-frame.',
+           'Compact row layout and bounded text metrics reuse cached data between polls.',
+           'Check Chef performance monitor in game for authoritative timings.']}
 (ROOT/'reports/BENCHMARK.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 print(json.dumps(report,indent=2))

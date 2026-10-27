@@ -2,6 +2,7 @@ F={time=0,world={},world_id=1,mission=true,session=1,peer="local",logs={},draws=
   objects={},owned={},declarations={},units={},counts={},stopped=false,raw_batches=0}
 F.saved={}
 F.specs={}
+F.option_order={}
 local function count(key) F.counts[key]=(F.counts[key] or 0)+1 end
 local function vec(x,y,z) return {x=x,y=y,z=z} end
 local function fields(ids)
@@ -47,6 +48,7 @@ stingray={
      return out
    end,
    peers=function()count("peers");return F.peers or {"local"} end,
+   game_session_host=function()count('host');return F.host end,
  },
  Network={game_session=function()return F.session end,peer_id=function()return F.peer end,
  object_info=function(call)count("info");if F.info_fail then return nil end;return F.declarations[call] end},
@@ -97,7 +99,7 @@ end
 chef={api=3,loader_version="1.2.3",options={},
  log=function(fmt,...) F.logs[#F.logs+1]=string.format(fmt,...) end,
  title=function()end,own_log=function()end,
- option=function(id,s)F.specs[id]=s;F.defaults[id]=s.default;if F.saved['opt.'..id]~=nil then return F.saved['opt.'..id]end return s.default end,
+ option=function(id,s)F.option_order[#F.option_order+1]=id;F.specs[id]=s;F.defaults[id]=s.default;if F.saved['opt.'..id]~=nil then return F.saved['opt.'..id]end return s.default end,
  get=function(id)if F.values[id]~=nil then return F.values[id] end if F.saved['opt.'..id]~=nil then return F.saved['opt.'..id] end return F.defaults[id] end,
  set=function(id,value)F.values[id]=value;return value end,
  load=function(id,default)if F.saved[id]~=nil then return F.saved[id]end return default end,
@@ -107,7 +109,7 @@ chef={api=3,loader_version="1.2.3",options={},
  in_mission=function()return F.mission end,
  screen=function()return F.width or 1920,F.height or 1080 end,
  color=function(r,g,b,a)return {r,g,b,a} end,
- text=function(...)draw("text",...)end,text_width=function(s,px)return #s*6*px-px end,
+ text=function(...)draw("text",...)end,text_width=function(s,px)count('text_width');return #s*6*px-px end,
  bitmap_uv=function(...)draw("icon",...);return not F.icon_fail end,
  arc=function(...)draw("arc",...)end,rect=function(...)draw("rect",...)end,
  call_kind=function(path,kind,...)
@@ -151,7 +153,7 @@ function weapon(hash,id)
  F.owned.localpeer=nil
  F.owned["local"]={0,id}
  local unit={pos=vec(1,0,0),alive=true,grip=book.grip}
- F.units[book.resource:gsub("^0x","")]={unit}
+ if book.resource then F.units[book.resource:gsub("^0x","")]={unit} end
  F.weapon_unit=unit;F.weapon=object;F.weapon_id=id
  return object
 end

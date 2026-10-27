@@ -566,10 +566,10 @@ local IdentityCore = (function()
         self.counters.action_stage_unread + 1
       return nil
     end
-    if value == 0 then return nil end
+    if value ~= value or value <= 0 or value == math.huge then return nil end
     self.counters.action_gate_stage =
       self.counters.action_gate_stage + 1
-    return {}, nil, true
+    return { stage_gate = true }, (self.authored.action or {}).layer, true
   end
 
   function Identity:reload_clip_of(hand, window)
@@ -581,7 +581,7 @@ local IdentityCore = (function()
     local rig = row.reload
     if rig == nil then
       self.counters.action_no_rig = self.counters.action_no_rig + 1
-      return nil
+      return self:reload_stage_of(hand, window)
     end
     local unit = self.hand_unit
     if unit == nil then return nil end
@@ -627,7 +627,7 @@ local IdentityCore = (function()
       self.action_span = nil
       return nil
     end
-    if span ~= nil and (span.layer ~= layer or span.index ~= index) then
+    if span ~= nil and (span.layer ~= layer or (not seat.stage_gate and span.index ~= index)) then
       self.counters.action_cut_seat = self.counters.action_cut_seat + 1
       span = nil
       self.action_span = nil
@@ -642,6 +642,12 @@ local IdentityCore = (function()
     if reading == nil then
       self.action_span = nil
       return nil
+    end
+    if seat.stage_gate then
+      -- No weapon clip map is available: the declared positive reload stage
+      -- gates a real body-layer sample, never a configured reload timer.
+      index=reading.state
+      if span and span.index~=index then span=nil;self.action_span=nil end
     end
     local clip, tail = seat.clip or reading.length, seat.tail
     if span ~= nil then
@@ -661,7 +667,7 @@ local IdentityCore = (function()
         self.counters.action_still = self.counters.action_still + 1
       end
     end
-    local base = span ~= nil and span.base or reading.elapsed
+    local base = span ~= nil and span.base or (seat.stage_gate and 0 or reading.elapsed)
     local length = clip - (tail or 0) - base
     if length <= 0 then
       self.counters.action_no_span = self.counters.action_no_span + 1
@@ -762,6 +768,9 @@ local IdentityCore = (function()
   end
 
   function Identity:hand_on_body(session, row, call_string)
+    if self.ownership_ok and self:ownership_ok(session,row,call_string)~=true then
+      return false,'not-local-owner'
+    end
     local bound, target = self:bound_elsewhere(session, row, call_string)
     if bound then
       self.counters.hand_gate_bound =
@@ -770,7 +779,7 @@ local IdentityCore = (function()
     end
     local value = self:carry_value(session, row, call_string)
     if value == nil then return true, "no-carry-value" end
-    if value % 2 == 1 then
+    if value % 4 ~= 0 then
       self.counters.hand_gate_off_body =
         self.counters.hand_gate_off_body + 1
       return false, "not-on-my-body:" .. tostring(value), value
@@ -779,6 +788,9 @@ local IdentityCore = (function()
   end
 
   function Identity:on_my_body(session, row, call_string)
+    if self.ownership_ok and self:ownership_ok(session,row,call_string)~=true then
+      return false,'not-local-owner'
+    end
     local bound, target = self:bound_elsewhere(session, row, call_string)
     if bound then return false, "bound-to:" .. tostring(target) end
     local value, why = self:carry_value(session, row, call_string)
@@ -1132,6 +1144,10 @@ local IdentityCore = (function()
     if body == nil then return nil end
     local row = self.equipment[saved.type]
     if row == nil then return nil end
+    if call(self.counters, GS.game_object_is_type, session, saved.goid, row.call) ~= true then return nil end
+    if self:hand_on_body(session, saved, row.call) ~= true then return nil end
+    local mask=self:carry_value(session,saved,row.call)
+    if type(mask)=='number' and mask%4~=0 then return nil end
     local node = row.wield_node or self.equipment_defaults.wield_node
     if node == nil then return nil end
     if call(self.counters, Unit.alive, saved.unit) ~= true then return nil end
@@ -1263,13 +1279,15 @@ local IdentityCore = (function()
     end
 
     local owned, unchanged = self:owned_unchanged(session, my_peer)
-    if owned == nil then
-      return unknown(self, "owned-objects-unreadable", found)
-    end
-    local kept = unchanged and self:still_in_hand(session, grip) or nil
+    -- Ownership lists also contain unrelated multiplayer spawns/despawns.
+    -- Their churn does not invalidate a live typed weapon at our hand node.
+    -- still_in_hand rechecks type, carry/binding and the actual attachment.
+    local kept = self:still_in_hand(session, grip)
     if kept ~= nil then
       local packed, standing = self:still_on_back(session)
-      if standing then
+      -- Backpack loss or a delayed pack update must not discard a separately
+      -- verified weapon. The runtime resolves missing packs independently.
+      if not standing then self.pack_memo=nil;packed=nil end
         self.counters.fast_hand = self.counters.fast_hand + 1
         self.hand_unit = kept.unit
         self.last_candidates = { { goid = kept.goid, type = kept.type } }
@@ -1278,9 +1296,11 @@ local IdentityCore = (function()
                                 or "carried-no-backpack"
         return self:seal(session, kept, found, grip, rig,
                          "hand-still-at-the-wield-node")
-      end
     end
     self.counters.fast_break = self.counters.fast_break + 1
+    if owned == nil then
+      return unknown(self, "owned-objects-unreadable", found)
+    end
     self:remember_owned(owned)
 
     local rows = self:owned_objects(session, my_peer, grip, owned)

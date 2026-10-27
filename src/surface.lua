@@ -1,14 +1,14 @@
 -- Chef surface: loader access, option registration, colour and numeric helpers.
 -- HD2-Addon: mods/alpha_f_bloodfallen/hud_lite
 -- HD2-Requires: chef-shared-loader >= 1.2.3
--- HUD Lite 1.0.0 by Alpha F. Bloodfallen
+-- HUD Lite 1.0.1 by Alpha F. Bloodfallen
 -- Imported implementation/art retains its original terms; see THIRD_PARTY_NOTICES.md.
 
 local chef = ...
 if type(chef) ~= "table" then chef = rawget(_G, "chef") end
-if type(chef) ~= "table" then return { version = "1.0.0", installed = false } end
+if type(chef) ~= "table" then return { version = "1.0.1", installed = false } end
 
-local VERSION = "1.0.0"
+local VERSION = "1.0.1"
 local PREFIX = "HUD Lite: "
 
 -- ---------------------------------------------------------------------------
@@ -102,10 +102,8 @@ local OPTION_IDS = {}
 local function option(id, spec)
   if PUBLISHED_VISUAL_DEFAULTS[id]~=nil then spec.default=PUBLISHED_VISUAL_DEFAULTS[id] end
   OPTION_IDS[id] = spec
-  local ok, value = pcall(chef.option, id, spec)
-  if ok and value ~= nil then
-    return value
-  end
+  -- Queue definitions until options.lua registers contiguous category blocks.
+  -- No key is renamed and no saved setting is rewritten for menu grouping.
   return spec.default
 end
 
@@ -173,11 +171,11 @@ option("hud.lite.number_y", { type = "slider", label = "Number offset Y (px, + i
   default = 0, min = -500, max = 500, step = 1 })
 option("hud.lite.function_icon", { type = "toggle", label = "Ammo type / weapon function icon", default = true })
 option("hud.lite.zeroing", { type = "toggle", label = "Scope zeroing icon", default = true })
-option("hud.lite.fire_y", { type = "slider", label = "Fire mode offset Y (px, + is up)",
+option("hud.lite.fire_y", { type = "slider", label = "Information row offset Y (px, + is up)",
   default = -74, min = -600, max = 400, step = 1 })
 option("hud.lite.info_size", { type = "slider", label = "Health and stamina text height (px @1080p)",
   default = 14, min = 7, max = 40, step = 1 })
-option("hud.lite.info_x", { type = "slider", label = "Information row / setting group offset X (px)",
+option("hud.lite.info_x", { type = "slider", label = "Health and stamina text offset X (px)",
   default = 0, min = -900, max = 900, step = 1 })
 option("hud.lite.info_y", { type = "slider", label = "Health and stamina row offset Y (px, + is up)",
   default = -46, min = -600, max = 400, step = 1 })

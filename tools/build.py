@@ -10,7 +10,7 @@ import zipfile
 from PIL import Image
 import archive
 import icon_assets
-from project import ROOT,META,BUILD,REPORTS,CONFIG,ASSETS,PATCH,LUA,ensure_dirs
+from project import ROOT,META,BUILD,REPORTS,CONFIG,ASSETS,ICON_PACK,PATCH,LUA,ensure_dirs
 
 def pack_resources():
     """Read the local icon pack: archive header, type table and every raw resource."""
@@ -32,7 +32,16 @@ def build(source_only=False):
     ensure_dirs()
     for name,aliases in json.loads((CONFIG/'scalar-field-matches.json').read_text()).items():
         for alias in aliases:assert archive.resource_hash(alias)>>32==int(name,16),(name,alias)
-    magazine=icon_assets.prepare()
+    catalog=json.loads((CONFIG/'weapon_catalog.json').read_text(encoding='utf-8'))
+    attribution=json.loads((ROOT/'third_party/COMPATIBILITY-SOURCE.json').read_text(encoding='utf-8'))
+    assert (ROOT/attribution['license']).is_file(),'Compatibility license is required'
+    assert hashlib.sha256((CONFIG/'weapon_catalog.json').read_bytes()).hexdigest()==attribution['catalog_sha256']
+    for kind,entry in [*catalog['weapons'].items(),*catalog['backpacks'].items()]:
+        assert archive.resource_hash(entry['call'])>>32==int(kind,16)
+    for role in catalog['roles'].values():assert archive.resource_hash(role['name'])>>32==int(role['id'],16)
+    for role,field in [('stims',0x5f8eb478),('grenades',0xd92082f9)]:
+        assert archive.resource_hash(catalog['avatar'][role])>>32==field,role
+    icons=icon_assets.prepare()
     subprocess.run([sys.executable,str(ROOT/'tools/emit_data.py')],check=True,cwd=ROOT)
     subprocess.run([sys.executable,str(ROOT/'tools/assemble.py')],check=True,cwd=ROOT)
     source=(BUILD/'hud_lite.lua').read_bytes()
@@ -42,13 +51,14 @@ def build(source_only=False):
     rows.append(dict(fid=archive.resource_hash(META['resource']),tid=LUA,
       data=struct.pack('<II',len(source),2)+source,stream=b'',gpu=b'',
       ha=archive_meta['lua']['ha'],hb=archive_meta['lua']['hb'],seq=0))
-    assert not any(r['fid']==magazine['fid'] and r['tid']==magazine['tid'] for r in rows)
-    rows.append(magazine)
+    for icon in icons:
+        assert not any(r['fid']==icon['fid'] and r['tid']==icon['tid'] for r in rows)
+        rows.append(icon)
     expected={(r['fid'],r['tid']):(r['data'],r['gpu']) for r in rows if r['tid']!=LUA}
     output=BUILD/'data';output.mkdir(exist_ok=True)
     archive.write(output/PATCH,header,types,rows)
     _,_,actual=archive.read(output/PATCH)
-    assert len(actual)==40 and not any(r['fid']==archive.resource_hash('boot') for r in actual)
+    assert len(actual)==42 and not any(r['fid']==archive.resource_hash('boot') for r in actual)
     for row in actual:
         if row['tid']==LUA:assert row['data'][8:]==source
         else:assert (row['data'],row['gpu'])==expected[(row['fid'],row['tid'])]
@@ -76,6 +86,9 @@ def build(source_only=False):
         for name in ['README.md','README.zh-CN.md','THIRD_PARTY_NOTICES.md','THIRD_PARTY_NOTICES.zh-CN.md',
                      'LICENSE','LICENSE.zh-CN.md','CHANGELOG.md','CHANGELOG.zh-CN.md']:z.write(ROOT/name,name)
         for file in sorted((ROOT/'docs').glob('*.md')):z.write(file,'docs/'+file.name)
+        for file in sorted((ROOT/'third_party').glob('*')):
+            if file.is_file():z.write(file,'third_party/'+file.name)
+        z.write(CONFIG/'weapon_catalog.json','config/weapon_catalog.json')
         for name in ['VERIFICATION.json','ICON_VERIFICATION.json','ICON_PROVENANCE.json','BENCHMARK.json','SOURCE_PROVENANCE.json','RELEASE_VERIFICATION.json']:
             z.write(REPORTS/name,'reports/'+name)
         z.write(CONFIG/'published_visual_defaults.json','config/published_visual_defaults.json')
@@ -83,6 +96,9 @@ def build(source_only=False):
         z.write(CONFIG/'identity.json','config/identity.json')
         for name in ['project.py']:z.write(ROOT/'tools'/name,'tools/'+name)
         for name in ['Magazine_Icon.svg','Magazine_Icon.png']:z.write(ASSETS/name,'assets/'+name)
+        for name in ['cura','grenade']:
+            z.write(ICON_PACK/'consumables'/f'{name}.svg',f'assets/consumables/{name}.svg')
+            z.write(ASSETS/f'{name}.png',f'assets/{name}.png')
     with zipfile.ZipFile(target) as z:
         assert z.testzip() is None and z.read(PATCH)==(output/PATCH).read_bytes()
     print('RELEASE:',target)

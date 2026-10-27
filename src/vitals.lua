@@ -128,3 +128,21 @@ local function sample_stamina()
     logf(string.format("stamina: raw=%s normalised=%.3f", tostring(v), S.stamina))
   end
 end
+
+-- Only declared fields on the currently resolved local avatar are sampled.
+-- Missing, negative or non-integral counts are unavailable, not fallback zeroes.
+local ITEM_FIELDS={stims={hash='0x5f8eb478',call=WeaponCatalog.avatar.stims},
+  grenades={hash='0xd92082f9',call=WeaponCatalog.avatar.grenades}}
+local function sample_consumables()
+  if not Model.ready or not S.avatar or identity.avatar_state==2 then Model.items=nil;return end
+  local items=Model.items or {}
+  items.avatar,items.at=S.avatar,S.clock
+  items.stims,items.grenades=nil,nil
+  for key,field in pairs(ITEM_FIELDS) do
+    if on('hud.lite.'..key) then
+      local value=identity:read_field(S.session,identity.avatar.type,S.avatar,field,identity.avatar.call)
+      if Fix.finite(value) and value>=0 and value%1==0 then items[key]=value end
+    end
+  end
+  Model.items=items
+end

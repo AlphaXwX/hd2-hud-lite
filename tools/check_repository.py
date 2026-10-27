@@ -16,10 +16,11 @@ def public_files():
     for folder in ['src','tools','tests','config','docs','.github']:
         paths.extend(p for p in (ROOT/folder).rglob('*') if p.is_file()
           and '__pycache__' not in p.parts and p.suffix not in ['.pyc','.log'])
+    paths.extend(p for p in (ROOT/'third_party').rglob('*')if p.is_file())
     return sorted(set(paths))
 
 def main():
-    assert META['name']=='HUD Lite' and META['version']=='1.0.0'
+    assert META['name']=='HUD Lite' and META['version']=='1.0.1'
     assert META['author']=='Alpha F. Bloodfallen'
     assert META['resource']=='mods/alpha_f_bloodfallen/hud_lite'
     identity=json.loads((ROOT/'config/identity.json').read_text(encoding='utf-8'))

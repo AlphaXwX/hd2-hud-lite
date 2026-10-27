@@ -3,6 +3,8 @@
 local Model={commands={},command_pool={},count=0,clock=0,ready=false,reload_white={255,255,255}}
 local identity=Engine.Identity.new(generated.identity)
 local provider=Engine.Provider.new(generated)
+-- Zeroing combines authored capability with the live selected option. Missing
+-- attachment metadata is unavailable evidence, not proof of an unsupported gun.
 local snapshot=Engine.Snapshot.new(generated)
 local model=Engine.Model.new(generated)
 local renderer=Engine.Renderer.new(generated)
@@ -23,8 +25,26 @@ function identity:reset()
   identity_reset(self)
   self.scan_progress={}; self.scan_misses={}
   self._squad_at=0
+  self.host_objects={};self.host_peer=nil;self.host_check_at=nil
 end
 identity:reset()
+local original_grip_bucket=identity.grip_bucket
+function identity:grip_bucket(grip)
+  local rows,set=original_grip_bucket(self,grip)
+  if not rows or not set then return rows,set end
+  local bucket=self.buckets[grip]
+  if not bucket.catalog_added then
+    for hash,entry in pairs(Compatibility.weapons) do
+      if self.equipment[hash] and entry.grips then
+        for _,pose in ipairs(entry.grips) do
+          if pose==grip and not set[hash] then rows[#rows+1]=hash;set[hash]=true end
+        end
+      end
+    end
+    table.sort(rows);bucket.catalog_added=true
+  end
+  return rows,set
+end
 -- A GOID is not an immutable type. Every positive memo is revalidated; every
 -- negative memo expires. Unfinished searches resume, rather than restarting.
 function identity:scan_types(session,id,missed,scope,rows)
@@ -104,9 +124,35 @@ function identity:owned_objects(session,peer,grip,owned)
   if owned==nil then owned=Native.owned(session,peer) end
   if type(owned)~="table" then return nil end
   local list,seen={},{}
+  local origins={}
+  local provenance=self.host_objects
   for _,id in pairs(owned) do
-    if Native.valid_id(id) and not seen[id] then list[#list+1]=id;seen[id]=true end
+    if Native.valid_id(id) and not seen[id] then
+      list[#list+1]=id;seen[id]=true;provenance[id]=nil
+    end
   end
+  -- Client equipment can remain network-owned by the host. That list is a
+  -- candidate source only: no host player/avatar is admitted, and equipment
+  -- requires a fresh declared owner field matching the local peer.
+  if grip~=nil then
+    if S.clock>=(self.host_check_at or 0) then
+      self.host_check_at=S.clock+0.5
+      self.host_peer=Native.read('GameSession','game_session_host','players',session)
+    end
+    local host=self.host_peer
+    if host~=nil and host~=peer then
+      local remote=Native.owned(session,host)
+      if type(remote)=='table' then
+        for _,id in pairs(remote) do
+          if Native.valid_id(id) and not seen[id] then
+            list[#list+1]=id;seen[id]=true;origins[id]=true;provenance[id]=true
+          end
+        end
+      end
+    end
+  end
+  -- Do not forget host provenance when its list is temporarily unavailable;
+  -- a previously remote object must still supply a local-owner proof.
   -- Bound work even if another mod adds thousands of network objects.
   local count=math.min(#list,256)
   local first=self.scan_cursor or 0
@@ -115,7 +161,10 @@ function identity:owned_objects(session,peer,grip,owned)
   for offset=1,count do
     local id=list[(first+offset-1)%math.max(1,#list)+1]
     local hash=self:type_of(session,id,grip)
-    if hash then rows[#rows+1]={goid=id,type=hash} end
+    if hash and (not origins[id] or (self.equipment[hash] or self.backpacks[hash])
+      and self:ownership_ok(session,{goid=id,type=hash})==true) then
+      rows[#rows+1]={goid=id,type=hash}
+    end
     if (Native.exhausted or Native.left and Native.left<=0) and advanced==0 then advanced=offset end
   end
   self.scan_cursor=(first+(advanced>0 and advanced or count))%math.max(1,#list)
@@ -150,7 +199,13 @@ end
 local original_read=identity.read_field
 function identity:read_field(session,type_hash,id,row,call)
   if not Native.exists(session,id) then return nil,"object-gone" end
-  return original_read(self,session,type_hash,id,row,call)
+  local value,why=original_read(self,session,type_hash,id,row,call)
+  if value==nil and why==nil and type(row)=="table" then
+    local alias=Compatibility.roles[row.hash]
+    if type_hash==identity.player.type and row.hash==identity.player.avatar_field.hash then alias=Compatibility.player_avatar end
+    if alias and alias~=row.call then value=Native.field(session,id,alias) end
+  end
+  return value,why
 end
 -- World transitions invalidate every identity cache: stale object ids must not
 -- survive a world change. Peer and avatar changes share the same reset path.
@@ -279,6 +334,9 @@ local SCALARS={
  ["0xa5023836"]="temperature",["0x88b7cf6d"]="is_charging",
  ["0xec64918b"]="B9h6f9a4",["0x9a34c336"]="jCr15Dyv",
  ["0xf6275c53"]="is_overheated",
+ ["0x69889752"]="c60sehb",["0x1ad6d70f"]="charge",
+ ["0x6fee6b03"]="broken",["0xf8d23bd2"]="vnbwh6a",
+ ["0x67526982"]="te9ea3",
 }
 function provider:slots_of(hash)
   if hash==nil then return nil end
@@ -315,6 +373,12 @@ function provider:batched(session,id,relation,hash)
       scalar=key=="0x3b12bd49" and "booster" or key=="0xcd889dbc" and "gbgqot6" or nil
     end
     if value==nil and index and scalar then value=Native.field(session,id,scalar) end
+    -- Reviewed stand-in aliases can change between builds while retaining the
+    -- exact field hash. Never ask an undeclared field or a guessed name.
+    local alternative=Compatibility.roles[key]
+    if relation~="player" and value==nil and index and alternative and alternative~=scalar then
+      value=Native.field(session,id,alternative)
+    end
     if value~=nil and (type(value)~="number" or Fix.finite(value)) then values[key]=value end
   end
   self.counters.batched_calls=self.counters.batched_calls+1
@@ -423,6 +487,49 @@ function Model.capacity(window,resolved)
 end
 local signal_original=provider.signal
 local no_signal={}
+function Model.zeroing_value(reads,resolved)
+  local hand=resolved and resolved.hand_weapon
+  if type(hand)~='table' then Model.scope_proof=nil;return nil,'no-hand' end
+  local raw=reads and reads['hand-weapon']
+  local options=raw and raw['0x31f86165']
+  if not Fix.finite(options) or options<0 or options%1~=0 then return nil,'unread-options' end
+  local selected=math.floor(options/16)%4
+  local icon=generated.identity.zeroing[tostring(selected)]
+  if icon==nil then return nil,'reserved-zeroing-state' end
+  local base=(generated.authored_base['WeaponDataComponentData.scope_zeroing'] or {})[hand.type]
+  local deltas=raw['0x98b4aaf0']
+  local known=generated.authored_delta['WeaponDataComponentData.scope_zeroing'] or {}
+  local value,conflict
+  if type(deltas)=='table' then
+    for _,id in pairs(deltas) do
+      local hash=Model.hash64(id);local found=hash and known[hash]
+      if Fix.finite(found) and found>0 then
+        if value and value~=found then conflict=true end;value=found
+      end
+    end
+  end
+  if conflict then Model.scope_proof=nil;return nil,'ambiguous-scope' end
+  local key=tostring(hand.goid)..':'..tostring(hand.type)
+  local prior=Model.scope_proof
+  if prior and prior.key~=key then prior=nil;Model.scope_proof=nil end
+  local authored=Fix.finite(base) and base>0 or value~=nil
+  local book=generated.identity.equipment[hand.type]
+  if not authored and book and book.no_reserves then
+    Model.scope_proof=nil;return nil,'unsupported-scope'
+  end
+  if not authored and book and (book.ammo_pack or book.spare_pack) then
+    Model.scope_proof=nil;return nil,'unsupported-scope'
+  end
+  -- A positive, defined zeroing choice is runtime evidence. Zero by itself
+  -- is common default padding and must never create a scope on support guns.
+  if authored or (selected>0 and deltas==nil) then
+    Model.scope_proof={key=key,source=authored and 'authored' or 'selection'}
+    return icon
+  end
+  if prior and deltas==nil then return icon end
+  Model.scope_proof=nil
+  return nil,'zeroing-unconfirmed'
+end
 function provider:signal(name,reads,resolved)
   if self.signal_reads~=reads then self.signal_reads=reads;self.signal_cache={} end
   local known=self.signal_cache[name]
@@ -432,7 +539,9 @@ function provider:signal(name,reads,resolved)
   end
   -- A malformed or newly added rule must not recurse forever.
   self.signal_cache[name]=no_signal
-  local value,why,still=signal_original(self,name,reads,resolved)
+  local value,why,still
+  if name=='zeroing' then value,why=Model.zeroing_value(reads,resolved)
+  else value,why,still=signal_original(self,name,reads,resolved) end
   if value~=nil then self.signal_cache[name]={value,why,still} end
   return value,why,still
 end
@@ -442,10 +551,79 @@ function Model.auxiliary(window,resolved)
   -- cannot silently consume it when a gun exposes both ammo type and ROF.
   local cells=window.cells
   cells.rof_icon=provider:signal("rof_icon",window.reads,resolved)
+  if cells.rof_icon==nil and type(resolved.hand_weapon)=='table' then
+    local book=generated.identity.equipment[resolved.hand_weapon.type]
+    local read=(window.reads or {})['hand-weapon'] or {}
+    local rpm=read['0x4cbcc2a2']
+    -- Same-setting matching only: planetary cold can report 90% of the menu
+    -- rate. Do not learn a second setting or label arbitrary weapon RPM.
+    if book and book.rof and Fix.finite(rpm) and rpm>0 then
+      local found,ambiguous=nil,false
+      for rate,icon in pairs(book.rof)do
+        local value=tonumber(rate)
+        if value and (math.abs(rpm-value)<=1.5 or math.abs(rpm-value*0.9)<=1.5)then
+          if found and found~=icon then ambiguous=true end;found=icon
+        end
+      end
+      if not ambiguous then cells.rof_icon=found end
+    end
+  end
   cells.reserve=provider:signal("reserve",window.reads,resolved)
+  local hand=resolved.hand_weapon
+  local book=type(hand)=="table" and generated.identity.equipment[hand.type]
+  if book and book.no_reserves then cells.reserve=nil end
   if Fix.finite(cells.reserve) and cells.reserve>=0 then
     Model.reserve_text=tostring(math.floor(cells.reserve+0.5))
   else Model.reserve_text=nil end
+end
+function Model.pack_supply(window,resolved)
+  local hand,pack=resolved.hand_weapon,resolved.backpack
+  Model.pack_ammo=nil
+  if type(hand)~="table" or type(pack)~="table" then return end
+  local book=generated.identity.equipment[hand.type]
+  if not book then return end
+  local supply=(window.reads or {}).backpack
+  local remaining=supply and supply['0x69889752']
+  if not Fix.finite(remaining) or remaining<0 then return end
+  local catalog=Compatibility.weapons[hand.type]
+  local allowed=book.ammo_pack and book.ammo_pack[pack.type]
+  local reload_pack=book.spare_pack and book.spare_pack[pack.type]
+  -- A typed worn backpack is not automatically this weapon's ammunition:
+  -- require its authored pair, or a catalog-confirmed pack-reload rule.
+  if not allowed and not reload_pack then return end
+  if not Native.exists(S.session,pack.goid) or not Native.is_type(S.session,pack.goid,Engine.Identity.call_of(identity.authored,pack.type)) then return end
+  if identity:on_my_body(S.session,pack)~=true then return end
+  local owner=identity:read_field(S.session,pack.type,pack.goid,{hash='0x3ccffa7f',call='g5g7b9d'})
+  if owner~=nil then
+    local function peer_key(value)
+      if type(value)~='string' then return nil end
+      return value:lower():gsub('^0x',''):gsub('^0+','')
+    end
+    local mine,actual=peer_key(S.peer),peer_key(owner)
+    if not mine or not actual or mine~=actual then return end
+  end
+  if allowed then
+    local pack_info=Compatibility.packs[pack.type]
+    local maximum=(pack_info and pack_info.observed_capacity) or (generated.identity.backpacks[pack.type] or {}).arc_max
+    Model.pack_tops=Model.pack_tops or {}
+    local key=tostring(pack.goid)..':'..tostring(pack.type)
+    local top=Model.pack_tops[key] or maximum
+    if Fix.finite(top) and top>0 then top=math.max(top,remaining)
+    elseif remaining>0 then top=remaining end
+    Model.pack_tops[key]=top
+    window.cells.ammo=remaining
+    window.cells.ammo_max=top
+    window.cells.pack_ammo=remaining
+    window.cells.pack_ammo_max=top
+    Model.pack_ammo={goid=pack.goid,type=pack.type,value=remaining,maximum=top}
+    -- Count and arc belong to the held weapon's display, but their values
+    -- originate from this verified pack, not an unrelated local magazine.
+    window.bearers['hand-weapon']=hand.goid
+    window.cells.reserve=nil;Model.reserve_text=nil
+  elseif reload_pack then
+    window.cells.reserve=remaining
+    Model.reserve_text=tostring(math.floor(remaining+0.5))
+  end
 end
 function Model.scalar_flags(window)
   local raw=(window.reads or {})["hand-weapon"]
@@ -454,6 +632,39 @@ function Model.scalar_flags(window)
     local value=raw[key]
     if value==0 or value==1 then raw[key]=value==1 end
   end
+end
+local OWNER_FIELD={hash='0x3ccffa7f',call='g5g7b9d'}
+local function peer_token(value)
+  if type(value)~='string' then return nil end
+  local key=value:lower():gsub('^0x',''):gsub('^0+','')
+  return key~='' and key or '0'
+end
+function identity:ownership_ok(session,row,call)
+  local value,why=self:read_field(session,row.type,row.goid,OWNER_FIELD,call)
+  local mine,owner=peer_token(S.peer),peer_token(value)
+  if why==nil and mine~=nil and owner~=nil then return mine==owner end
+  return not self.host_objects[row.goid]
+end
+function Model.energy_inputs(window,resolved)
+  local hand=resolved.hand_weapon
+  local entry=type(hand)=='table' and Compatibility.weapons[hand.type]
+  if not entry or not entry.fields.heat then Model.heat_limit=nil;return end
+  local raw=(window.reads or {})['hand-weapon'] or {}
+  local temperature=raw['0xa5023836']
+  local cells=window.cells
+  if Fix.finite(cells.heat_max) and cells.heat_max>0 then return end
+  local key=tostring(hand.goid)..':'..tostring(hand.type)
+  local limit=Model.heat_limit
+  if not limit or limit.key~=key then limit={key=key};Model.heat_limit=limit end
+  -- An unavailable authored range is not assumed to be 100. Only an actual
+  -- overheated sample establishes this object's observed full-heat reference.
+  if raw['0xf6275c53']==true and Fix.finite(temperature) and temperature>0 then
+    limit.value=math.max(limit.value or 0,temperature)
+  end
+  if Fix.finite(limit.value) and limit.value>0 and Fix.finite(temperature) and temperature>=0 then
+    cells.heat_max=limit.value;cells.heat_shown=temperature
+    cells.heat_range_source='observed-overheat'
+  else cells.heat_shown=nil end
 end
 local host={}
 function host:arc(spec) Model.record(spec) end
@@ -476,8 +687,15 @@ function Model.record(spec)
   Model.commands[Model.count]=command
 end
 function Model.build()
+  local window=Model.window
+  if window and Model.built_window==window and not Model.animate_model then return end
   Model.count=0;clear(Model.commands)
-  if not Model.window then return end
+  if not window then Model.built_window=nil;return end
+  local cells=window.cells
+  Model.animate_model=Fix.finite(cells.heat_shown) or
+    (cells.trigger_held==true and Fix.finite(cells.charge_top) and cells.charge_top>0)
+  Model.built_window=window
+  Model.builds=(Model.builds or 0)+1
   -- Reload values are the original action_of result. Do not replace
   -- body elapsed with weapon elapsed or extrapolate it using wall-clock time.
   local prepared=model:prepare(Model.window,S.clock)
@@ -495,9 +713,24 @@ function Model.build()
   end
   renderer:draw(shapes,host)
   Model.energy_commands(prepared)
+  local hand=Model.resolved and Model.resolved.hand_weapon
+  local book=type(hand)=="table" and generated.identity.equipment[hand.type]
+  if book and book.no_reserves then
+    for i=#Model.commands,1,-1 do
+      local command=Model.commands[i]
+      if command.kind=='number' and (command.column=='reserve' or command.column=='pack_spare') then
+        table.remove(Model.commands,i)
+      end
+    end
+    Model.count=#Model.commands
+  end
   Model.shapes=shapes
 end
 function Model.reset()
+  Model.scope_proof=nil
+  Model.row_layout=nil
+  Model.built_window=nil;Model.animate_model=nil
+  Model.heat_limit=nil
   identity:reset();identity.scope=nil
   provider:reset_objects();model:reset_objects()
   Model.ready=false;Model.window=nil;Model.resolved=nil
@@ -507,6 +740,8 @@ function Model.reset()
   Model.independent_pack=nil
   Model.capacities=nil;Model.animation=nil
   Model.reserve_text=nil
+  Model.items=nil
+  Model.pack_ammo=nil;Model.pack_tops=nil
   Model.energy=nil;Model.reload_visual=nil
   S.shown_a,S.thermal,S.energy,S.heat_sample_at=nil,nil,nil,nil
   S.ratio,S.hp,S.max,S.at=nil,nil,nil,-1e9
@@ -531,6 +766,9 @@ function Model.action(resolved,window)
   local charging=raw["0x88b7cf6d"]
   local top=provider:signal("charge_top",window.reads,resolved)
   local book=generated.identity.equipment[hand.type] or {}
+  if book.no_reserves then
+    identity.action_span=nil;Model.reload=nil;Model.animation=nil;return nil
+  end
   local is_held=held==true or Fix.finite(held) and held>0
   local is_charging=charging==true or Fix.finite(charging) and charging>0
   if (Fix.finite(top) and top>0 and is_held) or (book.charges_on_heat and is_charging) then
@@ -540,11 +778,9 @@ function Model.action(resolved,window)
     identity.action_span=nil
     Model.animation=nil;Model.reload=nil;return nil
   end
-  -- Verbatim original algorithm: weapon reload rig selects seat/layer/state;
-  -- local BODY animation layer 11 supplies elapsed and runtime clip length;
-  -- authored clip/tail and first observed body elapsed supply normalization.
-  -- Do not gate this on replicated reload_stage: that is only the original
-  -- fallback for an unlisted equipment row, not a prerequisite for known rigs.
+  -- Authored weapon rigs remain authoritative when present. Otherwise a
+  -- declared positive reload stage gates the same validated BODY layer 11.
+  -- Both paths use sampled animation elapsed/length, not a fixed reload timer.
   local reading=identity:action_of(hand,identity.local_body,window)
   if not reading or not Fix.finite(reading.elapsed) or not Fix.finite(reading.length) or reading.length<=0 then
     Model.animation=nil;Model.reload=nil;return nil
@@ -575,6 +811,9 @@ function Model.sample()
   local avatar=resolved and type(resolved.avatar)=="table" and resolved.avatar.goid or nil
   if not Native.valid_id(avatar) or not Native.is_type(S.session,avatar,identity.avatar.call) then avatar=nil end
   if Model.generation~=identity.generation or S.avatar~=avatar then
+    Model.scope_proof=nil
+    Model.heat_limit=nil
+    Model.items=nil
     Model.generation=identity.generation
     provider:reset_objects();model:reset_objects();Model.window=nil;Model.reload=nil
     S.ratio,S.hp,S.max,S.at=nil,nil,nil,-1e9
@@ -582,19 +821,27 @@ function Model.sample()
     S.shown_h,S.shown_s=nil,nil
     Model.independent_pack,Model.pack_retry,Model.equipment_key=nil,nil,nil
     Model.capacities=nil;Model.animation=nil
+    Model.pack_ammo=nil;Model.pack_tops=nil
     Model.energy=nil;Model.reserve_text=nil;Model.reload_visual=nil
   end
   S.avatar,S.player,S.body=avatar,identity.player_goid,identity.local_body
   Model.ready=avatar~=nil and resolved and resolved.status~="aboard"
   Model.sample_at=S.clock
   if not Model.ready then
+    Model.heat_limit=nil
+    Model.items=nil
     Model.window=nil;Model.energy=nil;Model.reserve_text=nil;Model.reload_visual=nil
+    Model.pack_ammo=nil
     clear(Model.commands);return
   end
   local state=identity.avatar_state
   if state==2 then
+    Model.scope_proof=nil
+    Model.heat_limit=nil
+    Model.items=nil
     Model.window=nil;Model.reload=nil
     Model.energy=nil;Model.reserve_text=nil;Model.reload_visual=nil
+    Model.pack_ammo=nil;Model.pack_tops=nil
     S.ratio,S.hp,S.at=nil,nil,-1e9;S.stamina,S.stamina_at=nil,-1e9
     clear(Model.commands);return
   end
@@ -620,17 +867,28 @@ function Model.sample()
   local key=(type(hand)=="table" and tostring(hand.goid)..":"..tostring(hand.type) or "-")..
     "/"..(type(pack)=="table" and tostring(pack.goid)..":"..tostring(pack.type) or "-")
   if Model.equipment_key~=key then
+    Model.heat_limit=nil
     Model.equipment_key=key;model:reset_objects();Model.reload=nil;Model.animation=nil
     S.shown_a,S.thermal,S.energy,S.heat_sample_at=nil,nil,nil,nil
     identity.action_span=nil
     Model.energy=nil;Model.reserve_text=nil;Model.reload_visual=nil
+    Model.pack_ammo=nil
   end
   local window=provider:read(resolved,S.session)
   Model.scalar_flags(window)
   resolved.action=Model.action(resolved,window)
   provider:fill(resolved,window)
+  Model.energy_inputs(window,resolved)
+  local hand_entry=type(resolved.hand_weapon)=='table' and Compatibility.weapons[resolved.hand_weapon.type]
+  local hand_book=type(resolved.hand_weapon)=='table' and generated.identity.equipment[resolved.hand_weapon.type]
+  if hand_entry and hand_book and hand_entry.observed_charge_seconds and hand_entry.fields.heat then
+    local raw=(window.reads or {})['hand-weapon'] or {}
+    window.cells.trigger_held=raw['0x88b7cf6d']
+    window.cells.charge_rounds=nil
+  end
   Model.auxiliary(window,resolved)
   Model.capacity(window,resolved)
+  Model.pack_supply(window,resolved)
   Model.sample_visual(window,resolved)
   Model.window=window
   S.weapon_obj=resolved.hand_weapon

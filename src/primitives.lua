@@ -19,12 +19,26 @@ local function dot_size(height)
   return px
 end
 
+local text_metrics={count=0,rows={},until_at=0}
 local function text_width(text, dot_px)
+  -- Chef's pixel/game font can change independently of this mod's settings.
+  -- Bound the lifetime as well as the size so row widths recover after a swap.
+  if S.clock>=text_metrics.until_at then
+    Native.clear(text_metrics.rows);text_metrics.count=0;text_metrics.until_at=S.clock+1
+  end
+  local rows=text_metrics.rows
+  local by_size=rows[dot_px]
+  if by_size and by_size[text]~=nil then return by_size[text] end
+  local width
   if type(chef.text_width) == "function" then
     local ok, w = pcall(chef.text_width, text, dot_px)
-    if ok and type(w) == "number" and w > 0 then return w end
+    if ok and type(w) == "number" and w > 0 then width=w end
   end
-  return #text * 6 * dot_px - dot_px
+  width=width or math.max(0,#text * 6 * dot_px - dot_px)
+  if text_metrics.count>=256 then Native.clear(rows);text_metrics.count=0;by_size=nil end
+  if not by_size then by_size={};rows[dot_px]=by_size end
+  by_size[text]=width;text_metrics.count=text_metrics.count+1
+  return width
 end
 
 local function draw_text(cx, baseline, text, height, colour, centred)
@@ -34,6 +48,23 @@ local function draw_text(cx, baseline, text, height, colour, centred)
 end
 
 -- Exact atlas material and 32x2 UV cell map, not Unicode/text substitutes.
+function Fix.icon_available(name)
+  return type(name)=='string' and (IconAssets.boosters[name]~=nil or
+    type(generated.identity.icon_cells[name])=='number')
+end
+function Fix.row_icon_metrics(name,size)
+  local metric=IconAssets.row_metrics[name]
+  if metric then return metric,size*metric.width,size*metric.height end
+  return nil,0,0
+end
+function Fix.draw_row_icon(name,left,cy,size,alpha,tint)
+  local metric,w,h=Fix.row_icon_metrics(name,size)
+  if not metric or type(chef.bitmap_uv)~='function' then return false end
+  tint=tint or COLOUR_GOOD
+  local ok,result=pcall(chef.bitmap_uv,metric.texture,metric.u0,metric.v0,metric.u1,metric.v1,
+    left,cy-h/2,w,h,chef.color(tint[1],tint[2],tint[3],alpha),LAYER_TEXT)
+  return ok and result~=false
+end
 function Fix.draw_icon(name, cx, cy, size, alpha, tint)
   local texture=IconAssets.boosters[name]
   if texture then

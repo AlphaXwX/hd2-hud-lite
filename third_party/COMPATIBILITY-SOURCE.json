@@ -1,0 +1,13 @@
+{
+  "author": "luka189",
+  "catalog_sha256": "3f700fa15b1faea8e3b5188ea62c181812d29b9b1629a8282d3dab8ec467ad67",
+  "credit": "Based on NarrowHUD by luka189",
+  "data_sha256": "6a55044a8b77a9794d4c8881bf80e53704b23bcbaea8ec576abcb23344638172",
+  "game_build": "26088801",
+  "license": "third_party/COMPATIBILITY-LICENSE.txt",
+  "project": "NarrowHUD",
+  "release": "v1.0.6",
+  "scope": "Compatibility catalog data and observations; required third-party metadata retained outside executable code/configuration.",
+  "seed_sha256": "a83924feb910d72bfa69d44b9a00bd0fd4f01b4629bfd428db7d1683b4675c19",
+  "url": "https://github.com/luka189/NarrowHUD/releases/tag/v1.0.6"
+}

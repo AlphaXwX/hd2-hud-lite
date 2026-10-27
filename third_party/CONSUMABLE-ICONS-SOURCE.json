@@ -1,0 +1,20 @@
+{
+  "cura": {
+    "attachment_filename": "cura.svg",
+    "attachment_sha256": "ed22ae8d59d400b74e2329b0831e963a06f4d4180ed6929a088ee20326e5020e",
+    "asset_sha256": "f7ef5151b997a93d9881554b0641361a32c67efdd342c1c499924e300dd8e42b",
+    "asset": "assets/icon-pack/consumables/cura.svg",
+    "credit": "Traced by Dogo314",
+    "use": "Stim quantity icon",
+    "transformation": "Description metadata centralized here; paths/viewBox unchanged."
+  },
+  "grenade": {
+    "attachment_filename": "Grenade_Currency_Icon.svg",
+    "attachment_sha256": "2e66881dc399476550ea679d415429e1b7d888e314c4fca313287e2164a63731",
+    "asset_sha256": "b106db2e90233488bcc0633b690fbf82c36f565a7c76702c7c12aaef93f2ada3",
+    "asset": "assets/icon-pack/consumables/grenade.svg",
+    "credit": "Traced by Dogo314",
+    "use": "Grenade quantity icon",
+    "transformation": "Description metadata centralized here; paths/viewBox unchanged."
+  }
+}

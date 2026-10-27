@@ -79,6 +79,8 @@ def main():
         +(SRC/'native.lua').read_text(encoding='utf-8')
         +engine_bundle()
         +fragment_bundle()
+        +(BUILD/'weapon_catalog.lua').read_text(encoding='utf-8')
+        +(SRC/'compatibility.lua').read_text(encoding='utf-8')
         +(BUILD/'icon_resources.lua').read_text(encoding='utf-8')
         +(SRC/'runtime.lua').read_text(encoding='utf-8')
         +(SRC/'vitals.lua').read_text(encoding='utf-8')
@@ -106,7 +108,7 @@ def main():
                  'restored local health/stamina fill aliases and ring easing',
                  'Chef-approved full animation state returns; body layer validated by snapshot',
                  'delta and observed lower-bound capacity shared by text/arc',
-                 'independent fire mode, ammo type and zeroing icon anchors',
+                 'consumables-first locked compact row; unlocked independent item positions',
                  'energy candidates routed to inner charge and outer cooling',
                  'hash-verified scalar heat/charging/RPM/reserve/self-booster fallback',
                  'independent RPM and reserve items in weapon settings row',
@@ -115,7 +117,17 @@ def main():
                  'SVG-derived magazine texture beside reserve count',
                  'HP alongside stamina with or without a held weapon',
                  'author-tuned visual settings published as 1080p defaults; existing saves preserved',
-                 'Chef-managed drawing only','safe lifecycle invalidation']}
+                 'Chef-managed drawing only','safe lifecycle invalidation',
+                 'zeroing authored capability or defined live selection; object-scoped proof',
+                 'backpack direct geometry integrated with Ring layout controls',
+                 'eleven contiguous searchable settings categories; saved positions retained',
+                 'sample-driven static graphs; per-frame heat and charge interpolation',
+                 'cached compact-row layout and bounded text-width metrics',
+                 'visible alpha-bounded icon UVs shared by row advance and rendering',
+                 'independent information-row anchor; actual pixel-height quantity alignment',
+                 'held weapon continuity independent of unrelated multiplayer ownership churn',
+                 'bounded host equipment candidates requiring declared local-owner match',
+                 'nonreloadable declarations suppress reserve magazines but preserve loaded ammo']}
     (REPORTS/'SOURCE_PROVENANCE.json').write_text(json.dumps(provenance,indent=2)+'\n',encoding='utf-8')
     print('Assembled',dest,len(output.encode('utf-8')),'bytes')
 
