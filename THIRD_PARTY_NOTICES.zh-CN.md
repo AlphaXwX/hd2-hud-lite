@@ -2,7 +2,7 @@
 
 [English](THIRD_PARTY_NOTICES.md) · [中文文档索引](docs/INDEX.zh-CN.md)
 
-**HUD Lite 1.0.1** 由 **Alpha F. Bloodfallen** 维护。
+**HUD Lite 1.0.2** 由 **Alpha F. Bloodfallen** 维护。
 该署名表示 HUD Lite 自身的工作，不代表拥有第三方贡献的原创权。
 
 ## NarrowHUD 兼容数据

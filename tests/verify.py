@@ -77,7 +77,7 @@ def test(name,code,before_load=None,merged_layout=True):
 
 
 test('real Lua 5.1 loads complete feature rules without boot wrapper', '''
- assert(M.installed and M.version=='1.0.1')
+ assert(M.installed and M.version=='1.0.2')
  assert(G.identity.equipment and #G.relations>=7)
  assert(T.Model.identity.resolve and T.Model.provider.fill and T.Model.snapshot.assemble)
 ''')
@@ -1828,6 +1828,63 @@ test('lowest zeroing remains on the same gun after backpack replacement', '''
  F.weapon.named.ozvglfc=0;ticks(0.1);assert(shape(10))
  backpack('0x6c17c3b1');F.objects[500].named.c60sehb=100;ticks(1)
  assert(shape(10) and shape(10).name=='zeroing_low','pack change cleared gun scope proof')
+''')
+
+test('single-player catalog weapon keeps live ammo outside rotating discovery slice', '''
+ weapon('0x30294946');ticks(0.5);assert(shape(11))
+ for i=1000,1399 do F.objects[i]={call='unknown',named={},values={}};F.owned['local'][#F.owned['local']+1]=i end
+ for i=1,80 do
+  F.weapon.values['0xd7a5d63e']=i%10
+  local before=T.Native.stats.scans;ticks(0.05)
+  assert(T.Native.stats.scans-before<=40,'discovery budget expanded')
+  assert(T.Model.resolved.hand_weapon and T.Model.resolved.hand_weapon.goid==314,T.S.channel)
+  assert(shape(11) and T.Model.window.cells.ammo==i%10,'fresh ammo disappeared or froze')
+ end
+''')
+test('single-player ADS carry fallback remains stable through large lists and combat movement', '''
+ weapon('0x967a3fed');ticks(0.5);F.weapon_unit.pos={x=1.2,y=0,z=0}
+ F.objects[77].named.motion_enabled=false;F.objects[77].named.rotation_enabled=false
+ for i=1000,1399 do F.objects[i]={call='unknown',named={},values={}};F.owned['local'][#F.owned['local']+1]=i end
+ for i=1,80 do
+  F.weapon.values['0xd7a5d63e']=i%30;ticks(0.05)
+  assert(shape(11) and T.Model.window.cells.ammo==i%30,T.S.channel)
+ end
+''')
+test('known same-grip rivals remain in every candidate set instead of alternating false uniqueness', '''
+ weapon('0x30294946');ticks(0.5)
+ local rival=weapon('0x30294946',315)
+ F.owned['local']={0,314,315};T.Model.identity.object_type[315]='0x30294946'
+ for i=1000,1399 do F.objects[i]={call='unknown',named={},values={}};F.owned['local'][#F.owned['local']+1]=i end
+ for i=1,40 do ticks(0.05)
+  assert(not T.Model.resolved.hand_weapon,'known rival omitted from bounded candidate scan')
+  assert(not shape(11),'ambiguous gun selected')
+ end
+''')
+test('retained identity does not retain ammunition when all live ammo fields are unavailable', '''
+ weapon('0x30294946');ticks(0.5);assert(shape(11))
+ F.weapon.values['0xd7a5d63e']=nil;F.weapon.values['0x04ec5b95']=nil
+ F.weapon.values['0xe525fa9c']=nil;F.weapon.values['0x4a893e74']=nil
+ ticks(0.1);assert(not shape(11),'old ammo snapshot reused')
+ F.weapon.values['0xd7a5d63e']=0;F.weapon.values['0x4a893e74']=true
+ ticks(0.1);assert(shape(11) and T.Model.window.cells.ammo==0,'fresh zero did not recover')
+''')
+test('catalog hand clears immediately for drop removal and same-goid replacement in a large list', '''
+ weapon('0x30294946');ticks(0.5)
+ for i=1000,1399 do F.objects[i]={call='unknown',named={},values={}};F.owned['local'][#F.owned['local']+1]=i end
+ F.weapon.named.enabled_mask=2;ticks(0.05);assert(not shape(11))
+ F.weapon.named.enabled_mask=0;ticks(0.1);assert(shape(11))
+ F.objects[314]=nil;ticks(0.05);assert(not shape(11))
+ weapon('0x8c0aee6e',314);F.weapon.values['0xd7a5d63e']=3;ticks(0.5);rendered()
+ assert(center()=='3/10',tostring(center()))
+''')
+test('same-grip selection checks known candidates even when discovery time budget is exhausted', '''
+ weapon('0x30294946');ticks(0.5)
+ local old=T.Native.scan_type
+ T.Native.scan_type=function(...)local v=old(...);T.Native.scan_spent=1;return v end
+ for i=1000,1399 do F.objects[i]={call='unknown',named={},values={}};F.owned['local'][#F.owned['local']+1]=i end
+ for i=1,30 do F.weapon.values['0xd7a5d63e']=i%10;ticks(0.05)
+  assert(shape(11) and T.Model.window.cells.ammo==i%10,T.S.channel)
+ end
 ''')
 
 report={'runtime':'Lua 5.1 (lupa.lua51)','checks':len(results),'failed':0,'tests':results,

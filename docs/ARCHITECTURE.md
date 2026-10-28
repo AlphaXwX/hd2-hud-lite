@@ -68,6 +68,10 @@ samples without replacing them with a fixed reload timer. The fill is white.
 - Nonreloadable weapon declarations suppress inapplicable reserve commands without
   suppressing loaded ammo; zero reserve remains valid for reloadable weapons.
 - Bound new-type discovery by a count limit and a soft time budget.
+- Retain freshly validated known relevant candidates independently from the rotating
+  discovery slice; prioritize the previous hand/pack, include known competitors,
+  and cap additional known-candidate validation at 64 per pass. Only identities
+  are retained: dynamic ammo values are always freshly sampled.
 - Reuse per-sample reads and drawing containers; interpolation does not call the engine.
 - Static graphs rebuild only on new native samples; active heat/charge evaluation
   remains per-frame and reload smoothing remains in rendering.

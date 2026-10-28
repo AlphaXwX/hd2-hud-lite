@@ -2,7 +2,7 @@
 
 [简体中文](THIRD_PARTY_NOTICES.zh-CN.md) · [Documentation index](docs/INDEX.md)
 
-**HUD Lite 1.0.1** is maintained by **Alpha F. Bloodfallen**.
+**HUD Lite 1.0.2** is maintained by **Alpha F. Bloodfallen**.
 That credit covers HUD Lite's own work, not third-party contributions.
 
 ## NarrowHUD compatibility catalog

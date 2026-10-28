@@ -1,6 +1,6 @@
 # HUD Lite
 
-**1.0.1 · Alpha F. Bloodfallen**
+**1.0.2 · Alpha F. Bloodfallen**
 
 [English](README.md) · [中文文档索引](docs/INDEX.zh-CN.md)
 
@@ -35,8 +35,8 @@
 
 1. 安装 **Chef Shared Loader 1.2.3+**。
 2. 停用本模组的重复安装，以及存在冲突的其他 HUD 模组。
-3. 在模组管理器导入并部署 `HUD-Lite-1.0.1-Chef.zip`。
-4. 按 **F9** 打开 Chef 菜单，进入 **HUD Lite 1.0.1**。
+3. 在模组管理器导入并部署 `HUD-Lite-1.0.2-Chef.zip`。
+4. 按 **F9** 打开 Chef 菜单，进入 **HUD Lite 1.0.2**。
 
 加载标识、性能页名称和原生调用保护见[加载标识说明](docs/IDENTITY.zh-CN.md)。
 需要重新部署并重启游戏；游戏中已经加载的模组不能原地更改性能页 ID。
@@ -70,8 +70,8 @@ npm ci
 .venv\Scripts\python tests/verify_release.py
 .venv\Scripts\python tests/verify_docs.py
 .venv\Scripts\python tools/build.py
-.venv\Scripts\python tests/verify.py dist/HUD-Lite-1.0.1-Chef.zip
-.venv\Scripts\python tests/verify_release.py dist/HUD-Lite-1.0.1-Chef.zip
+.venv\Scripts\python tests/verify.py dist/HUD-Lite-1.0.2-Chef.zip
+.venv\Scripts\python tests/verify_release.py dist/HUD-Lite-1.0.2-Chef.zip
 ```
 
 Linux、macOS 请将解释器路径替换为 `.venv/bin/python`。

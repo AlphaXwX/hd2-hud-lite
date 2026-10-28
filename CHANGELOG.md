@@ -2,6 +2,13 @@
 
 [简体中文](CHANGELOG.zh-CN.md) · [Documentation index](docs/INDEX.md)
 
+## 1.0.2
+
+- Fixed single-player ammo loss when rotating discovery windows omitted already identified weapons in large object lists.
+- Revalidate retained equipment before new-type discovery; include known competing guns rather than inventing uniqueness.
+- Added large-list catalog/ADS regressions with changing live ammo, drop/removal checks and bounded-search stress cases.
+- Added 400-object catalog and ADS benchmark scenarios to the timing report.
+
 ## 1.0.1
 
 - Revalidate held weapons independently from unrelated ownership-list churn and delayed backpack updates.

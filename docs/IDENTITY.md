@@ -4,7 +4,7 @@
 
 ## Active identity
 
-- Product and F9 menu: **HUD Lite 1.0.1**.
+- Product and F9 menu: **HUD Lite 1.0.2**.
 - Author: **Alpha F. Bloodfallen**.
 - Addon resource: `mods/alpha_f_bloodfallen/hud_lite`.
 - Chef performance-monitor entry: **hud_lite**.
@@ -19,8 +19,8 @@ embedded rule-fragment references use the same namespace.
 
 1. Install Chef Shared Loader 1.2.3 or newer.
 2. Disable other HUD mods that draw the same elements.
-3. Import and deploy `HUD-Lite-1.0.1-Chef.zip`.
-4. Open the F9 menu and select **HUD Lite 1.0.1**.
+3. Import and deploy `HUD-Lite-1.0.2-Chef.zip`.
+4. Open the F9 menu and select **HUD Lite 1.0.2**.
 
 This is the first public release of the addon, so no earlier installation of this
 resource exists to convert. Remove any other HUD mod before deploying, and

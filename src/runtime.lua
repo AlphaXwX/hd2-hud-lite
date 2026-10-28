@@ -24,6 +24,7 @@ local identity_reset=identity.reset
 function identity:reset()
   identity_reset(self)
   self.scan_progress={}; self.scan_misses={}
+  self.scan_cursor=0
   self._squad_at=0
   self.host_objects={};self.host_peer=nil;self.host_check_at=nil
 end
@@ -157,13 +158,39 @@ function identity:owned_objects(session,peer,grip,owned)
   local count=math.min(#list,256)
   local first=self.scan_cursor or 0
   local rows={}
+  local included={}
+  local function retain(id)
+    if id==nil or not seen[id] or included[id] then return end
+    local known=self.object_type[id]
+    if known==nil or not self:used_this_window(known,grip) then return end
+    -- Retained identities are revalidated, not copied from an older snapshot.
+    -- Rotating discovery must not make a known carried gun disappear merely
+    -- because its index lies outside this poll's bounded scan window.
+    local hash=self:type_of(session,id,grip)
+    if hash and (not provenance[id] or (self.equipment[hash] or self.backpacks[hash])
+      and self:ownership_ok(session,{goid=id,type=hash})==true) then
+      rows[#rows+1]={goid=id,type=hash};included[id]=true
+    end
+  end
+  retain(self.carried_weapon and self.carried_weapon.goid)
+  retain(type(self.pack_memo)=='table' and self.pack_memo.goid or nil)
+  -- Include other already identified same-grip objects too: a retained gun
+  -- must not gain artificial uniqueness by omitting a known competing gun.
+  local retained=0
+  for _,id in ipairs(list) do
+    local known=self.object_type[id]
+    if known and not included[id] and self:used_this_window(known,grip) then
+      retain(id);retained=retained+1
+      if retained>=64 then break end
+    end
+  end
   local advanced=0
   for offset=1,count do
     local id=list[(first+offset-1)%math.max(1,#list)+1]
-    local hash=self:type_of(session,id,grip)
+    local hash=not included[id] and self:type_of(session,id,grip) or nil
     if hash and (not origins[id] or (self.equipment[hash] or self.backpacks[hash])
       and self:ownership_ok(session,{goid=id,type=hash})==true) then
-      rows[#rows+1]={goid=id,type=hash}
+      rows[#rows+1]={goid=id,type=hash};included[id]=true
     end
     if (Native.exhausted or Native.left and Native.left<=0) and advanced==0 then advanced=offset end
   end

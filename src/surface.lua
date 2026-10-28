@@ -1,14 +1,14 @@
 -- Chef surface: loader access, option registration, colour and numeric helpers.
 -- HD2-Addon: mods/alpha_f_bloodfallen/hud_lite
 -- HD2-Requires: chef-shared-loader >= 1.2.3
--- HUD Lite 1.0.1 by Alpha F. Bloodfallen
+-- HUD Lite 1.0.2 by Alpha F. Bloodfallen
 -- Imported implementation/art retains its original terms; see THIRD_PARTY_NOTICES.md.
 
 local chef = ...
 if type(chef) ~= "table" then chef = rawget(_G, "chef") end
-if type(chef) ~= "table" then return { version = "1.0.1", installed = false } end
+if type(chef) ~= "table" then return { version = "1.0.2", installed = false } end
 
-local VERSION = "1.0.1"
+local VERSION = "1.0.2"
 local PREFIX = "HUD Lite: "
 
 -- ---------------------------------------------------------------------------

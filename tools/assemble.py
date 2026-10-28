@@ -127,7 +127,8 @@ def main():
                  'independent information-row anchor; actual pixel-height quantity alignment',
                  'held weapon continuity independent of unrelated multiplayer ownership churn',
                  'bounded host equipment candidates requiring declared local-owner match',
-                 'nonreloadable declarations suppress reserve magazines but preserve loaded ammo']}
+                 'nonreloadable declarations suppress reserve magazines but preserve loaded ammo',
+                 'known equipment revalidated outside rotating discovery slices; fresh ammo and competitor checks retained']}
     (REPORTS/'SOURCE_PROVENANCE.json').write_text(json.dumps(provenance,indent=2)+'\n',encoding='utf-8')
     print('Assembled',dest,len(output.encode('utf-8')),'bytes')
 

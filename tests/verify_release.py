@@ -17,11 +17,11 @@ def verify(package=None):
     text=source.decode('utf-8')
     manifest=json.loads((BUILD/'manifest.json').read_text(encoding='utf-8'))
     assert manifest['Version']==1
-    assert manifest['Name']=='HUD Lite 1.0.1'
+    assert manifest['Name']=='HUD Lite 1.0.2'
     assert manifest['Author']=='Alpha F. Bloodfallen'
     assert manifest['Description']==META['description_zh']+'\n'+META['description_en']
-    assert 'local VERSION = "1.0.1"' in text
-    assert '-- HUD Lite 1.0.1 by Alpha F. Bloodfallen' in text
+    assert 'local VERSION = "1.0.2"' in text
+    assert '-- HUD Lite 1.0.2 by Alpha F. Bloodfallen' in text
     assert not re.search(r'\b(?:0\.1\.[0-9]+|1\.10\.[0-9]+|1\.12\.[0-9]+)\b',text)
     for folder in ['src','tools','tests','build']:
         for file in (ROOT/folder).glob('*'):

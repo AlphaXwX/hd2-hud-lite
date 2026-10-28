@@ -49,16 +49,16 @@ Copy-Item local.config.example.json local.config.json   # 然后填写实际路�
 
 ## 构建流程
 
-1. 从 `project.json` 读取显示元信息和 **1.0.1** 版本。
+1. 从 `project.json` 读取显示元信息和 **1.0.2** 版本。
 2. 图像准备阶段校验映射，并渲染备用数量符号。
 3. 将 `src/` 模块、生成的布局数据和功能片段组装为 `build/hud_lite.lua`。
 4. `tools/build.py --source-only` 生成原生补丁、预览图和管理器清单。
 5. 按 README 中的命令执行 Lua、图像、耗时、发布包及文档检查。
-6. `tools/build.py` 核对报告哈希，生成 `dist/HUD-Lite-1.0.1-Chef.zip`。
+6. `tools/build.py` 核对报告哈希，生成 `dist/HUD-Lite-1.0.2-Chef.zip`。
 7. 对 ZIP 再运行 Lua 和发布检查，验证真正打入包内的内容。
 
 管理器清单中的 `Version: 1` 表示**清单格式版本**，不是模组版本。
-产品名称、Lua 模块和安装包文件名中的模组版本均为 **1.0.1**。
+产品名称、Lua 模块和安装包文件名中的模组版本均为 **1.0.2**。
 
 ## 发布默认配置
 

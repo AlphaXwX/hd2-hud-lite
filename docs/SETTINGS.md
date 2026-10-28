@@ -2,7 +2,7 @@
 
 [简体中文](SETTINGS.zh-CN.md) · [Documentation index](INDEX.md)
 
-Open Chef's **F9** menu and select **HUD Lite 1.0.1**.
+Open Chef's **F9** menu and select **HUD Lite 1.0.2**.
 
 ## Menu categories
 
@@ -110,7 +110,15 @@ Removing development controls does not remove Chef's native-read protection.
 Errors or unavailable channels hide dependent displays. The mod keeps concise
 safety/error messages in its log, not a player-facing diagnostic overlay.
 
-## Multiplayer equipment
+## Single-player and multiplayer equipment
+
+Large combat object lists are processed in rotating discovery windows. Already
+identified, currently relevant equipment is freshly type/ownership-validated
+before new-type discovery, so leaving that rotating window does not remove a
+valid weapon from the current candidate list. Known same-grip rivals are included
+too; unresolved ambiguity is not converted into a guessed selection. New-type
+checks retain their count/time budget. Loaded ammo is read live, never restored
+from an old ammunition snapshot. This applies in single-player as well as co-op.
 
 A retained hand is freshly checked for type, carry/binding, owner when readable,
 and attachment to the local body's wield node. Unrelated object-list changes,

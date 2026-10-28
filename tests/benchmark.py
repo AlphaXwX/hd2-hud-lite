@@ -74,6 +74,15 @@ report={'kind':'mock Lua-only benchmark (NOT gameplay FPS)',
   T.Model.identity.type_fields[F.weapon.hash]=nil
   F.weapon.named.g5g7b9d='local';ticks(0.5)
   '''),
+  'single_catalog_400_objects':measure('''
+  weapon('0x30294946');ticks(0.5)
+  for i=1000,1399 do F.objects[i]={call='unknown',named={},values={}};F.owned['local'][#F.owned['local']+1]=i end
+  '''),
+  'single_ads_400_objects':measure('''
+  F.weapon_unit.pos={x=1.2,y=0,z=0}
+  F.objects[77].named.motion_enabled=false;F.objects[77].named.rotation_enabled=false
+  for i=1000,1399 do F.objects[i]={call='unknown',named={},values={}};F.owned['local'][#F.owned['local']+1]=i end
+  '''),
  'notes':['Uses a real Lua 5.1 interpreter and mocked engine/drawing calls.',
           'Includes update and render; no real GPU or native engine cost.',
           'New type discovery has a count cap and an additional 1.5ms soft time cap per poll.',
