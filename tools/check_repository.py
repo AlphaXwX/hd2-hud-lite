@@ -20,7 +20,7 @@ def public_files():
     return sorted(set(paths))
 
 def main():
-    assert META['name']=='HUD Lite' and META['version']=='1.0.2'
+    assert META['name']=='HUD Lite' and META['version']=='1.0.3'
     assert META['author']=='Alpha F. Bloodfallen'
     assert META['resource']=='mods/alpha_f_bloodfallen/hud_lite'
     identity=json.loads((ROOT/'config/identity.json').read_text(encoding='utf-8'))

@@ -50,33 +50,43 @@ option("hud.lite.reload_smoothing", {type="slider",label="Reload interpolation r
 -- Release visual defaults are applied to option specs at registration only;
 -- saved player values always win over them.
 
--- Chef 1.2.3 exposes section headings only for its own loader rows. Mod rows
--- are therefore ordered by category and carry visible, searchable prefixes.
--- Do not register fake toggles/headings or modify the loader's menu internals.
+-- Chef 1.4 exposes per-mod section headings (spec.heading, foldable). Older
+-- loaders only draw flat rows, so they keep a searchable bracket prefix instead.
 local MENU_SECTIONS={
-  {name='01 Display',ids={'arc','alpha','scale','idle'}},
-  {name='02 Ring layout',ids={'x','y','radius','inner_radius','thickness','inner_thickness','span','track','smoothing',
+  {name='01 Display',heading='DISPLAY',ids={'arc','alpha','scale','idle'}},
+  {name='02 Ring layout',heading='RING LAYOUT',ids={'x','y','radius','inner_radius','thickness','inner_thickness','span','track','smoothing',
     'backpack','backpack_x','backpack_y','backpack_radius','backpack_thickness','backpack_span'}},
-  {name='03 Vitals',ids={'health','stamina','vitals_text','info_x','info_y','info_size'}},
-  {name='04 Ammunition',ids={'ammo','number','number_mode','number_align','number_x','number_y','number_size'}},
-  {name='05 Weapon row',ids={'row_unlock','icon_position','row_x','fire_y','row_gap'}},
-  {name='06 Fire and ammo icons',ids={'firemode','firemode_x','firemode_y','firemode_size',
+  {name='03 Vitals',heading='VITALS',ids={'health','stamina','vitals_text','info_x','info_y','info_size'}},
+  {name='04 Ammunition',heading='AMMUNITION',ids={'ammo','number','number_mode','number_align','number_x','number_y','number_size'}},
+  {name='05 Weapon row',heading='WEAPON ROW',ids={'row_unlock','icon_position','row_x','fire_y','row_gap'}},
+  {name='06 Fire and ammo icons',heading='FIRE AND AMMO ICONS',ids={'firemode','firemode_x','firemode_y','firemode_size',
     'function_icon','ammo_icon_x','ammo_icon_y','ammo_icon_size'}},
-  {name='07 Zeroing and RPM',ids={'zeroing','zeroing_x','zeroing_y','zeroing_size','rof_icon','rof_x','rof_y','rof_size'}},
-  {name='08 Reserves',ids={'reserves','reserve_x','reserve_y','reserve_size','magazine_icon','magazine_icon_size','magazine_icon_gap'}},
-  {name='09 Stims and grenades',ids={'stims','stims_x','stims_y','grenades','grenades_x','grenades_y','items_size','items_text_size'}},
-  {name='10 Squad',ids={'self_booster','squad'}},
-  {name='11 Animation',ids={'reload_animation','reload_smoothing'}},
+  {name='07 Zeroing and RPM',heading='ZEROING AND RPM',ids={'zeroing','zeroing_x','zeroing_y','zeroing_size','rof_icon','rof_x','rof_y','rof_size'}},
+  {name='08 Reserves',heading='RESERVES',ids={'reserves','reserve_x','reserve_y','reserve_size','magazine_icon','magazine_icon_size','magazine_icon_gap'}},
+  {name='09 Stims and grenades',heading='STIMS AND GRENADES',ids={'stims','stims_x','stims_y','grenades','grenades_x','grenades_y','items_size','items_text_size'}},
+  {name='10 Squad',heading='SQUAD',ids={'self_booster','squad'}},
+  {name='11 Animation',heading='ANIMATION',ids={'reload_animation','reload_smoothing'}},
 }
 do
+  local supported=false
+  if type(chef.has)=="function" then
+    local ok,value=pcall(chef.has,"option_headings")
+    supported=ok and value==true
+  end
   local registered={}
   for _,section in ipairs(MENU_SECTIONS) do
+    local first=true
     for _,suffix in ipairs(section.ids) do
       local id='hud.lite.'..suffix
       local spec=assert(OPTION_IDS[id],'Missing menu option: '..id)
       assert(not registered[id],'Duplicate menu option: '..id)
       registered[id]=true
-      spec.label='['..section.name..'] '..spec.label
+      if supported then
+        if first then spec.heading=section.heading end
+      else
+        spec.label='['..section.name..'] '..spec.label
+      end
+      first=false
       pcall(chef.option,id,spec)
     end
   end

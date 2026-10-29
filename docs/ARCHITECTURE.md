@@ -86,6 +86,9 @@ that namespace and the log is `hud_lite.log`. Option keys remain `hud.lite.*`.
 A read-only check honors Chef's own skip and suspect records for this resource
 before every native call; no Loader file is ever written or cleared.
 
-Options register once in eleven contiguous categorized blocks with searchable
-label prefixes. Chef 1.2.3 does not expose mod section folding. Saved keys remain
-unchanged; no fake headings or unsupported menu APIs are used.
+Options register once in eleven sections. Chef 1.4 draws each section as a
+foldable heading (spec.heading); older loaders fall back to searchable label
+prefixes. Saved keys remain unchanged; no fake headings or unsupported menu APIs
+are used. Language follows the loader: a supplementary lang/zh_cn.lua pack
+merges into the official Simplified Chinese pack, so labels and headings switch
+with the loader language.

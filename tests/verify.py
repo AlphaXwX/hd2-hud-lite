@@ -27,9 +27,10 @@ if len(sys.argv)>1:
                 length,version=struct.unpack_from('<II',blob,row[2])
                 assert length==row[7]-8 and version==2
                 found.append(blob[row[2]+8:row[2]+8+length])
-        assert len(found)==1
-        assert found[0]==SOURCE.encode('utf-8'),'packaged source differs from tested source'
-        SOURCE=found[0].decode('utf-8')
+        addon=[b for b in found if b.startswith(b'-- HD2-Addon: ')]
+        assert len(addon)==1,'exactly one addon script in the package'
+        assert addon[0]==SOURCE.encode('utf-8'),'packaged source differs from tested source'
+        SOURCE=addon[0].decode('utf-8')
     else:
         SOURCE=target.read_text(encoding='utf-8')
 FIXTURE=(ROOT/'tests/fixture.lua').read_text(encoding='utf-8')
@@ -77,7 +78,7 @@ def test(name,code,before_load=None,merged_layout=True):
 
 
 test('real Lua 5.1 loads complete feature rules without boot wrapper', '''
- assert(M.installed and M.version=='1.0.2')
+ assert(M.installed and M.version=='1.0.3')
  assert(G.identity.equipment and #G.relations>=7)
  assert(T.Model.identity.resolve and T.Model.provider.fill and T.Model.snapshot.assemble)
 ''')
@@ -1443,19 +1444,22 @@ test('static model cache invalidates on samples death equipment changes and rese
  T.Model.reset();assert(T.Model.built_window==nil and T.Model.row_layout==nil)
 ''')
 
-test('settings register once in eleven contiguous categorized blocks with backpack under Ring layout', '''
- local last,groups,seen=0,0,{}
+test('settings register once in eleven foldable headings with backpack under Ring layout', '''
+ local seen,headings,order={},0,{}
  for _,id in ipairs(F.option_order)do
   assert(not seen[id],'option registered twice: '..id);seen[id]=true
-  local spec=F.specs[id];local n=tonumber(spec.label:match('^%[(%d+) '))
-  assert(n and n>=last,'categories not contiguous: '..id)
-  if n~=last then groups=groups+1;last=n end
+  local spec=F.specs[id]
+  assert(spec.heading==nil or spec.label:find('%[')==nil,'heading row keeps a clean label: '..id)
+  if spec.heading then headings=headings+1;order[#order+1]=spec.heading end
   assert(spec.type=='toggle' or spec.type=='slider' or spec.type=='choice')
  end
- assert(groups==11)
- assert(F.specs['hud.lite.backpack_radius'].label:find('[02 Ring layout]',1,true))
- assert(F.specs['hud.lite.stims_x'].label:find('[09 Stims and grenades]',1,true))
- assert(F.specs['hud.lite.zeroing'].label:find('[07 Zeroing and RPM]',1,true))
+ assert(headings==11,'headings: '..tostring(headings))
+ assert(F.specs['hud.lite.arc'].heading=='DISPLAY')
+ assert(F.specs['hud.lite.x'].heading=='RING LAYOUT')
+ assert(F.specs['hud.lite.backpack'].heading==nil,'only the first row of a section carries the heading')
+ assert(F.specs['hud.lite.stims'].heading=='STIMS AND GRENADES')
+ assert(F.specs['hud.lite.zeroing'].heading=='ZEROING AND RPM')
+ assert(F.specs['hud.lite.reload_animation'].heading=='ANIMATION')
 ''')
 test('menu classification preserves saved player values and independent backpack controls', '''
  assert(F.saved['opt.hud.lite.backpack_x']==57 and F.saved['opt.hud.lite.stims_y']==-18)

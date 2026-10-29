@@ -67,7 +67,7 @@ def main():
         data=(ROOT/'assets/icon-pack/raw'/f'{key}.data').read_bytes()
         gpu=(ROOT/'assets/icon-pack/raw'/f'{key}.gpu').read_bytes()
         assert row['data']==data and row['gpu']==gpu,ident
-    assert len(rows)==42 and len([r for r in rows if r['tid']==0xa14e8dfa2cd117e2])==1
+    assert len(rows)==43 and len([r for r in rows if r['tid']==0xa14e8dfa2cd117e2])==2
     assert not any(r['fid']==archive.resource_hash('boot') for r in rows)
     report={'passed':True,'booster_textures_verified':21,'actual_boosters':20,'none_slot':0,
       'archive_resources':len(rows),'magazine_png':'512x512 RGBA, white transparent antialiased',

@@ -2,27 +2,37 @@
 
 [简体中文](SETTINGS.zh-CN.md) · [Documentation index](INDEX.md)
 
-Open Chef's **F9** menu and select **HUD Lite 1.0.2**.
+Open Chef's **F9** menu and select **HUD Lite 1.0.3**.
 
-## Menu categories
+## Menu sections
 
-Options register in contiguous, numbered blocks. Chef 1.2.3 does not expose
-collapsible sections for mod options, so labels have searchable category prefixes.
-No fake heading controls or loader modifications are used.
+Options register once, in order, under eleven section headings. Chef 1.4 draws
+them as foldable headings above the first row of each section; loaders without
+that capability fall back to searchable `[01 Display]`-style label prefixes, so
+the menu stays navigable everywhere. No fake heading controls and no loader
+modifications are used.
 
-| Prefix | Settings |
+| Heading | Settings |
 |---|---|
-| 01 Display | HUD visibility, opacity, scale and idle brightness |
-| 02 Ring layout | Ring position, radii, widths, span, tracks and smoothing, including backpack |
-| 03 Vitals | Health/stamina rings and combined text |
-| 04 Ammunition | Ammo ring and center number format, size and offsets |
-| 05 Weapon row | Unlock, anchor, extra X offset, vertical placement and gap |
-| 06 Fire and ammo icons | Visibility, sizes and unlocked positions |
-| 07 Zeroing and RPM | Visibility, sizes and unlocked positions |
-| 08 Reserves | Count position, size, magazine symbol and internal spacing |
-| 09 Stims and grenades | Visibility, unlocked positions and shared sizes |
-| 10 Squad | Own and teammate boosters |
-| 11 Animation | Reload visibility and smoothing |
+| DISPLAY | HUD visibility, opacity, scale and idle brightness |
+| RING LAYOUT | Ring position, radii, widths, span, tracks and smoothing, including backpack |
+| VITALS | Health/stamina rings and combined text |
+| AMMUNITION | Ammo ring and center number format, size and offsets |
+| WEAPON ROW | Unlock, anchor, extra X offset, vertical placement and gap |
+| FIRE AND AMMO ICONS | Visibility, sizes and unlocked positions |
+| ZEROING AND RPM | Visibility, sizes and unlocked positions |
+| RESERVES | Count position, size, magazine symbol and internal spacing |
+| STIMS AND GRENADES | Visibility, unlocked positions and shared sizes |
+| SQUAD | Own and teammate boosters |
+| ANIMATION | Reload visibility and smoothing |
+
+## Language
+
+The mod follows the loader's language. When Chef's language is set to Simplified
+Chinese, the mod ships a supplementary language pack (`lang/zh_cn.lua`) that is
+merged with the official Chinese pack, so option labels and section headings
+appear in Chinese. With any other loader language the labels stay as authored;
+no separate in-mod language switch is needed.
 
 Original option IDs and saved values are retained. The former separate
 consumables-row X/Y settings are ignored, not deleted. Coordinates use a

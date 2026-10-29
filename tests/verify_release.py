@@ -17,11 +17,11 @@ def verify(package=None):
     text=source.decode('utf-8')
     manifest=json.loads((BUILD/'manifest.json').read_text(encoding='utf-8'))
     assert manifest['Version']==1
-    assert manifest['Name']=='HUD Lite 1.0.2'
+    assert manifest['Name']=='HUD Lite 1.0.3'
     assert manifest['Author']=='Alpha F. Bloodfallen'
     assert manifest['Description']==META['description_zh']+'\n'+META['description_en']
-    assert 'local VERSION = "1.0.2"' in text
-    assert '-- HUD Lite 1.0.2 by Alpha F. Bloodfallen' in text
+    assert 'local VERSION = "1.0.3"' in text
+    assert '-- HUD Lite 1.0.3 by Alpha F. Bloodfallen' in text
     assert not re.search(r'\b(?:0\.1\.[0-9]+|1\.10\.[0-9]+|1\.12\.[0-9]+)\b',text)
     for folder in ['src','tools','tests','build']:
         for file in (ROOT/folder).glob('*'):
@@ -33,7 +33,15 @@ def verify(package=None):
     assert a.size==b.size and ImageChops.difference(a,b).getbbox() is None
     _,_,rows=archive.read(BUILD/'data/9ba626afa44a3aa3.patch_0')
     lua=[r for r in rows if r['tid']==0xa14e8dfa2cd117e2]
-    assert len(lua)==1 and lua[0]['data'][8:]==source
+    addon=[r for r in lua if r['fid']==archive.resource_hash(META['resource'])]
+    assert len(addon)==1 and addon[0]['data'][8:]==source
+    langs=[r for r in lua if r['fid']!=archive.resource_hash(META['resource'])]
+    for row in langs:assert row['data'][8:].startswith(b'-- HD2-Lang: '),'language files carry the header'
+    zh=(ROOT/'lang/zh_cn.lua').read_text(encoding='utf-8')
+    assert zh.startswith('-- HD2-Lang: '+META['resource']),'language file names this resource'
+    assert "name = '简体中文'" in zh and "code = 'zh-CN'" in zh
+    for label in re.findall(r"""(?:label|heading)\s*=\s*['"]([A-Za-z][^'"]*)['"]""", text):
+        assert "['"+label+"']" in zh,'missing Chinese text: '+label
     assert lua[0]['fid']==archive.resource_hash(META['resource'])
     assert META['resource']=='mods/alpha_f_bloodfallen/hud_lite'
     assert META['resource'].rsplit('/',1)[-1]=='hud_lite'

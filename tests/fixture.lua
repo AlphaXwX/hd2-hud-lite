@@ -96,7 +96,7 @@ local function draw(kind,...)
   assert(not F.stopped,"drawing after shutdown")
   F.draws[#F.draws+1]={kind=kind,args={...}}
 end
-chef={api=3,loader_version="1.2.3",options={},
+chef={api=3,loader_version="1.2.3",options={},has=function(name)return name=="option_headings" end,
  log=function(fmt,...) F.logs[#F.logs+1]=string.format(fmt,...) end,
  title=function()end,own_log=function()end,
  option=function(id,s)F.option_order[#F.option_order+1]=id;F.specs[id]=s;F.defaults[id]=s.default;if F.saved['opt.'..id]~=nil then return F.saved['opt.'..id]end return s.default end,

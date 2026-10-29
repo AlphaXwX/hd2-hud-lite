@@ -48,9 +48,20 @@ def build(source_only=False):
     assert source.startswith(f'-- HD2-Addon: {META["resource"]}\n'.encode())
     archive_meta,header,types,rows=pack_resources()
     assert not any(row['tid']==LUA for row in rows)
+    lua_rows={archive.resource_hash(META['resource']):source}
     rows.append(dict(fid=archive.resource_hash(META['resource']),tid=LUA,
       data=struct.pack('<II',len(source),2)+source,stream=b'',gpu=b'',
       ha=archive_meta['lua']['ha'],hb=archive_meta['lua']['hb'],seq=0))
+    lang_dir=ROOT/'lang'
+    lang_files=sorted(lang_dir.glob('*.lua')) if lang_dir.is_dir() else []
+    for path in lang_files:
+        text=path.read_bytes()
+        assert text.startswith(b'-- HD2-Lang: '),path.name
+        fid=archive.resource_hash(f"{META['resource']}/lang/{path.stem}")
+        assert fid not in lua_rows,path.name
+        lua_rows[fid]=text
+        rows.append(dict(fid=fid,tid=LUA,data=struct.pack('<II',len(text),2)+text,
+          stream=b'',gpu=b'',ha=archive_meta['lua']['ha'],hb=archive_meta['lua']['hb'],seq=0))
     for icon in icons:
         assert not any(r['fid']==icon['fid'] and r['tid']==icon['tid'] for r in rows)
         rows.append(icon)
@@ -58,9 +69,9 @@ def build(source_only=False):
     output=BUILD/'data';output.mkdir(exist_ok=True)
     archive.write(output/PATCH,header,types,rows)
     _,_,actual=archive.read(output/PATCH)
-    assert len(actual)==42 and not any(r['fid']==archive.resource_hash('boot') for r in actual)
+    assert len(actual)==len(rows) and not any(r['fid']==archive.resource_hash('boot') for r in actual)
     for row in actual:
-        if row['tid']==LUA:assert row['data'][8:]==source
+        if row['tid']==LUA:assert row['data'][8:]==lua_rows[row['fid']]
         else:assert (row['data'],row['gpu'])==expected[(row['fid'],row['tid'])]
     manifest={'Version':1,'Guid':META['guid'],'Name':META['name']+' '+META['version'],
       'Author':META['author'],'Description':META['description_zh']+'\n'+META['description_en'],
@@ -86,6 +97,7 @@ def build(source_only=False):
         for name in ['README.md','README.zh-CN.md','THIRD_PARTY_NOTICES.md','THIRD_PARTY_NOTICES.zh-CN.md',
                      'LICENSE','LICENSE.zh-CN.md','CHANGELOG.md','CHANGELOG.zh-CN.md']:z.write(ROOT/name,name)
         for file in sorted((ROOT/'docs').glob('*.md')):z.write(file,'docs/'+file.name)
+        for file in lang_files:z.write(file,'lang/'+file.name)
         for file in sorted((ROOT/'third_party').glob('*')):
             if file.is_file():z.write(file,'third_party/'+file.name)
         z.write(CONFIG/'weapon_catalog.json','config/weapon_catalog.json')

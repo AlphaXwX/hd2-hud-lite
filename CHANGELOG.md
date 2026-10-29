@@ -2,6 +2,12 @@
 
 [简体中文](CHANGELOG.zh-CN.md) · [Documentation index](docs/INDEX.md)
 
+## 1.0.3
+
+- Follow the loader language: the addon ships a Simplified Chinese language pack (`lang/zh_cn.lua`) that merges into the official pack, so option labels and section headings switch with the loader's Language setting.
+- Options are grouped under eleven foldable section headings; loaders without heading support keep the searchable `[01 Display]` label prefixes.
+- Added regression coverage for section headings and for Chinese text completeness (every label and heading must exist in the language pack).
+
 ## 1.0.2
 
 - Fixed single-player ammo loss when rotating discovery windows omitted already identified weapons in large object lists.

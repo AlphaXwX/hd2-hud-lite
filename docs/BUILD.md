@@ -44,17 +44,17 @@ access a game process or upload anything. Never commit `local.config.json`.
 
 ## Build phases
 
-1. `project.json` supplies display metadata and version **1.0.2**.
+1. `project.json` supplies display metadata and version **1.0.3**.
 2. Image preparation validates mappings and renders the quantity symbol.
 3. `src/` modules, generated layout data and feature fragments are composed into
    `build/hud_lite.lua`.
 4. `tools/build.py --source-only` writes the native patch, preview and manifest.
 5. Run the Lua, image, benchmark, release and documentation checks listed in the README.
-6. `tools/build.py` checks report hashes and creates `dist/HUD-Lite-1.0.2-Chef.zip`.
+6. `tools/build.py` checks report hashes and creates `dist/HUD-Lite-1.0.3-Chef.zip`.
 7. Run the Lua and release checks against the ZIP to verify the actual packaged output.
 
 The manager manifest's `Version: 1` is its **schema version**, not the mod's
-semantic version. The product, Lua module and archive name carry **1.0.2**.
+semantic version. The product, Lua module and archive name carry **1.0.3**.
 
 ## Published defaults
 
