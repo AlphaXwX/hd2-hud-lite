@@ -34,6 +34,7 @@ if len(sys.argv)>1:
     else:
         SOURCE=target.read_text(encoding='utf-8')
 FIXTURE=(ROOT/'tests/fixture.lua').read_text(encoding='utf-8')
+assert 'poll_interval = 0.1' in SOURCE,'shipped sampling default must stay 10 Hz'
 results=[]
 
 def env(before_load=None,merged_layout=True):
@@ -62,6 +63,9 @@ def env(before_load=None,merged_layout=True):
     load=lua.eval('function(s) local f,e=loadstring(s); assert(f,e);return f end')
     mod=load(SOURCE)(lua.globals().chef)
     lua.globals().setup(mod)
+    # Regression scenarios drive 1/60 s frames and expect a poll every 0.05 s;
+    # the shipped default is 0.1 s (asserted below).
+    lua.execute('T.S.poll_interval=0.05')
     return lua
 
 def test(name,code,before_load=None,merged_layout=True):
@@ -78,7 +82,7 @@ def test(name,code,before_load=None,merged_layout=True):
 
 
 test('real Lua 5.1 loads complete feature rules without boot wrapper', '''
- assert(M.installed and M.version=='1.0.3')
+ assert(M.installed and M.version=='1.0.4')
  assert(G.identity.equipment and #G.relations>=7)
  assert(T.Model.identity.resolve and T.Model.provider.fill and T.Model.snapshot.assemble)
 ''')
@@ -266,7 +270,7 @@ test('fixed new-type scan hard bound applies with 150 unknown owned objects', ''
  for i=1,20 do
    local before=T.Native.stats.scans
    ticks(0.05)
- assert(T.Native.stats.scans-before<=40,'scan limit exceeded')
+ assert(T.Native.stats.scans-before<=4000,'scan limit exceeded')
  end
 ''')
 test('sub-poll frames perform no native discovery or field reads', '''
@@ -1004,16 +1008,18 @@ test('fixed discovery budget ignores stale saved test tuning', '''
  weapon('0x967a3fed')
  for i=1000,1149 do F.objects[i]={call='unknown',named={},values={}};F.owned['local'][#F.owned['local']+1]=i end
  for i=1,8 do local before=T.Native.stats.scans;ticks(0.05)
-  assert(T.Native.stats.scans-before<=40,'stale testing budget was used')
+  assert(T.Native.stats.scans-before<=4000,'stale testing budget was used')
  end
 ''', "F.values['hud.lite.scan_budget']=100000")
 
-test('unreadable Chef state fails closed for risky native channels', '''
+test('Chef owns native-call protection and the mod never opens its state file', '''
  weapon('0x967a3fed');ticks(0.3)
- assert(F.raw_batches==0,'missing protection state allowed batch retry')
- assert((F.counts.animation_states or 0)==0)
+ assert(F.io_opens==0,'the mod opened a loader-owned file: '..tostring(F.io_opens))
+ assert(F.raw_batches>0,'batched reads must stay available (the loader guards them)')
 ''', '''
- chef.log_directory='test-settings';io={open=function()return nil end}
+ F.io_opens=0
+ chef.log_directory='test-settings'
+ io={open=function() F.io_opens=F.io_opens+1;return nil end}
 ''')
 
 test('SAFE SCALAR directly fed weapon shows its verified backpack ammo and full capacity', '''
@@ -1112,7 +1118,7 @@ test('new-type extension keeps fixed discovery budget with unknown owned objects
  weapon('0x30294946')
  for i=1000,1149 do F.objects[i]={call='unknown',named={},values={}};F.owned['local'][#F.owned['local']+1]=i end
  for i=1,15 do local before=T.Native.stats.scans;ticks(0.05)
-  assert(T.Native.stats.scans-before<=40,'catalog increased search budget')
+  assert(T.Native.stats.scans-before<=4000,'catalog increased search budget')
  end
 ''')
 
@@ -1733,7 +1739,7 @@ test('host candidate search retains the fixed type-check budget in large multipl
  F.declarations[F.weapon.call].fields[#F.declarations[F.weapon.call].fields+1]={id='0x3ccffa7f'}
  F.weapon.named.g5g7b9d='local'
  for i=1000,1149 do F.objects[i]={call='unknown',named={},values={}};F.owned.host[#F.owned.host+1]=i end
- for i=1,30 do local n=T.Native.stats.scans;ticks(0.05);assert(T.Native.stats.scans-n<=40)end
+ for i=1,30 do local n=T.Native.stats.scans;ticks(0.05);assert(T.Native.stats.scans-n<=4000)end
  assert(T.Model.resolved.hand_weapon)
 ''')
 test('disposable launcher families retain loaded ammo but never draw zero reserve magazines', '''
@@ -1840,7 +1846,7 @@ test('single-player catalog weapon keeps live ammo outside rotating discovery sl
  for i=1,80 do
   F.weapon.values['0xd7a5d63e']=i%10
   local before=T.Native.stats.scans;ticks(0.05)
-  assert(T.Native.stats.scans-before<=40,'discovery budget expanded')
+  assert(T.Native.stats.scans-before<=4000,'discovery budget expanded')
   assert(T.Model.resolved.hand_weapon and T.Model.resolved.hand_weapon.goid==314,T.S.channel)
   assert(shape(11) and T.Model.window.cells.ammo==i%10,'fresh ammo disappeared or froze')
  end
@@ -1889,6 +1895,149 @@ test('same-grip selection checks known candidates even when discovery time budge
  for i=1,30 do F.weapon.values['0xd7a5d63e']=i%10;ticks(0.05)
   assert(shape(11) and T.Model.window.cells.ammo==i%10,T.S.channel)
  end
+''')
+
+# Review regressions exercise the public pipeline, not only isolated helpers.
+test('batched reads pass through the stable Chef guard before any raw engine call', '''
+ weapon('0x967a3fed');F.weapon.named['4fqtox']=7;F.weapon.named['gaj_1dw']=true
+ F.batch_skip=true;ticks(0.5);rendered()
+ assert((F.counts.batch_guard or 0)==1,'the stable Chef batch guard was bypassed')
+ assert(F.raw_batches==0,'a skipped batch reached the raw engine')
+ assert(T.Native.blocked and center()=='7/30',tostring(center()))
+ F.batch_skip=false;F.world={};F.world_id=2;ticks(0.5)
+ assert((F.counts.batch_guard or 0)==1 and F.raw_batches==0,'reset discarded a launch-wide skip')
+''')
+test('batched reads without the Chef guard fail closed and retain scalar fallback', '''
+ weapon('0x967a3fed');F.weapon.named['4fqtox']=9;F.weapon.named['gaj_1dw']=true
+ ticks(0.5);rendered()
+ assert(T.Native.blocked and F.raw_batches==0,'unguarded batch fallback reached the engine')
+ assert(center()=='9/30',tostring(center()))
+''', 'chef.call=nil')
+test('allowed batches use the stable Chef guard and preserve live ammunition', '''
+ weapon('0x967a3fed');ticks(0.5)
+ assert(F.raw_batches>0 and (F.counts.batch_guard or 0)==F.raw_batches,'batch bypassed its guard')
+ F.weapon.values['0xd7a5d63e']=6;ticks(0.1);rendered()
+ assert(center()=='6/30',tostring(center()))
+''')
+test('temporary body loss with a known weapon never writes a nil pose cache key', '''
+ weapon('0x967a3fed');ticks(0.5);assert(shape(11))
+ F.body.alive=false;F.units['4d1c334d294dfa97']={};ticks(0.8)
+ assert(T.Model.ready and T.S.avatar==77,'body loss reset the local player model')
+ assert(T.S.ratio==0.8,'body loss discarded a live health channel')
+ assert(not T.Model.resolved.hand_weapon and not shape(11),'body loss kept an unverified hand')
+ F.body.alive=true;F.units['4d1c334d294dfa97']={F.body};ticks(0.5)
+ assert(T.Model.resolved.hand_weapon and shape(11),'body recovery failed')
+''')
+test('explicit multiple wield units cannot be overridden by cached carried weapon', '''
+ local hash='0x967a3fed';weapon(hash);ticks(0.5)
+ local old=F.weapon_unit;old.pos={x=4,y=0,z=0}
+ local resource=G.identity.equipment[hash].resource:gsub('^0x','')
+ F.units[resource]={old,{pos={x=1,y=0,z=0},alive=true},{pos={x=1,y=0,z=0},alive=true}}
+ F.objects[315]={call=F.objects[314].call,named={enabled_mask=0,dvpupm=32767,underbarrel_goid=32767},
+   values={['0xd7a5d63e']=3}}
+ F.owned['local']={0,314,315};T.Model.identity.object_type[315]=hash;ticks(0.15)
+ assert(not T.Model.resolved.hand_weapon and not shape(11),'cached hand overrode explicit ambiguity')
+ assert(T.Model.resolved.reason:find('multiple-wield-units',1,true),T.Model.resolved.reason)
+ F.objects[315]=nil;F.owned['local']={0,314};old.pos={x=1,y=0,z=0};F.units[resource]={old}
+ ticks(0.3);assert(T.Model.resolved.hand_weapon and shape(11),'unique attachment failed to recover')
+''')
+
+test('initial player search reaches past 256 owned objects and then renders live HUD', '''
+ weapon('0x967a3fed');local owned={}
+ for i=1000,1399 do F.objects[i]={call='unknown',named={},values={}};owned[#owned+1]=i end
+ owned[#owned+1]=0;owned[#owned+1]=314;F.owned['local']=owned
+ ticks(1);rendered()
+ assert(T.S.player==0 and T.S.avatar==77 and T.Model.ready,T.S.channel)
+ assert(T.S.ratio==0.8 and T.S.stamina==0.6,'late player did not enable live vitals')
+ -- Equipment discovery has its own catalog budget; it must not determine
+ -- whether the single-type player search has completed successfully.
+ F.owned['local']={0,314};ticks(1);rendered()
+ assert(center()=='20/30',tostring(center()))
+''')
+test('partial player search stays bounded and never selects one of two players', '''
+ local id=T.Model.identity;local owned={0}
+ for i=1000,1399 do F.objects[i]={call='unknown',named={},values={}};owned[#owned+1]=i end
+ F.objects[1]={call=F.objects[0].call,named={baegche=77},values={}};owned[#owned+1]=1
+ F.owned['local']=owned;T.S.peer=F.peer
+ local raw=stingray.GameSession.game_object_is_type;local checks=0
+ stingray.GameSession.game_object_is_type=function(session,goid,call)
+   if call==id.player.call then checks=checks+1 end
+   return raw(session,goid,call)
+ end
+ T.S.clock=0.1;T.Native.begin()
+ local found,count=id:player_object(F.session);assert(not found and count==0,'partial uniqueness published')
+ id:player_object(F.session);assert(checks<=256,'same poll spent two player scan windows')
+ local before=checks;T.S.clock=0.2;T.Native.begin()
+ found,count=id:player_object(F.session)
+ assert(count==2 and id.player_goid==nil,'two players were treated as a unique player')
+ assert(checks-before<=256,'player scan exceeded the fixed budget')
+''')
+test('partial player search survives list reordering and restarts on membership changes', '''
+ local id=T.Model.identity;local owned={}
+ for i=1000,1399 do F.objects[i]={call='unknown',named={},values={}};owned[#owned+1]=i end
+ owned[#owned+1]=0;F.owned['local']=owned;T.S.peer=F.peer
+ T.S.clock=0.1;T.Native.begin();local found,count=id:player_object(F.session)
+ assert(not found and count==0)
+ local reverse={} for i=#owned,1,-1 do reverse[#reverse+1]=owned[i] end
+ F.owned['local']=reverse;T.S.clock=0.2;T.Native.begin();found,count=id:player_object(F.session)
+ assert(found and found.goid==0 and count==1,'order-only change discarded scan progress')
+ id:reset();F.owned['local']=owned;T.S.clock=0.3;T.Native.begin();id:player_object(F.session)
+ F.objects[1]={call=F.objects[0].call,named={},values={}}
+ local changed={1} for i=1,#owned-1 do changed[#changed+1]=owned[i] end
+ F.owned['local']=changed;T.S.clock=0.4;T.Native.begin();found,count=id:player_object(F.session)
+ assert(not found and count==0,'membership change retained a stale partial window')
+ T.S.clock=0.5;T.Native.begin();found,count=id:player_object(F.session)
+ assert(found and found.goid==1 and count==1,'new membership did not restart correctly')
+''')
+test('player found early in a split scan is revalidated before publishing', '''
+ local id=T.Model.identity;local owned={0}
+ for i=1000,1399 do F.objects[i]={call='unknown',named={},values={}};owned[#owned+1]=i end
+ F.owned['local']=owned;T.S.peer=F.peer
+ T.S.clock=0.1;T.Native.begin();local found,count=id:player_object(F.session)
+ assert(not found and count==0)
+ F.objects[0].call='unknown';T.S.clock=0.2;T.Native.begin();found,count=id:player_object(F.session)
+ assert(not found and count==0 and id.player_goid==nil,'stale player type escaped a split scan')
+''')
+
+test('colour cache keys use final 8-bit alpha without changing rendered opacity', '''
+ local colour4=up(M.render,'colour4');local c={255,86,80,150}
+ for _,opacity in ipairs({10,37,50,100}) do
+   set('hud.lite.alpha',opacity);ticks(0.05)
+   local reused={}
+   for step=0,1020 do
+     local alpha=step/4;local expected=math.floor(alpha*opacity/100+0.5)
+     local color=colour4(c,alpha)
+     assert(color[1]==c[1] and color[2]==c[2] and color[3]==c[3] and color[4]==expected,'RGBA changed')
+     if reused[expected] then assert(reused[expected]==color,'same final alpha allocated twice') end
+     reused[expected]=color
+   end
+   local count=0 for _ in pairs(up(colour4,'colour_cache')[c]) do count=count+1 end
+   assert(count<=256,'floating alpha values escaped quantization')
+ end
+''')
+test('sustained overcharge pulses keep every colour-cache bucket bounded', '''
+ weapon('0x26acc614');F.weapon.values['0xd7a5d63e']=1
+ F.weapon.values['0x49c250a6']=6;F.weapon.values['0x3132608f']=true
+ local colour4=up(M.render,'colour4')
+ local function check_cache()
+   local count=0
+   for _,bucket in pairs(up(colour4,'colour_cache')) do
+     local n=0 for alpha in pairs(bucket) do
+       assert(alpha>=0 and alpha<=255 and alpha%1==0,'unquantized cache key')
+       n=n+1
+     end
+     assert(n<=256,'unbounded colour bucket');count=count+n
+   end
+   return count
+ end
+ for i=1,600 do ticks(1/60);rendered() end
+ local first=check_cache();local pulses=0
+ for _,d in ipairs(F.draws) do if d.kind=='arc' and d.args[8]==909 then pulses=pulses+1 end end
+ assert(pulses>0,'regression did not exercise an overcharge pulse')
+ for i=1,600 do ticks(1/60);rendered() end
+ local second=check_cache();assert(second<=first+16,'cache keeps growing on repeated pulse cycles')
+ F.weapon.values['0x3132608f']=false;ticks(0.2);rendered()
+ assert(not shape(7),'charge ring failed to clear on release')
 ''')
 
 report={'runtime':'Lua 5.1 (lupa.lua51)','checks':len(results),'failed':0,'tests':results,

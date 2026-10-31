@@ -21,12 +21,19 @@ function Model.hash(value)
   return Fix.hex(value,8)
 end
 local identity_reset=identity.reset
+-- Remembered per-grip types survive a respawn: a fresh body only has to re-test
+-- the weapon the player was already carrying instead of rescanning the catalog.
+identity.recent=identity.recent or {}
 function identity:reset()
   identity_reset(self)
   self.scan_progress={}; self.scan_misses={}
+  self.verified_at={}
+  self.watched={}
+
   self.scan_cursor=0
   self._squad_at=0
   self.host_objects={};self.host_peer=nil;self.host_check_at=nil
+  self.player_scan=nil
 end
 identity:reset()
 local original_grip_bucket=identity.grip_bucket
@@ -44,13 +51,29 @@ function identity:grip_bucket(grip)
     end
     table.sort(rows);bucket.catalog_added=true
   end
+  local recent=self.recent and self.recent[grip]
+  if recent then
+    for i=1,#rows do
+      if rows[i]==recent then
+        if i>1 then table.remove(rows,i);table.insert(rows,1,recent) end
+        break
+      end
+    end
+  end
   return rows,set
 end
 -- A GOID is not an immutable type. Every positive memo is revalidated; every
 -- negative memo expires. Unfinished searches resume, rather than restarting.
-function identity:scan_types(session,id,missed,scope,rows)
+function identity:scan_types(session,id,missed,scope,rows,progress_tag)
   if type(rows)~="table" then return nil end
-  local tag=tostring(scope or "base")
+  -- Progress belongs to the object and the list, not to the pose: a weapon
+  -- switch runs the pose through several values, and keying by pose restarted
+  -- the scan from the first candidate every time (a 20 s wait for a weapon the
+  -- catalog knows).
+  -- The cursor belongs to the object and to the kind of list, never to the pose
+  -- value: a weapon switch runs the pose through several values, and keying by
+  -- pose restarted the scan from the first candidate each time.
+  local tag=progress_tag or tostring(scope or "base")
   local progress=self.scan_progress[id]
   if not progress then progress={};self.scan_progress[id]=progress end
   local mark=progress[tag]
@@ -63,12 +86,78 @@ function identity:scan_types(session,id,missed,scope,rows)
     if type(call)=="string" then
       self.counters.type_calls=self.counters.type_calls+1
       if Native.scan_type(session,id,call)==true then
-        self.object_type[id]=hash;progress[tag]=nil;return hash
+        self.object_type[id]=hash;progress[tag]=nil
+        self.recent_any=hash
+        if type(scope)=="number" then self.recent[scope]=hash end
+        return hash
       end
     end
   end
-  progress[tag]={until_at=S.clock+1}
+  progress[tag]={until_at=S.clock+0.25}
   return nil
+end
+-- A confirmed type is kept when the current pose agrees with what the catalog
+-- recorded, or when the type has no recorded poses at all: the engine already
+-- said this object IS that type, and a type we know nothing about cannot
+-- contradict it. Rejecting those made every weapon without pose metadata
+-- invisible (no ammo ring at all).
+function identity:accept(hash,grip)
+  if self:used_this_window(hash,grip) then return true end
+  -- Backpacks, shields and underbarrels are not picked up by a pose: the pose
+  -- test is for hand weapons only, so never drop them here.
+  if (self.backpacks and self.backpacks[hash]) or (self.underbarrels and self.underbarrels[hash]) then
+    return true
+  end
+  -- Anything that is not a catalog weapon (a linked shield, a pack, a mount)
+  -- carries no pose evidence, so the pose cannot be used to reject it.
+  local entry=Compatibility.weapons[hash]
+  if entry==nil then return true end
+  if entry.grips==nil then return true end
+  -- No current pose is unavailable evidence, not a contradictory pose. Keep
+  -- the confirmed type; the hand-selection path still requires in_grip later.
+  if grip==nil then return true end
+  -- A pose that no catalog type records cannot discriminate anything: the
+  -- engine already confirmed the type, so do not hide the weapon for it.
+  self.pose_counts=self.pose_counts or {}
+  local count=self.pose_counts[grip]
+  if count==nil then
+    count=0
+    for _,other in pairs(Compatibility.weapons) do
+      if other.grips then
+        for _,pose in ipairs(other.grips) do
+          if pose==grip then count=count+1;break end
+        end
+      end
+    end
+    self.pose_counts[grip]=count
+  end
+  return count==0
+end
+-- One candidate list ordered like the reference: handheld types whose recorded
+-- poses include this value first, everything else after. Packs and mounts stay
+-- reachable, no second pass is made, and the order is cached per pose.
+function identity:prioritise(scope,grip,rows)
+  if type(rows)~="table" then return rows end
+  self.prio_cache=self.prio_cache or {}
+  local key=tostring(scope).."|"..tostring(grip)
+  local cached=self.prio_cache[key]
+  if cached and cached.n==#rows then return cached.rows end
+  local first,rest={},{}
+  for _,hash in ipairs(rows) do
+    local hit=false
+    if Compatibility.handheld[hash] then
+      local entry=Compatibility.weapons[hash]
+      if entry and entry.grips then
+        for _,pose in ipairs(entry.grips) do if pose==grip then hit=true;break end end
+      else hit=true end
+    end
+    if hit then first[#first+1]=hash else rest[#rest+1]=hash end
+  end
+  local out={}
+  for _,hash in ipairs(first) do out[#out+1]=hash end
+  for _,hash in ipairs(rest) do out[#out+1]=hash end
+  self.prio_cache[key]={n=#rows,rows=out}
+  return out
 end
 function identity:type_of(session,id,grip)
   if not Native.valid_id(id) or not Native.exists(session,id) then
@@ -80,46 +169,111 @@ function identity:type_of(session,id,grip)
     return self.player.type
   end
   if known then
+    -- The object last resolved as the hand weapon or backpack is revalidated on
+    -- every poll, so a switch on the same GOID shows at once. Every other known
+    -- object is revalidated every 0.5 s: asking the engine for all of them on
+    -- every 50 ms poll was the bulk of the in-mission cost.
+    local watched=self.watched and self.watched[id]
+    local verified=self.verified_at and self.verified_at[id]
     local call=Engine.Identity.call_of(self.authored,known)
     if Native.is_type(session,id,call)==true then
-      if self:used_this_window(known,grip) then return known end
+      self.verified_at=self.verified_at or {};self.verified_at[id]=S.clock
+      if self:accept(known,grip) then return known end
       return nil
     end
+    if self.verified_at then self.verified_at[id]=nil end
     self.object_type[id],self.scan_progress[id]=nil,nil
     self.counters.type_recycled=self.counters.type_recycled+1
+  end
+  -- Likely candidate first: the type identified last for any object is tried
+  -- straight away, so a weapon already seen costs one check instead of a scan.
+  local recent=self.recent_any
+  if recent and self.object_type[id]==nil then
+    local call=Engine.Identity.call_of(self.authored,recent)
+    if type(call)=="string" and Native.can_scan() and Native.scan_type(session,id,call)==true then
+      self.object_type[id]=recent
+      self.verified_at=self.verified_at or {};self.verified_at[id]=S.clock
+      if self:accept(recent,grip) then
+        if type(grip)=="number" then self.recent[grip]=recent end
+        return recent
+      end
+      self.object_type[id]=nil
+    end
   end
   -- Active weapon first. Scanning every backpack before every weapon consumed
   -- the complete budget before reaching the equipped item.
   if grip~=nil and grip~=0 then
-    local got=self:scan_types(session,id,{},grip,(self:grip_bucket(grip)))
+    local got=self:scan_types(session,id,{},grip,(self:grip_bucket(grip)),"grip")
     if got then return got end
   end
   local base,scope=self:base_candidates()
-  return self:scan_types(session,id,{},scope,base)
+  base=self:prioritise(scope,grip,base)
+  local hit=self:scan_types(session,id,{},scope,base,"base")
+  if hit then
+    if self:accept(hit,grip) then return hit end
+    if not ((self.backpacks or {})[hit]) then self.object_type[id]=nil end
+  end
+  return nil
 end
 function identity:player_object(session,rows)
   local known=self.player_goid
-  if known~=nil and Native.is_type(session,known,self.player.call)==true then
-    return {goid=known,type=self.player.type},1
+  local budget=256
+  if known~=nil then
+    if Native.is_type(session,known,self.player.call)==true then
+      return {goid=known,type=self.player.type},1
+    end
+    budget=budget-1
+    self.player_scan=nil
   end
   self.player_goid=nil
   local owned=Native.owned(session,S.peer)
-  if type(owned)~="table" then return nil,0 end
-  local found,count,seen=nil,0,{}
-  -- One known player-type check per owned id, never the whole equipment table.
-  -- This must not depend on the optional/background discovery budget.
-  local asks=0
+  if type(owned)~="table" then
+    self.player_scan,self.player_goid=nil,nil;return nil,0
+  end
+  local ids,seen={},{}
   for _,id in pairs(owned) do
     if Native.valid_id(id) and not seen[id] then
-      seen[id]=true;asks=asks+1
-      if Native.is_type(session,id,self.player.call)==true then
-        found={goid=id,type=self.player.type};count=count+1
-      end
-      if asks>=256 then break end
+      ids[#ids+1]=id;seen[id]=true
     end
   end
-  if count==1 then self.player_goid=found.goid;self.object_type[found.goid]=self.player.type end
-  return found,count
+  local scan=self.player_scan
+  local same=scan and scan.session==session and scan.peer==S.peer and #scan.ids==#ids
+  if same then
+    for _,id in ipairs(ids) do if not scan.seen[id] then same=false;break end end
+  end
+  -- Membership, not table identity/order, owns the discovery cursor. A spawn,
+  -- despawn or scope change invalidates the unfinished window's partial count.
+  if not same then
+    self.player_goid=nil
+    scan={session=session,peer=S.peer,ids=ids,seen=seen,next=1,count=0}
+    self.player_scan=scan
+  end
+  -- resolve may retry with discovered rows in the same poll. Do not spend a
+  -- second window, or publish a partial window's apparently unique player.
+  if scan.at==S.clock then return nil,scan.complete and scan.count or 0 end
+  if scan.complete then scan.next,scan.count,scan.found,scan.complete=1,0,nil,nil end
+  scan.at=S.clock
+  -- One known player-type check per owned id, independent of equipment budget.
+  -- Finish the whole membership window before claiming that a player is unique.
+  -- Reserve one check for a match found in an earlier poll: its GOID may have
+  -- disappeared or changed type while the rest of this window was scanned.
+  local last=math.min(#scan.ids,scan.next+budget-2)
+  for i=scan.next,last do
+    local id=scan.ids[i]
+    if Native.is_type(session,id,self.player.call)==true then
+      scan.found={goid=id,type=self.player.type};scan.count=scan.count+1
+    end
+  end
+  scan.next=last+1
+  if scan.next<=#scan.ids then return nil,0 end
+  scan.complete=true
+  if scan.count==1 then
+    if Native.is_type(session,scan.found.goid,self.player.call)~=true then
+      self.player_scan=nil;return nil,0
+    end
+    self.player_goid=scan.found.goid;self.object_type[scan.found.goid]=self.player.type
+  end
+  return scan.found,scan.count
 end
 function identity:owned_objects(session,peer,grip,owned)
   if owned==nil then owned=Native.owned(session,peer) end
@@ -832,7 +986,53 @@ function Model.action(resolved,window)
 end
 function Model.sample()
   Native.begin()
+  -- Discovery runs in bursts. A weapon the catalog cannot name never resolves,
+  -- so "unknown stays true" must not mean "heavy forever": one second of search,
+  -- then four seconds of the light budget, and a fresh burst on a weapon change.
+  do
+    local now=S.clock
+    local known=Model.resolved~=nil and type(Model.resolved.hand_weapon)=="table"
+    if known then
+      Native.heavy=false;Native.burst_until=nil;Native.next_burst=nil
+    else
+      if now>=(Native.next_burst or 0) then
+        Native.burst_until=now+1.0
+        Native.next_burst=now+5.0
+      end
+      Native.heavy=now<=(Native.burst_until or 0)
+    end
+  end
   local resolved=identity:resolve(S.session,S.world,S.peer)
+  -- Still no hand weapon while the game reports a grip: say which pose we saw and
+  -- how many catalog types are recorded for it, so a missing pose entry is visible
+  -- instead of "nothing on the right side of the screen".
+  if resolved and resolved.grip~=nil and not resolved.hand_weapon then
+    S.logged_grips=S.logged_grips or {}
+    if not S.logged_grips[resolved.grip] then
+      S.logged_grips[resolved.grip]=true
+      local have=0
+      for _,entry in pairs(Compatibility.weapons) do
+        if entry.grips then
+          for _,pose in ipairs(entry.grips) do
+            if pose==resolved.grip then have=have+1;break end
+          end
+        end
+      end
+      local owned=Native.owned(S.session,S.peer)
+      local total,typed=0,0
+      if type(owned)=="table" then
+        for _,oid in pairs(owned) do
+          if Native.valid_id(oid) then
+            total=total+1
+            if identity.object_type[oid]~=nil then typed=typed+1 end
+          end
+        end
+      end
+      local reason=resolved.hand_reason or resolved.reason or resolved.hand_refused or "unknown"
+      logf("grip "..tostring(resolved.grip)..": no hand weapon; catalog types for this pose="..have
+        .."; resolve: owned="..total.." typed="..typed.." reason="..tostring(reason))
+    end
+  end
   Model.resolved=resolved
   S.channel=resolved and (resolved.reason or resolved.status) or "unresolved"
   local avatar=resolved and type(resolved.avatar)=="table" and resolved.avatar.goid or nil
@@ -851,6 +1051,8 @@ function Model.sample()
     Model.pack_ammo=nil;Model.pack_tops=nil
     Model.energy=nil;Model.reserve_text=nil;Model.reload_visual=nil
   end
+  if avatar~=nil and avatar~=S.avatar_prev then Native.request_burst(300) end
+  S.avatar_prev=avatar
   S.avatar,S.player,S.body=avatar,identity.player_goid,identity.local_body
   Model.ready=avatar~=nil and resolved and resolved.status~="aboard"
   Model.sample_at=S.clock
@@ -894,6 +1096,7 @@ function Model.sample()
   local key=(type(hand)=="table" and tostring(hand.goid)..":"..tostring(hand.type) or "-")..
     "/"..(type(pack)=="table" and tostring(pack.goid)..":"..tostring(pack.type) or "-")
   if Model.equipment_key~=key then
+    if Model.equipment_key~=nil then Native.request_burst(90);Native.next_burst=0 end
     Model.heat_limit=nil
     Model.equipment_key=key;model:reset_objects();Model.reload=nil;Model.animation=nil
     S.shown_a,S.thermal,S.energy,S.heat_sample_at=nil,nil,nil,nil
@@ -918,6 +1121,34 @@ function Model.sample()
   Model.pack_supply(window,resolved)
   Model.sample_visual(window,resolved)
   Model.window=window
+  -- One line per weapon type per session: what the catalog knows and what this
+  -- object actually declared. A weapon that shows no ammunition tells us here
+  -- whether the type is recognised and which field names reached us.
+  if type(resolved.hand_weapon)=='table' and resolved.hand_weapon.type then
+    S.logged_types=S.logged_types or {}
+    local hash=resolved.hand_weapon.type
+    if not S.logged_types[hash] then
+      S.logged_types[hash]=true
+      local entry=Compatibility.weapons[hash]
+      local names={}
+      if entry then for k in pairs(entry.fields) do names[#names+1]=k end end
+      table.sort(names)
+      local reads={}
+      local raw=(window.reads or {})['hand-weapon'] or {}
+      for k,v in pairs(raw) do reads[#reads+1]=k..':'..type(v) end
+      table.sort(reads)
+      logf("type "..tostring(hash)..(WeaponNames and WeaponNames[hash] and (" name="..WeaponNames[hash]) or "")
+        .." catalog="..(entry and "yes" or "no")
+        .." fields="..(next(names) and table.concat(names,",") or "-")
+        .." reads="..(next(reads) and table.concat(reads,",") or "-"))
+    end
+  end
   S.weapon_obj=resolved.hand_weapon
+  if type(resolved.hand_weapon)=='table' and resolved.hand_weapon.goid then
+    identity.watched[resolved.hand_weapon.goid]=true
+  end
+  if type(resolved.backpack)=='table' and resolved.backpack.goid then
+    identity.watched[resolved.backpack.goid]=true
+  end
 end
 Model.generated=generated

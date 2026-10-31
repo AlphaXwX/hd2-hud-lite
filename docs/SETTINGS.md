@@ -2,7 +2,7 @@
 
 [简体中文](SETTINGS.zh-CN.md) · [Documentation index](INDEX.md)
 
-Open Chef's **F9** menu and select **HUD Lite 1.0.3**.
+Open Chef's **F9** menu and select **HUD Lite 1.0.4**.
 
 ## Menu sections
 

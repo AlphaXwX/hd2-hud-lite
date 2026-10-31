@@ -37,7 +37,7 @@ stingray={
    end,
    game_object_field_batched=function(_,id,out)
      count("batch")
-     if F.batch_skip then return nil,"skipped" end
+     -- Raw calls cannot see Chef's persisted skips; the loader guard must refuse first.
      F.raw_batches=F.raw_batches+1
      assert(F.objects[id],"batch of missing object")
      if F.batch_empty then return nil end
@@ -121,6 +121,10 @@ chef={api=3,loader_version="1.2.3",options={},has=function(name)return name=="op
    return t[name](...)
  end,
  call=function(path,...)
+   if path=='GameSession.game_object_field_batched' then
+     count('batch_guard')
+     if F.batch_skip then return nil,'skipped' end
+   end
    local ns,name=path:match('^([^.]+)%.(.+)$')
    local fn=stingray[ns] and stingray[ns][name]
    if not fn then return nil,'missing' end

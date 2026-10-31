@@ -237,7 +237,10 @@ function Model.draw(cx,cy,scale,radius,inner,thick,inner_thick,span)
       else rgb=health_colour(fraction) end
     elseif spec.key==7 then
       rgb=spec.column=="action_elapsed" and Model.reload_white or COLOUR_WARN
+      local over=Model.model and Model.model.over_by_key and Model.model.over_by_key[spec.key]
+      if over and over>0 then rgb=COLOUR_BAD end
     end
+    if spec.force_rgb then rgb=spec.force_rgb end
     if on("hud.lite.track") and show_track~=false then
       arc(ring_x,ring_y,ri,ro,head,head+ring_span,colour4(COLOUR_TRACK,150*alpha),layer==908 and 904 or 905)
     end
@@ -286,7 +289,18 @@ function Model.draw(cx,cy,scale,radius,inner,thick,inner_thick,span)
           for key,value in pairs(spec) do safe[key]=value end
           safe.fraction=math.max(0,math.min(1,(spec.fraction or 0)*spec.maximum/cells.charge_safe))
           ring(safe,inner,inner_thick,right,908)
-        else ring(spec,inner,inner_thick,right,908) end
+        else
+          ring(spec,inner,inner_thick,right,908)
+          -- Past the safe charge, draw the overcharge from the arc's head in red:
+          -- its length is the time held beyond the safe point, and it pulses.
+          local over=Model.model and Model.model.over_by_key and Model.model.over_by_key[spec.key]
+          if over and over>0 then
+            local red=Model.overcharge_command or {};Model.overcharge_command=red;Native.clear(red)
+            for key,value in pairs(spec) do red[key]=value end
+            red.fraction=math.max(0.02,math.min(1,over));red.force_rgb=COLOUR_BAD
+            ring(red,inner,inner_thick,right,909,false,false,nil,0.55+0.45*math.abs(math.sin(S.clock*8)))
+          end
+        end
       elseif spec.key==1 and on("hud.lite.backpack") then
         -- Same direct radius/width/span units and global track/opacity as the
         -- other Ring layout controls; no automatic-zero or multiplier mode.

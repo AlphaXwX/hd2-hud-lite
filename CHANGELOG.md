@@ -2,6 +2,13 @@
 
 [简体中文](CHANGELOG.zh-CN.md) · [Documentation index](docs/INDEX.md)
 
+## 1.0.4
+
+- Weapon data is read faster: the weapon information appears as soon as you switch weapons or respawn.
+- Steady frame rate: while the game is still working out a weapon it cannot name, the HUD no longer costs a large slice of every frame, so the picture stops stuttering.
+- Railgun shows an overcharge warning: once you hold past the safe point the charge ring turns red.
+- Lower frame cost overall, with the same on-screen smoothness.
+
 ## 1.0.3
 
 - Follow the loader language: the addon ships a Simplified Chinese language pack (`lang/zh_cn.lua`) that merges into the official pack, so option labels and section headings switch with the loader's Language setting.

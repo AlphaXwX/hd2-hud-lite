@@ -1346,7 +1346,9 @@ local IdentityCore = (function()
     end
     local wield, held
     held, wield = self:narrow_by_wield(world, candidates)
-    if #held == 0 then
+    -- A confirmed tie is not a transient missing attachment read: carrying
+    -- history cannot identify which of several live wield units is the hand.
+    if #held == 0 and wield ~= "multiple-wield-units" then
       held = self:carried_hand(candidates)
       wield = (#held > 0) and "carried" or wield
     end

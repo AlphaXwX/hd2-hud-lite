@@ -2,13 +2,13 @@
 
 [简体中文](THIRD_PARTY_NOTICES.zh-CN.md) · [Documentation index](docs/INDEX.md)
 
-**HUD Lite 1.0.3** is maintained by **Alpha F. Bloodfallen**.
+**HUD Lite 1.0.4** is maintained by **Alpha F. Bloodfallen**.
 That credit covers HUD Lite's own work, not third-party contributions.
 
 ## NarrowHUD compatibility catalog
 
 **Based on NarrowHUD by luka189.** Reviewed release:
-https://github.com/luka189/NarrowHUD/releases/tag/v1.0.6
+https://github.com/luka189/NarrowHUD/releases/tag/v1.0.4
 
 The compatibility catalog in `config/weapon_catalog.json` is adapted from that
 project's network-type/field data and shipped observations. HUD Lite keeps its

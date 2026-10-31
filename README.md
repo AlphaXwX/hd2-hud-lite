@@ -1,6 +1,6 @@
 # HUD Lite
 
-**1.0.3 · Alpha F. Bloodfallen**
+**1.0.4 · Alpha F. Bloodfallen**
 
 [简体中文](README.zh-CN.md) · [Documentation index](docs/INDEX.md)
 
@@ -34,8 +34,8 @@ weapon types and declared field-name compatibility. Unknown poses remain unresol
 
 1. Install **Chef Shared Loader 1.2.3+**.
 2. Disable other installations of this mod and conflicting HUD mods.
-3. Import and deploy `HUD-Lite-1.0.3-Chef.zip` with your mod manager.
-4. Open Chef's **F9** menu and select **HUD Lite 1.0.3**.
+3. Import and deploy `HUD-Lite-1.0.4-Chef.zip` with your mod manager.
+4. Open Chef's **F9** menu and select **HUD Lite 1.0.4**.
 
 The active loader identifier, performance-monitor name and native-call
 protection are described in the [identity notes](docs/IDENTITY.md).
@@ -70,8 +70,8 @@ npm ci
 .venv\Scripts\python tests/verify_release.py
 .venv\Scripts\python tests/verify_docs.py
 .venv\Scripts\python tools/build.py
-.venv\Scripts\python tests/verify.py dist/HUD-Lite-1.0.3-Chef.zip
-.venv\Scripts\python tests/verify_release.py dist/HUD-Lite-1.0.3-Chef.zip
+.venv\Scripts\python tests/verify.py dist/HUD-Lite-1.0.4-Chef.zip
+.venv\Scripts\python tests/verify_release.py dist/HUD-Lite-1.0.4-Chef.zip
 ```
 
 On Linux or macOS use `.venv/bin/python`. Do not commit `local.config.json`.

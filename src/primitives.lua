@@ -92,15 +92,34 @@ local function opacity()
   return math.max(0, math.min(1, v / 100))
 end
 
+-- One table per (colour, final 8-bit alpha) per opacity, at most 256 per colour.
+-- Quantize before lookup so continuous pulse alpha cannot grow a bucket forever.
+local colour_cache, colour_cache_opacity = {}, nil
 local function colour4(c, alpha)
-  local a = alpha or c[4] or 255
-  return { c[1], c[2], c[3], math.floor(a * opacity() + 0.5) }
+  local o = opacity()
+  if o ~= colour_cache_opacity then colour_cache, colour_cache_opacity = {}, o end
+  local bucket = colour_cache[c]
+  if not bucket then bucket = {}; colour_cache[c] = bucket end
+  local a = math.max(0, math.min(255, math.floor((alpha or c[4] or 255) * o + 0.5)))
+  local hit = bucket[a]
+  if hit then return hit end
+  local out = { c[1], c[2], c[3], a }
+  bucket[a] = out
+  return out
 end
 
+local arc_native_off=false
 local function arc(cx, cy, r_in, r_out, a0, a1, colour, layer)
-  if type(chef.arc) == "function" then
+  -- Chef 1.4 draws a ring segment in one engine call; when the game cannot draw
+  -- arcs the loader falls back to rows of rects itself, and a refusal here makes
+  -- the rect path below carry the frame instead of drawing nothing.
+  if not arc_native_off and type(chef.arc) == "function" then
     local c = eval(function() return chef.color(colour[1], colour[2], colour[3], colour[4]) end)
-    if c ~= nil and pcall(chef.arc, cx, cy, r_in, r_out, a0, a1, c, layer) then return true end
+    if c ~= nil then
+      local ok, drawn = pcall(chef.arc, cx, cy, r_in, r_out, a0, a1, c, layer)
+      if ok and drawn ~= false then return true end
+      arc_native_off = true
+    end
   end
   local span = a1 - a0
   if span == 0 then return false end
@@ -109,13 +128,14 @@ local function arc(cx, cy, r_in, r_out, a0, a1, colour, layer)
   local steps = math.max(2, math.floor(math.abs(span) / 2.5))
   local step = span / steps
   local deg = math.pi / 180
+  -- One colour for the whole arc: the fallback used to ask for a new colour on
+  -- every segment, which was 40 allocations per arc per frame.
+  local c = eval(function() return chef.color(colour[1], colour[2], colour[3], colour[4]) end)
+  if c == nil then return false end
   for i = 0, steps - 1 do
     local a = (a0 + step * (i + 0.5)) * deg
-    local c = eval(function() return chef.color(colour[1], colour[2], colour[3], colour[4]) end)
-    if c ~= nil then
-      pcall(chef.rect, cx + math.sin(a) * mid - thick * 0.5, cy + math.cos(a) * mid - thick * 0.5,
-        thick, thick * 1.35, c, layer)
-    end
+    pcall(chef.rect, cx + math.sin(a) * mid - thick * 0.5, cy + math.cos(a) * mid - thick * 0.5,
+      thick, thick * 1.35, c, layer)
   end
   return true
 end

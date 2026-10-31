@@ -2,7 +2,7 @@
 
 [English](SETTINGS.md) · [中文文档索引](INDEX.zh-CN.md)
 
-按 **F9** 打开 Chef 菜单，进入 **HUD Lite 1.0.3**。
+按 **F9** 打开 Chef 菜单，进入 **HUD Lite 1.0.4**。
 
 ## 菜单分类
 

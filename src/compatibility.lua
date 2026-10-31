@@ -1,6 +1,6 @@
 -- Reviewed weapon/field compatibility integration.
 -- Attribution and applicable terms are centralized in THIRD_PARTY_NOTICES.md.
-local Compatibility={new_types=0,aliases={},roles={},packs={},weapons={}}
+local Compatibility={new_types=0,aliases={},roles={},packs={},weapons={},handheld={}}
 do
   local identity=generated.identity
   for hash,role in pairs(WeaponCatalog.roles) do
@@ -13,6 +13,7 @@ do
   Compatibility.player_avatar=WeaponCatalog.player.avatar
   for hash,entry in pairs(WeaponCatalog.weapons) do
     Compatibility.weapons[hash]=entry
+    if entry.fields and (entry.fields.held or entry.fields.chamber) then Compatibility.handheld[hash]=true end
     local old=identity.equipment[hash]
     if old then call_alias(hash,old.call,entry.call)
     elseif entry.grips and entry.fields.owner then

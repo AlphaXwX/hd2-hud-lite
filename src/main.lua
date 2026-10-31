@@ -9,6 +9,12 @@ local function poll(now)
 end
 local function update(dt)
   if S.stopped then return end
+  if not S.budget_declared then
+    S.budget_declared=true
+    -- Declare the frame cost this mod is tuned for, so the loader's budget row
+    -- and its warnings match reality instead of the 1 ms default.
+    if type(chef.budget)=="function" then pcall(chef.budget,2) end
+  end
   local step=Fix.finite(dt) and dt or 1/60
   step=math.max(0,math.min(0.25,step))
   S.dt,S.clock=step,S.clock+step
@@ -28,7 +34,9 @@ local function update(dt)
     S.next_poll=0
   end
   if S.clock+1e-8>=S.next_poll then
-    S.next_poll=S.clock+0.05
+    -- 10 Hz sampling: half the polls is the cheapest, most predictable saving,
+    -- and the HUD already interpolates between samples.
+    S.next_poll=S.clock+(S.poll_interval or 0.1)
     local session,peer=gcall(get_session),gcall(get_peer)
     if session~=S.session or peer~=S.peer then
       Model.reset();Native.reset();S.session,S.peer=session,peer

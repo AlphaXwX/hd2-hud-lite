@@ -16,9 +16,13 @@ function Native.invoke(path,fn,kind,...)
   if IdentitySafety.blocked(path,kind) then return nil,"skipped" end
   if type(fn)~="function" then return nil,"missing" end
   Native.stats.calls=Native.stats.calls+1
-  -- Batched must use the sandbox wrapper, NOT chef.call (which resolves the
-  -- underlying function and would bypass Chef's persisted read-skip guard).
-  if path~="GameSession.game_object_field_batched" and type(chef.call_kind)=="function" then
+  -- The sandbox inherits engine tables; it does not guard direct calls. Keep
+  -- the established non-kind key so persisted batch skips remain effective.
+  if path=="GameSession.game_object_field_batched" then
+    if type(chef.call)~="function" then return nil,"skipped" end
+    return chef.call(path,...)
+  end
+  if type(chef.call_kind)=="function" then
     return chef.call_kind(path,kind or "hud",...)
   end
   local ok,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p=pcall(fn,...)
@@ -30,9 +34,20 @@ function Native.read(ns,name,kind,...)
   local fn=type(source)=="table" and source[name]
   return Native.invoke(ns.."."..name,fn,kind,...)
 end
+function Native.request_burst(frames)
+  -- A fresh body or weapon switch re-identifies from scratch: allow a short,
+  -- bounded burst so the first sample lands in one or two polls instead of
+  -- trickling through the steady 40-checks-per-poll budget.
+  local want=tonumber(frames) or 0
+  if want>0 and want>(Native.burst_frames or 0) then Native.burst_frames=want end
+end
 function Native.begin()
   Native.frame=Native.frame+1
-  Native.left=40
+  local burst=(Native.burst_frames or 0)>0
+  if burst then Native.burst_frames=Native.burst_frames-1 end
+  Native.burst=burst
+  Native.left=Native.heavy and 2000 or 160
+  Native.base_scans=0
   -- Other poll work (declarations, avatar, squad) is not search time. Starting
   -- the timer before that work starved every scan on real, slower native APIs.
   Native.started=nil
@@ -43,7 +58,7 @@ function Native.begin()
 end
 function Native.can_scan()
   if Native.left<=0 then Native.exhausted=true;return false end
-  if Native.scan_spent>=0.0015 then Native.exhausted=true;return false end
+  if Native.scan_spent>=(Native.heavy and 0.004 or 0.002) then Native.exhausted=true;return false end
   Native.left=Native.left-1
   Native.stats.scans=Native.stats.scans+1
   return true

@@ -13,16 +13,25 @@ from project import ROOT,META,SRC,BUILD,REPORTS,CONFIG,ensure_dirs
 CONSTANTS=('local LAYER_TRACK,LAYER_INNER_TRACK,LAYER_FILL,LAYER_INNER_FILL,LAYER_TEXT=905,904,906,907,910\n'
            'local loader_text_state\n')
 
-DIAGNOSTICS='''local function describe_info()
+DIAGNOSTICS='''local info_text = ""
+local last_hp, last_ratio, last_stamina, last_fresh_hp, last_fresh_st = nil, nil, nil, nil, nil
+local function describe_info()
+  local fresh_hp = Fix.finite(S.ratio) and S.clock-S.at<=1
+  local fresh_st = Fix.finite(S.stamina) and S.clock-S.stamina_at<=1
+  if S.hp==last_hp and S.ratio==last_ratio and S.stamina==last_stamina
+     and fresh_hp==last_fresh_hp and fresh_st==last_fresh_st then return info_text end
+  last_hp, last_ratio, last_stamina = S.hp, S.ratio, S.stamina
+  last_fresh_hp, last_fresh_st = fresh_hp, fresh_st
   local parts={}
-  if Fix.finite(S.ratio) and S.clock-S.at<=1 then
+  if fresh_hp then
     if Fix.finite(S.hp) then parts[#parts+1]=string.format("HP %d",math.floor(S.hp+0.5))
     else parts[#parts+1]=string.format("HP %d%%",math.floor(S.ratio*100+0.5)) end
   end
-  if Fix.finite(S.stamina) and S.clock-S.stamina_at<=1 then
+  if fresh_st then
     parts[#parts+1]=string.format("STA %d%%",math.floor(S.stamina*100+0.5))
   end
-  return table.concat(parts,"  ")
+  info_text = table.concat(parts,"  ")
+  return info_text
 end
 '''
 
@@ -71,8 +80,7 @@ def main():
     surface=(SRC/'surface.lua').read_text(encoding='utf-8')
     assert surface.count('local OPTION_IDS = {}')==1
     surface=surface.replace('local OPTION_IDS = {}',visual_defaults(preset)+'local OPTION_IDS = {}')
-    safety=('local IDENTITY_CURRENT = '+json.dumps(META['resource'])+'\n'
-            +(SRC/'safety.lua').read_text(encoding='utf-8'))
+    safety=(SRC/'safety.lua').read_text(encoding='utf-8')
     output=(surface
         +safety
         +(SRC/'options.lua').read_text(encoding='utf-8')
@@ -81,6 +89,7 @@ def main():
         +fragment_bundle()
         +(BUILD/'weapon_catalog.lua').read_text(encoding='utf-8')
         +(SRC/'compatibility.lua').read_text(encoding='utf-8')
+    +(SRC/'weapon_names.lua').read_text(encoding='utf-8')
         +(BUILD/'icon_resources.lua').read_text(encoding='utf-8')
         +(SRC/'runtime.lua').read_text(encoding='utf-8')
         +(SRC/'vitals.lua').read_text(encoding='utf-8')

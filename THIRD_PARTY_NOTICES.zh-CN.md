@@ -2,13 +2,13 @@
 
 [English](THIRD_PARTY_NOTICES.md) · [中文文档索引](docs/INDEX.zh-CN.md)
 
-**HUD Lite 1.0.3** 由 **Alpha F. Bloodfallen** 维护。
+**HUD Lite 1.0.4** 由 **Alpha F. Bloodfallen** 维护。
 该署名表示 HUD Lite 自身的工作，不代表拥有第三方贡献的原创权。
 
 ## NarrowHUD 兼容数据
 
 **Based on NarrowHUD by luka189（基于 luka189 的 NarrowHUD）**。
-核对版本：https://github.com/luka189/NarrowHUD/releases/tag/v1.0.6
+核对版本：https://github.com/luka189/NarrowHUD/releases/tag/v1.0.4
 
 `config/weapon_catalog.json` 的兼容目录来自该项目的网络类型、字段资料和随包观察数据。
 HUD Lite 保留自己的绘制，通过 `src/compatibility.lua` 与 `src/runtime.lua` 接入；

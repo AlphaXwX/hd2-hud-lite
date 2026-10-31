@@ -483,6 +483,31 @@ local HudModel = (function()
           end
           local fraction = value / entry.max
           if fraction < 0 then fraction = 0 end
+          -- Charge ring only: how far the hold has gone past the safe point.
+          if entry.key == 7 then
+            local charge = entry.charge
+            local over = nil
+            if type(charge) == "table" and type(charge.safe) == "number" and charge.safe > 0
+               and charge.mode ~= charge.safe_mode then
+              local rel = (value - charge.safe) / charge.safe
+              if rel > 0 then over = math.min(1, rel) end
+            end
+            self.over_by_key = self.over_by_key or {}
+            self.over_by_key[entry.key] = over
+          end
+          -- Charge ring (key 7) only: the hold past the safe threshold, as a
+          -- fraction of that same threshold. Packs keep their own charge rules.
+          if entry.key == 7 then
+            local charge = entry.charge
+            local over = nil
+            if type(charge) == "table" and type(charge.safe) == "number" and charge.safe > 0
+               and charge.mode ~= charge.safe_mode then
+              local rel = (value - charge.safe) / charge.safe
+              if rel > 0 then over = math.min(1, rel) end
+            end
+            self.over_by_key = self.over_by_key or {}
+            self.over_by_key[entry.key] = over
+          end
           if fraction > 1 then
             self.counters.over_max = self.counters.over_max + 1
             fraction = 1
